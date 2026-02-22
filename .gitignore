@@ -1,0 +1,9 @@
+node_modules/
+elm-stuff/
+build/
+.DS_Store
+*.swp
+*.swo
+.env.local
+.vscode/
+dist/

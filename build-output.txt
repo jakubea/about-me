@@ -1,0 +1,9 @@
+
+> elm-cv-app@1.0.0 build /Users/beja/Documents/Avarda/elm-cv-app
+> vite build
+
+vite v5.4.21 building for production...
+transforming...
+Running elm make /Users/beja/Documents/Avarda/elm-cv-app/src/Main.elm --output /var/folders/rd/nqsm8y_s76l9pxmfv6gnzs7w0000gn/T/2026121-7110-bvprbp.x8ouu.js --optimize
+✓ 3 modules transformed.
+ ELIFECYCLE  Command failed with exit code 1.
