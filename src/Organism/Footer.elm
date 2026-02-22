@@ -45,7 +45,7 @@ view cvData =
                     [ Html.a
                         [ Attributes.href ("mailto:" ++ cvData.contact.email)
                         , Attributes.css
-                            [ CssUtil.color Theme.color.primary
+                            [ CssUtil.color Theme.color.textLight
                             , Css.textDecoration Css.none
                             , CssUtil.flex
                             , CssUtil.itemsCenter
@@ -58,7 +58,7 @@ view cvData =
                     , Html.a
                         [ Attributes.href ("tel:" ++ cvData.contact.phone)
                         , Attributes.css
-                            [ CssUtil.color Theme.color.primary
+                            [ CssUtil.color Theme.color.textLight
                             , Css.textDecoration Css.none
                             , CssUtil.flex
                             , CssUtil.itemsCenter
@@ -73,7 +73,7 @@ view cvData =
                             [ CssUtil.flex
                             , CssUtil.itemsCenter
                             , CssUtil.gap 10
-                            , CssUtil.color Theme.color.primary
+                            , CssUtil.color Theme.color.textLight
                             ]
                         ]
                         [ Icon.mapPin, Html.text cvData.contact.location ]

@@ -81,9 +81,9 @@ cvData =
           }
         ]
     , contact =
-        { email = "your.email@example.com"
-        , phone = "+1 (555) 123-4567"
-        , location = "City, Country"
+        { email = "jakubea@gmail.com"
+        , phone = "+420 777 229 264"
+        , location = "Prague, Czech republic"
         , links =
             [ { label = "GitHub", url = "https://github.com/jakubea" }
             , { label = "LinkedIn", url = "https://www.linkedin.com/in/bea-jakubcova-3704ba6a/" }

@@ -23,6 +23,8 @@ view cvData =
                 , CssUtil.flexRow
                 , CssUtil.itemsCenter
                 , CssUtil.textCenter
+                , Css.flexWrap Css.wrapReverse
+                , CssUtil.justifyCenter
                 ]
             ]
             [ Html.div
@@ -67,24 +69,27 @@ view cvData =
                 ]
             , Html.div
                 [ Attributes.css
-                    [ Css.width (Css.px 360)
-                    , Css.height (Css.px 360)
-                    , Css.backgroundColor Theme.color.primary
+                    [ Css.width (Css.pct 80)
+                    , Css.maxWidth (Css.px 360)
+                    , Css.height Css.auto
+                    , Css.property "aspect-ratio" "1 / 1"
                     , Css.borderRadius (Css.pct 50)
-                    , Css.displayFlex
-                    , Css.alignItems Css.center
-                    , Css.justifyContent Css.center
                     , Css.overflow Css.hidden
+                    , Css.position Css.relative
+                    , Css.backgroundColor Theme.color.primary
                     ]
                 ]
                 [ Html.img
                     [ Attributes.src cvData.profileImage
                     , Attributes.alt "Profile photo"
                     , Attributes.css
-                        [ Css.width (Css.pct 100)
-                        , Css.height (Css.px 360)
-                        , Css.property "object-fit" "contain"
-                        , CssUtil.roundedLg
+                        [ Css.position Css.absolute
+                        , Css.top (Css.px 0)
+                        , Css.left (Css.px 0)
+                        , Css.width (Css.pct 100)
+                        , Css.height (Css.pct 100)
+                        , Css.property "object-fit" "cover"
+                        , Css.property "object-position" "top"
                         , CssUtil.shadowMd
                         ]
                     ]

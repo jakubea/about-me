@@ -142,15 +142,18 @@ pageView model =
             ]
         ]
         [ Navigation.view model.route
-        , Header.view model.cvData
-        , Html.main_
-            [ Attributes.css
-                [ Css.flex (Css.num 1)
-                , CssUtil.backgroundColor Theme.color.primary
-                , Css.minHeight (Css.px 400)
+        , if model.route == Route.Home then
+            Header.view model.cvData
+
+          else
+            Html.main_
+                [ Attributes.css
+                    [ Css.flex (Css.num 1)
+                    , CssUtil.backgroundColor Theme.color.primary
+                    , Css.minHeight (Css.px 400)
+                    ]
                 ]
-            ]
-            [ content ]
+                [ content ]
         , Footer.view model.cvData
         ]
 
