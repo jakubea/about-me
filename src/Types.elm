@@ -2,7 +2,6 @@ module Types exposing
     ( Contact
     , CvData
     , Experience
-    , Page(..)
     , Project
     , Skill
     , SocialLink
@@ -58,11 +57,3 @@ type alias SocialLink =
     { label : String
     , url : String
     }
-
-
-type Page
-    = Home
-    | ExperiencePage
-    | ProjectsPage
-    | SkillsPage
-    | NotFound

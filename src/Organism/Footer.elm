@@ -20,7 +20,7 @@ view cvData =
             , Css.paddingLeft (Css.px 16)
             , Css.paddingRight (Css.px 16)
             , CssUtil.color Theme.color.textLight
-            , Css.fontSize (Css.px Theme.fontSize.sm)
+            , CssUtil.fontSize Theme.fontSize.sm
             , Css.property "background-image" "linear-gradient(180deg, #000 0%, #232326 100%)"
             ]
         ]
@@ -87,7 +87,7 @@ view cvData =
                                 , Attributes.target "_blank"
                                 , Attributes.rel "noopener noreferrer"
                                 , Attributes.css
-                                    [ Css.width (Css.px 40)
+                                    [ CssUtil.width 40
                                     , Css.height (Css.px 40)
                                     , CssUtil.roundedLg
                                     , CssUtil.backgroundColor Theme.color.gray
@@ -101,7 +101,7 @@ view cvData =
                                         , CssUtil.color Theme.color.white
                                         ]
                                     , Css.focus
-                                        [ Css.outline3 (Css.px 2) Css.solid Theme.color.primary
+                                        [ CssUtil.outline3 2 Theme.color.primary
                                         , Css.outlineOffset (Css.px 2)
                                         ]
                                     ]
@@ -126,12 +126,12 @@ view cvData =
                     [ Css.textAlign Css.center
                     , Css.paddingTop (Css.px 20)
                     , CssUtil.borderTop Theme.color.border 1
-                    , Css.fontSize (Css.px Theme.fontSize.xs)
+                    , CssUtil.fontSize Theme.fontSize.xs
                     , CssUtil.color Theme.color.textLight
                     ]
                 ]
                 [ Html.text "© 2026. Made with "
-                , Html.span [ Attributes.css [ CssUtil.color Theme.color.primary, Css.marginLeft (Css.px 4), Css.marginRight (Css.px 4) ] ] [ Icon.heart ]
+                , Html.span [ Attributes.css [ CssUtil.color Theme.color.accent, CssUtil.marginLeft 4, Css.marginRight (Css.px 4) ] ] [ Icon.heart ]
                 , Html.text "and Elm."
                 ]
             ]

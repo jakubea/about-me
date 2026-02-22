@@ -43,7 +43,7 @@ navItem isActive label icon route =
                  else
                     Css.int 500
                 )
-            , Css.fontSize (Css.px Theme.fontSize.sm)
+            , CssUtil.fontSize Theme.fontSize.sm
             , CssUtil.transition [ "color", "border-color" ]
             , Css.hover
                 [ CssUtil.color Theme.color.accent
@@ -67,7 +67,7 @@ view currentRoute =
             , Css.paddingRight (Css.px 16)
             , Css.position Css.sticky
             , Css.top (Css.px 0)
-            , Css.zIndex (Css.int 10)
+            , CssUtil.zIndex 10
             ]
         , Attributes.attribute "aria-label" "Main navigation"
         ]

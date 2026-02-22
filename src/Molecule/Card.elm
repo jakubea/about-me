@@ -1,4 +1,4 @@
-module Molecule.Card exposing (view, viewWithBorder)
+module Molecule.Card exposing (viewWithBorder)
 
 import Css
 import Html.Styled as Html exposing (Html)
@@ -21,13 +21,6 @@ withBorderStyle =
     baseStyle
         ++ [ CssUtil.border Theme.color.white 1
            ]
-
-
-view : List (Html msg) -> Html msg
-view children =
-    Html.div
-        [ Attributes.css baseStyle ]
-        children
 
 
 viewWithBorder : List (Html msg) -> Html msg

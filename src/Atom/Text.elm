@@ -1,4 +1,4 @@
-module Atom.Text exposing (view, viewLarge, viewSmall)
+module Atom.Text exposing (view)
 
 import Css
 import Html.Styled as Html exposing (Html)
@@ -25,16 +25,16 @@ styleForSize : TextSize -> List Css.Style
 styleForSize size =
     case size of
         Small ->
-            [ Css.fontSize (Css.px 12)
+            [ CssUtil.fontSize 12
             ]
 
         Regular ->
-            [ Css.fontSize (Css.px 14)
+            [ CssUtil.fontSize 14
             ]
 
         Large ->
-            [ Css.fontSize (Css.px 16)
-            , Css.fontWeight (Css.int 600)
+            [ CssUtil.fontSize 16
+            , CssUtil.fontWeight 600
             ]
 
 
@@ -42,18 +42,4 @@ view : String -> Html msg
 view content =
     Html.p
         [ Attributes.css (baseStyle ++ styleForSize Regular) ]
-        [ Html.text content ]
-
-
-viewSmall : String -> Html msg
-viewSmall content =
-    Html.span
-        [ Attributes.css (baseStyle ++ styleForSize Small) ]
-        [ Html.text content ]
-
-
-viewLarge : String -> Html msg
-viewLarge content =
-    Html.p
-        [ Attributes.css (baseStyle ++ styleForSize Large) ]
         [ Html.text content ]

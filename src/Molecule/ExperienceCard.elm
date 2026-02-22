@@ -19,8 +19,8 @@ view experience =
         , Html.p
             [ Attributes.css
                 [ CssUtil.color Theme.color.textLight
-                , Css.fontSize (Css.px 14)
-                , Css.fontWeight (Css.int 600)
+                , CssUtil.fontSize 14
+                , CssUtil.fontWeight 600
                 , CssUtil.margin 0
                 , CssUtil.marginBottom 4
                 ]
@@ -29,7 +29,7 @@ view experience =
         , Html.p
             [ Attributes.css
                 [ CssUtil.color Theme.color.textLight
-                , Css.fontSize (Css.px 12)
+                , CssUtil.fontSize 12
                 , CssUtil.margin 0
                 , CssUtil.marginBottom 12
                 ]
@@ -47,8 +47,8 @@ view experience =
                 [ Attributes.css
                     [ CssUtil.margin 0
                     , CssUtil.marginBottom 4
-                    , Css.fontSize (Css.px 12)
-                    , Css.fontWeight (Css.int 600)
+                    , CssUtil.fontSize 12
+                    , CssUtil.fontWeight 600
                     , CssUtil.color Theme.color.primary
                     ]
                 ]

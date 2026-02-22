@@ -15,6 +15,7 @@ view cvData =
             [ CssUtil.backgroundColor Theme.color.background
             , CssUtil.borderBottom Theme.color.border 1
             , Css.padding2 (Css.px 48) (Css.px 16)
+            , CssUtil.flex1
             ]
         ]
         [ Html.div
@@ -38,8 +39,8 @@ view cvData =
                 ]
                 [ Html.h1
                     [ Attributes.css
-                        [ Css.fontSize (Css.px Theme.fontSize.xxl)
-                        , Css.fontWeight (Css.int 700)
+                        [ CssUtil.fontSize Theme.fontSize.xxl
+                        , CssUtil.fontWeight 700
                         , Css.margin (Css.px 0)
                         , Css.marginBottom (Css.px 8)
                         , CssUtil.color Theme.color.text
@@ -48,9 +49,9 @@ view cvData =
                     [ Html.text cvData.name ]
                 , Html.p
                     [ Attributes.css
-                        [ Css.fontSize (Css.px Theme.fontSize.lg)
+                        [ CssUtil.fontSize Theme.fontSize.lg
                         , CssUtil.color Theme.color.accent
-                        , Css.fontWeight (Css.int 700)
+                        , CssUtil.fontWeight 700
                         , Css.margin (Css.px 0)
                         , Css.marginBottom (Css.px 20)
                         ]
@@ -58,7 +59,7 @@ view cvData =
                     [ Html.text cvData.title ]
                 , Html.p
                     [ Attributes.css
-                        [ Css.fontSize (Css.px Theme.fontSize.md)
+                        [ CssUtil.fontSize Theme.fontSize.md
                         , CssUtil.color Theme.color.textLight
                         , Css.margin (Css.px 0)
                         , Css.lineHeight (Css.num 1.8)
@@ -69,7 +70,7 @@ view cvData =
                 ]
             , Html.div
                 [ Attributes.css
-                    [ Css.width (Css.pct 80)
+                    [ CssUtil.widthPct 80
                     , Css.maxWidth (Css.px 360)
                     , Css.height Css.auto
                     , Css.property "aspect-ratio" "1 / 1"
@@ -86,7 +87,7 @@ view cvData =
                         [ Css.position Css.absolute
                         , Css.top (Css.px 0)
                         , Css.left (Css.px 0)
-                        , Css.width (Css.pct 100)
+                        , CssUtil.widthPct 100
                         , Css.height (Css.pct 100)
                         , Css.property "object-fit" "cover"
                         , Css.property "object-position" "top"

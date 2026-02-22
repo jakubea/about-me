@@ -1,6 +1,6 @@
 module Data.CvData exposing (cvData)
 
-import Types exposing (..)
+import Types exposing (CvData)
 
 
 cvData : CvData

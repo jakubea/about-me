@@ -16,8 +16,8 @@ view label =
             , CssUtil.padding 4
             , CssUtil.padding2 4 8
             , CssUtil.borderRadius 4
-            , Css.fontSize (Css.px 12)
-            , Css.fontWeight (Css.int 500)
+            , CssUtil.fontSize 12
+            , CssUtil.fontWeight 500
             , Css.display Css.inlineBlock
             ]
         ]

@@ -117,24 +117,6 @@ globalStyles =
 
 pageView : Model -> Html.Html Msg
 pageView model =
-    let
-        content =
-            case model.route of
-                Route.Home ->
-                    HomePage.view model.cvData
-
-                Route.Experience ->
-                    ExperiencePage.view model.cvData
-
-                Route.Projects ->
-                    ProjectsPage.view model.cvData
-
-                Route.Skills ->
-                    SkillsPage.view model.cvData
-
-                Route.NotFound ->
-                    NotFoundPage.view
-    in
     Html.div
         [ Attributes.css
             [ CssUtil.flexColumn
@@ -146,6 +128,24 @@ pageView model =
             Header.view model.cvData
 
           else
+            let
+                content =
+                    case model.route of
+                        Route.Home ->
+                            HomePage.view
+
+                        Route.Experience ->
+                            ExperiencePage.view model.cvData
+
+                        Route.Projects ->
+                            ProjectsPage.view model.cvData
+
+                        Route.Skills ->
+                            SkillsPage.view model.cvData
+
+                        Route.NotFound ->
+                            NotFoundPage.view
+            in
             Html.main_
                 [ Attributes.css
                     [ Css.flex (Css.num 1)

@@ -31,8 +31,8 @@ view project =
                     [ Attributes.css
                         [ CssUtil.margin 0
                         , CssUtil.marginBottom 4
-                        , Css.fontSize (Css.px 12)
-                        , Css.fontWeight (Css.int 600)
+                        , CssUtil.fontSize 12
+                        , CssUtil.fontWeight 600
                         , CssUtil.color Theme.color.primary
                         ]
                     ]
@@ -56,8 +56,8 @@ view project =
                         [ Attributes.css
                             [ CssUtil.margin 0
                             , CssUtil.marginBottom 4
-                            , Css.fontSize (Css.px 12)
-                            , Css.fontWeight (Css.int 600)
+                            , CssUtil.fontSize 12
+                            , CssUtil.fontWeight 600
                             , CssUtil.color Theme.color.primary
                             ]
                         ]

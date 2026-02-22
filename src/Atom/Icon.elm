@@ -1,12 +1,9 @@
 module Atom.Icon exposing
-    ( award
-    , briefcase
-    , chevronRight
+    ( briefcase
     , code
     , github
     , heart
     , home
-    , link
     , linkedin
     , mail
     , mapPin
@@ -18,6 +15,7 @@ import Css
 import Html.Styled exposing (Attribute, Html)
 import Svg.Styled as Svg exposing (Svg)
 import Svg.Styled.Attributes as SvgAttributes
+import Util.Css as CssUtil
 
 
 
@@ -37,7 +35,7 @@ home : Svg msg
 home =
     svg
         [ SvgAttributes.css
-            [ Css.width (Css.px 24)
+            [ CssUtil.width 24
             , Css.height (Css.px 24)
             , Css.display Css.inlineBlock
             , Css.verticalAlign Css.middle
@@ -56,7 +54,7 @@ briefcase : Html msg
 briefcase =
     svg
         [ SvgAttributes.css
-            [ Css.width (Css.px 24)
+            [ CssUtil.width 24
             , Css.height (Css.px 24)
             , Css.display Css.inlineBlock
             , Css.verticalAlign Css.middle
@@ -77,7 +75,7 @@ code : Html msg
 code =
     svg
         [ SvgAttributes.css
-            [ Css.width (Css.px 24)
+            [ CssUtil.width 24
             , Css.height (Css.px 24)
             , Css.display Css.inlineBlock
             , Css.verticalAlign Css.middle
@@ -96,7 +94,7 @@ target : Html msg
 target =
     svg
         [ SvgAttributes.css
-            [ Css.width (Css.px 24)
+            [ CssUtil.width 24
             , Css.height (Css.px 24)
             , Css.display Css.inlineBlock
             , Css.verticalAlign Css.middle
@@ -114,32 +112,11 @@ target =
         ]
 
 
-award : Html msg
-award =
-    svg
-        [ SvgAttributes.css
-            [ Css.width (Css.px 24)
-            , Css.height (Css.px 24)
-            , Css.display Css.inlineBlock
-            , Css.verticalAlign Css.middle
-            ]
-        , SvgAttributes.stroke "currentColor"
-        , SvgAttributes.viewBox "0 0 24 24"
-        , SvgAttributes.fill "none"
-        , SvgAttributes.strokeWidth "2"
-        , SvgAttributes.strokeLinecap "round"
-        , SvgAttributes.strokeLinejoin "round"
-        ]
-        [ Svg.circle [ SvgAttributes.cx "12", SvgAttributes.cy "8", SvgAttributes.r "7" ] []
-        , Svg.path [ SvgAttributes.d "M8.21 13.89L7 23l5-3 5 3-1.21-9.11" ] []
-        ]
-
-
 github : Html msg
 github =
     svg
         [ SvgAttributes.css
-            [ Css.width (Css.px 24)
+            [ CssUtil.width 24
             , Css.height (Css.px 24)
             , Css.display Css.inlineBlock
             , Css.verticalAlign Css.middle
@@ -154,7 +131,7 @@ linkedin : Html msg
 linkedin =
     svg
         [ SvgAttributes.css
-            [ Css.width (Css.px 24)
+            [ CssUtil.width 24
             , Css.height (Css.px 24)
             , Css.display Css.inlineBlock
             , Css.verticalAlign Css.middle
@@ -169,7 +146,7 @@ mail : Html msg
 mail =
     svg
         [ SvgAttributes.css
-            [ Css.width (Css.px 24)
+            [ CssUtil.width 24
             , Css.height (Css.px 24)
             , Css.display Css.inlineBlock
             , Css.verticalAlign Css.middle
@@ -190,7 +167,7 @@ phone : Html msg
 phone =
     svg
         [ SvgAttributes.css
-            [ Css.width (Css.px 24)
+            [ CssUtil.width 24
             , Css.height (Css.px 24)
             , Css.display Css.inlineBlock
             , Css.verticalAlign Css.middle
@@ -209,7 +186,7 @@ mapPin : Html msg
 mapPin =
     svg
         [ SvgAttributes.css
-            [ Css.width (Css.px 24)
+            [ CssUtil.width 24
             , Css.height (Css.px 24)
             , Css.display Css.inlineBlock
             , Css.verticalAlign Css.middle
@@ -226,51 +203,11 @@ mapPin =
         ]
 
 
-link : Html msg
-link =
-    svg
-        [ SvgAttributes.css
-            [ Css.width (Css.px 24)
-            , Css.height (Css.px 24)
-            , Css.display Css.inlineBlock
-            , Css.verticalAlign Css.middle
-            ]
-        , SvgAttributes.stroke "currentColor"
-        , SvgAttributes.viewBox "0 0 24 24"
-        , SvgAttributes.fill "none"
-        , SvgAttributes.strokeWidth "2"
-        , SvgAttributes.strokeLinecap "round"
-        , SvgAttributes.strokeLinejoin "round"
-        ]
-        [ Svg.path [ SvgAttributes.d "M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" ] []
-        , Svg.path [ SvgAttributes.d "M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" ] []
-        ]
-
-
-chevronRight : Html msg
-chevronRight =
-    svg
-        [ SvgAttributes.css
-            [ Css.width (Css.px 20)
-            , Css.height (Css.px 20)
-            , Css.display Css.inlineBlock
-            , Css.verticalAlign Css.middle
-            ]
-        , SvgAttributes.stroke "currentColor"
-        , SvgAttributes.viewBox "0 0 24 24"
-        , SvgAttributes.fill "none"
-        , SvgAttributes.strokeWidth "2"
-        , SvgAttributes.strokeLinecap "round"
-        , SvgAttributes.strokeLinejoin "round"
-        ]
-        [ Svg.polyline [ SvgAttributes.points "9 18 15 12 9 6" ] [] ]
-
-
 heart : Html msg
 heart =
     svg
         [ SvgAttributes.css
-            [ Css.width (Css.px 24)
+            [ CssUtil.width 24
             , Css.height (Css.px 24)
             , Css.display Css.inlineBlock
             , Css.verticalAlign Css.middle

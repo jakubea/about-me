@@ -19,8 +19,8 @@ view skill =
         [ Html.h3
             [ Attributes.css
                 [ CssUtil.color Theme.color.primary
-                , Css.fontSize (Css.px 16)
-                , Css.fontWeight (Css.int 600)
+                , CssUtil.fontSize 16
+                , CssUtil.fontWeight 600
                 , CssUtil.marginBottom 8
                 , CssUtil.margin 0
                 ]

@@ -11,7 +11,7 @@ baseStyle : List Css.Style
 baseStyle =
     [ Css.textDecoration Css.none
     , CssUtil.color Theme.color.primary
-    , Css.fontWeight (Css.int 500)
+    , CssUtil.fontWeight 500
     , Css.hover
         [ CssUtil.color Theme.color.accent
         , Css.textDecoration Css.underline

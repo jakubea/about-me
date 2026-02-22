@@ -16,14 +16,14 @@ view =
         [ Attributes.css
             [ CssUtil.padding Theme.spacing.lg
             , Css.maxWidth (Css.px 800)
-            , Css.marginLeft Css.auto
+            , CssUtil.marginLeftAuto
             , Css.marginRight Css.auto
             , Css.textAlign Css.center
             ]
         ]
         [ Html.h1
             [ Attributes.css
-                [ Css.fontSize (Css.px 64)
+                [ CssUtil.fontSize 64
                 , CssUtil.color Theme.color.primary
                 , CssUtil.margin 0
                 ]
