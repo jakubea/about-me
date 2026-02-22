@@ -20,7 +20,6 @@ navItem isActive label icon route =
             , Css.padding (Css.px 8)
             , Css.paddingLeft (Css.px 12)
             , Css.paddingRight (Css.px 12)
-            , CssUtil.roundedLg
             , Css.borderBottom3 (Css.px 2)
                 Css.solid
                 (if isActive then
@@ -49,13 +48,9 @@ navItem isActive label icon route =
             , Css.hover
                 [ CssUtil.color Theme.color.accent
                 ]
-            , Css.focus
-                [ Css.outline3 (Css.px 2) Css.solid Theme.color.accent
-                , Css.outlineOffset (Css.px 2)
-                ]
             ]
         ]
-        [ Html.span [ Attributes.css [ Css.displayFlex ] ] [ icon ]
+        [ icon
         , Html.text label
         ]
 

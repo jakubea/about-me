@@ -1,4 +1,4 @@
-# Elm CV App
+# About me
 
 A professional CV/portfolio application built with Elm, showcasing Elm development patterns, architecture, and best practices.
 
