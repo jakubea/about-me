@@ -28,7 +28,7 @@ cvData =
           }
         ]
     , projects =
-        [ { name = "Call Center Frontend"
+        [ { name = "Bank app"
           , description = "Complex financial software for managing orders, customers, and payments."
           , technologies = [ "Elm 0.19.1", "elm-css", "OAuth2", "REST APIs" ]
           , highlights =

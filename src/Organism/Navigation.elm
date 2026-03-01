@@ -67,6 +67,7 @@ view currentRoute =
             , Css.paddingRight (Css.px 16)
             , Css.position Css.sticky
             , Css.top (Css.px 0)
+            , Css.property "background-image" "linear-gradient(180deg, #232326 0%, #000 100%)"
             , CssUtil.zIndex 10
             ]
         , Attributes.attribute "aria-label" "Main navigation"
