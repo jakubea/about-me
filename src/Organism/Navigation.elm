@@ -84,5 +84,6 @@ view currentRoute =
             , navItem (currentRoute == Route.Experience) "Experience" Icon.briefcase Route.Experience
             , navItem (currentRoute == Route.Projects) "Projects" Icon.code Route.Projects
             , navItem (currentRoute == Route.Skills) "Skills" Icon.target Route.Skills
+            , navItem (currentRoute == Route.Languages) "Languages" Icon.target Route.Languages
             ]
         ]

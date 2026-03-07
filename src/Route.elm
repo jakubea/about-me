@@ -13,6 +13,7 @@ type Route
     | Experience
     | Projects
     | Skills
+    | Languages
     | NotFound
 
 
@@ -23,6 +24,7 @@ parser =
         , map Experience (s "experience")
         , map Projects (s "projects")
         , map Skills (s "skills")
+        , map Languages (s "languages")
         ]
 
 
@@ -46,6 +48,9 @@ toPath route =
 
         Skills ->
             "/skills"
+
+        Languages ->
+            "/languages"
 
         NotFound ->
             "/"

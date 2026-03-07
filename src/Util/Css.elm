@@ -1,4 +1,4 @@
-module Util.Css exposing (backgroundColor, border, borderBottom, borderRadius, borderTop, color, container, cursorPointer, flex, flex1, flexColumn, flexRow, fontSize, fontWeight, gap, itemsCenter, justifyCenter, margin, marginBottom, marginLeft, marginLeftAuto, marginTop, outline3, padding, padding2, roundedFull, roundedLg, shadowMd, textCenter, toHex, transition, width, widthPct, zIndex)
+module Util.Css exposing (backgroundColor, border, borderBottom, borderRadius, borderTop, color, container, cursorPointer, flex, flex1, flexColumn, flexRow, fontSize, fontWeight, gap, itemsCenter, justifyCenter, margin, marginBottom, marginLeft, marginLeftAuto, marginTop, outline3, padding, padding2, roundedLg, shadowMd, textCenter, toHex, transition, width, widthPct, zIndex)
 
 import Css
 
@@ -196,11 +196,6 @@ justifyCenter =
 roundedLg : Css.Style
 roundedLg =
     Css.borderRadius (Css.px 8)
-
-
-roundedFull : Css.Style
-roundedFull =
-    Css.borderRadius (Css.px 9999)
 
 
 shadowMd : Css.Style

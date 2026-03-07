@@ -8,6 +8,10 @@ module Types exposing
     )
 
 
+type alias LanguageProficiency =
+    { name : String, percent : Float }
+
+
 type alias CvData =
     { name : String
     , title : String
@@ -16,6 +20,7 @@ type alias CvData =
     , experiences : List Experience
     , projects : List Project
     , skills : List Skill
+    , languages : List LanguageProficiency
     , contact : Contact
     }
 

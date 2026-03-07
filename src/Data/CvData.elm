@@ -80,7 +80,7 @@ cvData =
         ]
     , skills =
         [ { category = "Languages"
-          , items = [ "Elm", "JavaScript", "HTML5", "CSS3", "SASS", "F# (basics)" ]
+          , items = [ "Elm", "JavaScript", "HTML5", "CSS3", "SASS", "F# (basics)", "SwiftUI# (basics)" ]
           }
         , { category = "Architecture & Patterns"
           , items = [ "Model-View-Update (MVU)", "Type-driven development", "State machines", "Component-based architecture (Atomic Design)", "Client-side routing" ]
@@ -100,6 +100,13 @@ cvData =
         , { category = "Soft Skills"
           , items = [ "Attention to detail", "Team collaboration", "Client-facing communication", "Analytical thinking", "Mentoring & Knowledge sharing", "Quality-oriented mindset", "Ownership & Responsibility" ]
           }
+        ]
+    , languages =
+        [ { name = "Slovak", percent = 100 }
+        , { name = "Czech", percent = 90 }
+        , { name = "English", percent = 85 }
+        , { name = "Spanish (in progress)", percent = 40 }
+        , { name = "French", percent = 15 }
         ]
     , contact =
         { email = "jakubea@gmail.com"

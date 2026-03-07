@@ -11,7 +11,7 @@ import Organism.Footer as Footer
 import Organism.Header as Header
 import Organism.Navigation as Navigation
 import Page.Experience as ExperiencePage
-import Page.Home as HomePage
+import Page.Languages as LanguagesPage
 import Page.NotFound as NotFoundPage
 import Page.Projects as ProjectsPage
 import Page.Skills as SkillsPage
@@ -124,36 +124,35 @@ pageView model =
             ]
         ]
         [ Navigation.view model.route
-        , if model.route == Route.Home then
-            Header.view model.cvData
+        , let
+            content =
+                case model.route of
+                    Route.Home ->
+                        Header.view model.cvData
 
-          else
-            let
-                content =
-                    case model.route of
-                        Route.Home ->
-                            HomePage.view
+                    Route.Experience ->
+                        ExperiencePage.view model.cvData
 
-                        Route.Experience ->
-                            ExperiencePage.view model.cvData
+                    Route.Projects ->
+                        ProjectsPage.view model.cvData
 
-                        Route.Projects ->
-                            ProjectsPage.view model.cvData
+                    Route.Skills ->
+                        SkillsPage.view model.cvData
 
-                        Route.Skills ->
-                            SkillsPage.view model.cvData
+                    Route.Languages ->
+                        LanguagesPage.view model.cvData
 
-                        Route.NotFound ->
-                            NotFoundPage.view
-            in
-            Html.main_
-                [ Attributes.css
-                    [ Css.flex (Css.num 1)
-                    , CssUtil.backgroundColor Theme.color.primary
-                    , Css.minHeight (Css.px 400)
-                    ]
+                    Route.NotFound ->
+                        NotFoundPage.view
+          in
+          Html.main_
+            [ Attributes.css
+                [ Css.flex (Css.num 1)
+                , CssUtil.backgroundColor Theme.color.primary
+                , Css.minHeight (Css.px 400)
                 ]
-                [ content ]
+            ]
+            [ content ]
         , Footer.view model.cvData
         ]
 
