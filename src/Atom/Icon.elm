@@ -2,6 +2,7 @@ module Atom.Icon exposing
     ( briefcase
     , code
     , github
+    , globe
     , heart
     , home
     , linkedin
@@ -16,6 +17,27 @@ import Html.Styled exposing (Attribute, Html)
 import Svg.Styled as Svg exposing (Svg)
 import Svg.Styled.Attributes as SvgAttributes
 import Util.Css as CssUtil
+
+
+globe : Html msg
+globe =
+    svg
+        [ SvgAttributes.css
+            [ CssUtil.width 24
+            , Css.height (Css.px 24)
+            , Css.display Css.inlineBlock
+            , Css.verticalAlign Css.middle
+            ]
+        , SvgAttributes.stroke "currentColor"
+        , SvgAttributes.viewBox "0 0 24 24"
+        , SvgAttributes.fill "none"
+        , SvgAttributes.strokeWidth "2"
+        , SvgAttributes.strokeLinecap "round"
+        , SvgAttributes.strokeLinejoin "round"
+        ]
+        [ Svg.circle [ SvgAttributes.cx "12", SvgAttributes.cy "12", SvgAttributes.r "10" ] []
+        , Svg.path [ SvgAttributes.d "M2 12h20M12 2a15.3 15.3 0 0 1 0 20M12 2a15.3 15.3 0 0 0 0 20" ] []
+        ]
 
 
 
