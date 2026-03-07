@@ -57,16 +57,17 @@ view cvData =
                         ]
                     ]
                     [ Html.text cvData.title ]
-                , Html.p
-                    [ Attributes.css
-                        [ CssUtil.fontSize Theme.fontSize.md
-                        , CssUtil.color Theme.color.textLight
-                        , Css.margin (Css.px 0)
-                        , Css.lineHeight (Css.num 1.8)
-                        , Css.maxWidth (Css.px 550)
+                , List.map (Html.text >> List.singleton >> Html.p []) cvData.summary
+                    |> Html.div
+                        [ Attributes.css
+                            [ CssUtil.fontSize Theme.fontSize.md
+                            , CssUtil.color Theme.color.textLight
+                            , Css.margin (Css.px 0)
+                            , Css.lineHeight (Css.num 1.8)
+                            , Css.maxWidth (Css.px 550)
+                            , CssUtil.flexColumn
+                            ]
                         ]
-                    ]
-                    [ Html.text cvData.summary ]
                 ]
             , Html.div
                 [ Attributes.css

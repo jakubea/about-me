@@ -11,7 +11,7 @@ module Types exposing
 type alias CvData =
     { name : String
     , title : String
-    , summary : String
+    , summary : List String
     , profileImage : String
     , experiences : List Experience
     , projects : List Project
@@ -25,7 +25,7 @@ type alias Experience =
     , position : String
     , startDate : String
     , endDate : String
-    , description : String
+    , description : List String
     , technologies : List String
     }
 

@@ -14,18 +14,19 @@ view skill =
     Html.div
         [ Attributes.css
             [ CssUtil.marginBottom 16
+            , CssUtil.gap 20
             ]
         ]
         [ Html.h3
             [ Attributes.css
-                [ CssUtil.color Theme.color.primary
+                [ CssUtil.color Theme.color.white
                 , CssUtil.fontSize 16
                 , CssUtil.fontWeight 600
                 , CssUtil.marginBottom 8
                 , CssUtil.margin 0
                 ]
             ]
-            [ Html.text skill.category ]
+            [ String.toUpper skill.category |> Html.text ]
         , Html.div
             [ Attributes.css
                 [ CssUtil.flex

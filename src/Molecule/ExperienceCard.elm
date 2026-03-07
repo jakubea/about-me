@@ -35,7 +35,7 @@ view experience =
                 ]
             ]
             [ Html.text (experience.startDate ++ " - " ++ experience.endDate) ]
-        , Text.view experience.description
+        , List.map (Text.view >> List.singleton >> Html.li []) experience.description |> Html.ul []
         , Html.div
             [ Attributes.css
                 [ CssUtil.flexColumn
@@ -43,17 +43,7 @@ view experience =
                 , CssUtil.marginTop 16
                 ]
             ]
-            [ Html.p
-                [ Attributes.css
-                    [ CssUtil.margin 0
-                    , CssUtil.marginBottom 4
-                    , CssUtil.fontSize 12
-                    , CssUtil.fontWeight 600
-                    , CssUtil.color Theme.color.primary
-                    ]
-                ]
-                [ Html.text "Technologies:" ]
-            , Html.div
+            [ Html.div
                 [ Attributes.css
                     [ CssUtil.flex
                     , CssUtil.gap 8

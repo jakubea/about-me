@@ -11,19 +11,14 @@ import Util.Css as CssUtil
 
 view : CvData -> Html msg
 view cvData =
-    Html.div
-        [ Attributes.css
-            [ CssUtil.padding 24
-            , Css.maxWidth (Css.px 900)
-            , CssUtil.marginLeftAuto
-            , Css.marginRight Css.auto
-            ]
-        ]
-        [ Heading.h2 "Skills"
-        , Html.div
+    Heading.h2 "Skills"
+        :: List.map SkillGroup.view cvData.skills
+        |> Html.div
             [ Attributes.css
-                [ CssUtil.marginTop 24
+                [ CssUtil.padding 24
+                , Css.maxWidth (Css.px 900)
+                , CssUtil.marginLeftAuto
+                , Css.marginRight Css.auto
+                , CssUtil.gap 20
                 ]
             ]
-            (List.map SkillGroup.view cvData.skills)
-        ]
