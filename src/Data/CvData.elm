@@ -97,6 +97,9 @@ cvData =
         , { category = "Product & Creative"
           , items = [ "Technical Design", "Task Management (Jira/Trello)", "Adobe Photoshop", "Adobe Premiere Pro", "SEO", "Digital Production" ]
           }
+        , { category = "Soft Skills"
+          , items = [ "Attention to detail", "Team collaboration", "Client-facing communication", "Analytical thinking", "Mentoring & Knowledge sharing", "Quality-oriented mindset", "Ownership & Responsibility" ]
+          }
         ]
     , contact =
         { email = "jakubea@gmail.com"

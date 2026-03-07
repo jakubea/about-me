@@ -44,7 +44,7 @@ view project =
                         , Css.flexWrap Css.wrap
                         ]
                     ]
-                    (List.map Badge.view project.technologies)
+                    (List.map (Badge.view Badge.Black) project.technologies)
                 ]
             , if List.isEmpty project.highlights then
                 Html.text ""

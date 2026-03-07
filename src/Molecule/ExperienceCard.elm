@@ -50,6 +50,6 @@ view experience =
                     , Css.flexWrap Css.wrap
                     ]
                 ]
-                (List.map Badge.view experience.technologies)
+                (List.map (Badge.view Badge.Black) experience.technologies)
             ]
         ]

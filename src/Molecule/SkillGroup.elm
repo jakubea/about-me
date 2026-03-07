@@ -34,5 +34,5 @@ view skill =
                 , Css.flexWrap Css.wrap
                 ]
             ]
-            (List.map Badge.view skill.items)
+            (List.map (Badge.view Badge.White) skill.items)
         ]
