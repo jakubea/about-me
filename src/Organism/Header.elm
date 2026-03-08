@@ -13,7 +13,6 @@ view cvData =
     Html.header
         [ Attributes.css
             [ CssUtil.backgroundColor Theme.color.background
-            , CssUtil.borderBottom Theme.color.border 1
             , CssUtil.padding2 48 16
             , CssUtil.flex1
             ]
