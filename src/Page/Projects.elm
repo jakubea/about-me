@@ -1,7 +1,6 @@
 module Page.Projects exposing (view)
 
 import Atom.Heading as Heading
-import Css
 import Html.Styled as Html exposing (Html)
 import Html.Styled.Attributes as Attributes
 import Molecule.ProjectCard as ProjectCard
@@ -14,18 +13,19 @@ view cvData =
     Html.div
         [ Attributes.css
             [ CssUtil.padding 24
-            , Css.maxWidth (Css.px 900)
+            , CssUtil.maxWidth 900
             , CssUtil.marginLeftAuto
-            , Css.marginRight Css.auto
+            , CssUtil.marginRightAuto
             ]
         ]
         [ Heading.h2 "Projects"
+        , Html.text cvData.projects.description
         , Html.div
             [ Attributes.css
                 [ CssUtil.flexColumn
-                , CssUtil.gap 16
+                , CssUtil.gapPx 16
                 , CssUtil.marginTop 24
                 ]
             ]
-            (List.map ProjectCard.view cvData.projects)
+            (List.map ProjectCard.view cvData.projects.githubProjects)
         ]

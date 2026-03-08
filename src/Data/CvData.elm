@@ -55,29 +55,44 @@ cvData =
           }
         ]
     , projects =
-        [ { name = "Bank app"
-          , description = "Complex financial software for managing orders, customers, and payments."
-          , technologies = [ "Elm 0.19.1", "elm-css", "OAuth2", "REST APIs" ]
-          , highlights =
-                [ "Type-safe development ensuring fewer runtime errors"
-                , "Advanced state management using the Elm Architecture"
-                , "Comprehensive filtering and search capabilities"
-                , "Real-time data updates and notifications"
-                ]
-          , link = Just "https://github.com/yourusername/project1"
-          }
-        , { name = "This CV App"
-          , description = "A responsive CV application showcasing Elm development patterns."
-          , technologies = [ "Elm 0.19.1", "elm-css", "Browser Navigation" ]
-          , highlights =
-                [ "Clean component architecture"
-                , "Responsive design"
-                , "Browser routing"
-                , "Semantic HTML"
-                ]
-          , link = Just "https://github.com/yourusername/elm-cv-app"
-          }
-        ]
+        { description = "Most of my work over the past 9 years has been on production client applications, so I can’t share that code publicly—and there’s a lot of it!\nWhat you see here is just a small selection of personal apps, experiments, and projects for Elm meetups.\nThe best way to see my work is in practice 😊"
+        , githubProjects =
+            [ { name = "about-me (this app)"
+              , description = "A personal portfolio and CV web application built in Elm, demonstrating modular architecture, type safety, and clean UI."
+              , technologies = [ "Elm 0.19.1", "elm-css", "Browser Navigation", "MVU Architecture", "Responsive Design" ]
+              , highlights =
+                    [ "Fully functional Elm project with modular component structure (Atoms, Molecules, Pages)"
+                    , "Routing and dynamic content display per section"
+                    , "Type-safe styling with elm-css and responsive design"
+                    , "Well-documented and maintainable codebase"
+                    ]
+              , link = Just "https://github.com/jakubea/about-me"
+              }
+            , { name = "elmivity (in progress)"
+              , description = "An experimental game combining Elm frontend and F# backend logic, showcasing MVU architecture and interop between languages. Currently in development."
+              , technologies = [ "Elm 0.19.1", "F#", "MVU Architecture", "Elm-F# Interop", "Game Logic" ]
+              , highlights =
+                    [ "Work in progress – core gameplay and features under development"
+                    , "Elm frontend integrated with F# backend logic"
+                    , "Clean separation of state, view, and update following MVU"
+                    , "Demonstrates type-safe cross-language development"
+                    , "Locally runnable with instructions in README"
+                    ]
+              , link = Just "https://github.com/jakubea/elmivity"
+              }
+            , { name = "Elm Form Examples"
+              , description = "A simple example of Elm forms, selected from several smaller form projects I’ve done. It demonstrates basic Elm concepts, type-safe validation, dynamic fields, and user-friendly interactions."
+              , technologies = [ "Elm 0.19.1", "elm-css", "Custom Form Components", "Dynamic Fields", "Validation", "Reusable Components" ]
+              , highlights =
+                    [ "Dynamic form fields with tags and focus management"
+                    , "Type-safe validation for reliable user input"
+                    , "Clean, reusable components for multiple form types"
+                    , "Demonstrates Elm Architecture in UI interaction"
+                    ]
+              , link = Just "https://github.com/jakubea/elm-tags-form"
+              }
+            ]
+        }
     , skills =
         [ { category = "Languages"
           , items = [ "Elm", "JavaScript", "HTML5", "CSS3", "SASS", "F# (basics)", "SwiftUI# (basics)" ]
@@ -117,4 +132,57 @@ cvData =
             , { label = "LinkedIn", url = "https://www.linkedin.com/in/bea-jakubcova-3704ba6a/" }
             ]
         }
+    , elmTopics =
+        [ "Elm Architecture"
+        , "Modularization (Atomic design)"
+        , "Shared state (Taco)"
+        , "RemoteData"
+        , "CustomWebData"
+        , "Error handling"
+        , "Validation"
+        , "Custom types"
+        , "Extensible records"
+        , "Routing"
+        , "Permission-based routing"
+        , "Decoders/encoders for JSON"
+        , "HTTP error mapping"
+        , "Reusable UI components"
+        , "Modal dialogs"
+        , "Tabbed content"
+        , "Loading spinners and placeholders"
+        , "Centralized error display"
+        , "Table and tree components"
+        , "Pagination"
+        , "Advanced search and filtering"
+        , "Copy to clipboard utility"
+        , "Parsing bytes (OAuth, file handling)"
+        , "File upload/download"
+        , "Commands and subscriptions for effects"
+        , "Ports (JS interop)"
+        , "Subscriptions (time, navigation, events)"
+        , "OAuth and token management"
+        , "Bytes and binary data handling"
+        , "Custom parsers"
+        , "Fuzz testing (property-based tests)"
+        , "Mock data for tests"
+        , "Extensive use of Dict, AssocList, and other data structures"
+        , "Date and time utilities"
+        , "Checkbox state management"
+        , "Custom select and date picker components"
+        , "Review rules for code quality (elm-review custom config)"
+        , "Accessibility (focus management, keyboard navigation)"
+        , "Tooltip and counter UI patterns"
+        , "Custom link and navigation helpers"
+        , "Extensive use of exposing and import aliasing"
+        , "Handling of multiple languages (I18Next, I18n)"
+        , "Mocking and test helpers"
+        , "i18n (internationalization)"
+        , "Theming (Theme.elm)"
+        , "Unit tests (tests/ directory)"
+        , "elm-test"
+        , "elm-review"
+        , "Accessibility"
+        , "Performance optimizations (lazy views, efficient data)"
+        , "Documentation and comments"
+        ]
     }

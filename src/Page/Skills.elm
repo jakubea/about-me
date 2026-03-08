@@ -1,7 +1,6 @@
 module Page.Skills exposing (view)
 
 import Atom.Heading as Heading
-import Css
 import Html.Styled as Html exposing (Html)
 import Html.Styled.Attributes as Attributes
 import Molecule.SkillGroup as SkillGroup
@@ -16,9 +15,9 @@ view cvData =
         |> Html.div
             [ Attributes.css
                 [ CssUtil.padding 24
-                , Css.maxWidth (Css.px 900)
+                , CssUtil.maxWidth 900
                 , CssUtil.marginLeftAuto
-                , Css.marginRight Css.auto
-                , CssUtil.gap 20
+                , CssUtil.marginRightAuto
+                , CssUtil.gapPx 20
                 ]
             ]

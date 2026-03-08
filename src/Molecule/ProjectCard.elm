@@ -3,7 +3,6 @@ module Molecule.ProjectCard exposing (view)
 import Atom.Heading as Heading
 import Atom.Link as Link
 import Atom.Text as Text
-import Css
 import Html.Styled as Html exposing (Html)
 import Html.Styled.Attributes as Attributes
 import Molecule.Badge as Badge
@@ -21,7 +20,7 @@ view project =
         , Html.div
             [ Attributes.css
                 [ CssUtil.flexColumn
-                , CssUtil.gap Theme.spacing.md
+                , CssUtil.gapPx Theme.spacing.md
                 , CssUtil.marginTop Theme.spacing.md
                 ]
             ]
@@ -33,15 +32,15 @@ view project =
                         , CssUtil.marginBottom 4
                         , CssUtil.fontSize 12
                         , CssUtil.fontWeight 600
-                        , CssUtil.color Theme.color.primary
+                        , CssUtil.color Theme.color.accent
                         ]
                     ]
                     [ Html.text "Technologies:" ]
                 , Html.div
                     [ Attributes.css
                         [ CssUtil.flex
-                        , CssUtil.gap Theme.spacing.sm
-                        , Css.flexWrap Css.wrap
+                        , CssUtil.gapPx Theme.spacing.sm
+                        , CssUtil.flexWrapWrap
                         ]
                     ]
                     (List.map (Badge.view Badge.Black) project.technologies)
@@ -58,7 +57,7 @@ view project =
                             , CssUtil.marginBottom 4
                             , CssUtil.fontSize 12
                             , CssUtil.fontWeight 600
-                            , CssUtil.color Theme.color.primary
+                            , CssUtil.color Theme.color.accent
                             ]
                         ]
                         [ Html.text "Highlights:" ]

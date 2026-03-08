@@ -10,6 +10,7 @@ import Html.Styled.Attributes as Attributes
 import Organism.Footer as Footer
 import Organism.Header as Header
 import Organism.Navigation as Navigation
+import Page.Elm as ElmPage
 import Page.Experience as ExperiencePage
 import Page.Languages as LanguagesPage
 import Page.NotFound as NotFoundPage
@@ -100,16 +101,16 @@ globalStyles =
             [ Css.Global.body
                 [ CssUtil.backgroundColor Theme.color.background
                 , CssUtil.color Theme.color.text
-                , Css.margin Css.zero
-                , Css.padding Css.zero
+                , CssUtil.marginZero
+                , CssUtil.paddingZero
                 , Css.fontFamilies [ "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "sans-serif" ]
                 , Css.lineHeight (Css.num 1.6)
-                , Css.property "-webkit-font-smoothing" "antialiased"
+                , CssUtil.property "-webkit-font-smoothing" "antialiased"
                 ]
-            , Css.Global.h1 [ CssUtil.margin 0 ]
-            , Css.Global.h2 [ CssUtil.margin 0 ]
-            , Css.Global.h3 [ CssUtil.margin 0 ]
-            , Css.Global.p [ CssUtil.margin 0 ]
+            , Css.Global.h1 [ CssUtil.marginZero ]
+            , Css.Global.h2 [ CssUtil.marginZero ]
+            , Css.Global.h3 [ CssUtil.marginZero ]
+            , Css.Global.p [ CssUtil.marginZero ]
             , Css.Global.a [ CssUtil.cursorPointer ]
             ]
         ]
@@ -142,6 +143,9 @@ pageView model =
                     Route.Languages ->
                         LanguagesPage.view model.cvData
 
+                    Route.Elm ->
+                        ElmPage.view
+
                     Route.NotFound ->
                         NotFoundPage.view
           in
@@ -149,7 +153,10 @@ pageView model =
             [ Attributes.css
                 [ Css.flex (Css.num 1)
                 , CssUtil.backgroundColor Theme.color.primary
-                , Css.minHeight (Css.px 400)
+                , CssUtil.minHeight 400
+                , CssUtil.displayFlex
+                , CssUtil.fontFamilies [ "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Inter", "system-ui", "sans-serif" ]
+                , Css.boxSizing Css.borderBox
                 ]
             ]
             [ content ]

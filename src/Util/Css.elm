@@ -1,6 +1,56 @@
-module Util.Css exposing (backgroundColor, border, borderBottom, borderRadius, borderTop, color, container, cursorPointer, flex, flex1, flexColumn, flexRow, fontSize, fontWeight, gap, itemsCenter, justifyCenter, margin, marginBottom, marginLeft, marginLeftAuto, marginTop, outline3, padding, padding2, roundedLg, shadowMd, textCenter, toHex, transition, width, widthPct, zIndex)
+module Util.Css exposing (..)
 
 import Css
+
+
+alignItemsCenter : Css.Style
+alignItemsCenter =
+    Css.alignItems Css.center
+
+
+boxShadow : String -> Css.Style
+boxShadow val =
+    Css.property "box-shadow" val
+
+
+listStyleTypeDisc : Css.Style
+listStyleTypeDisc =
+    Css.property "list-style-type" "disc"
+
+
+lineHeight : Float -> Css.Style
+lineHeight n =
+    Css.lineHeight (Css.num n)
+
+
+textDecorationNone : Css.Style
+textDecorationNone =
+    Css.textDecoration Css.none
+
+
+textDecorationUnderline : Css.Style
+textDecorationUnderline =
+    Css.textDecoration Css.underline
+
+
+hover : List Css.Style -> Css.Style
+hover styles =
+    Css.pseudoClass ":hover" styles
+
+
+marginZero : Css.Style
+marginZero =
+    Css.margin Css.zero
+
+
+paddingZero : Css.Style
+paddingZero =
+    Css.padding Css.zero
+
+
+fontFamilies : List String -> Css.Style
+fontFamilies families =
+    Css.fontFamilies families
 
 
 backgroundColor : Css.Color -> Css.Style
@@ -23,19 +73,84 @@ borderBottom color_ borderWidth_ =
     Css.borderBottom3 (toPx borderWidth_) Css.solid color_
 
 
-borderRadius : Float -> Css.Style
-borderRadius =
-    toPx >> Css.borderRadius
+displayInlineBlock : Css.Style
+displayInlineBlock =
+    Css.display Css.inlineBlock
+
+
+displayFlex : Css.Style
+displayFlex =
+    Css.displayFlex
+
+
+flexWrapWrap : Css.Style
+flexWrapWrap =
+    Css.flexWrap Css.wrap
+
+
+gap : Css.Length compatible units -> Css.Style
+gap =
+    .value >> Css.property "gap"
+
+
+gapPx : Float -> Css.Style
+gapPx =
+    toPx >> gap
+
+
+maxWidth : Float -> Css.Style
+maxWidth =
+    toPx >> Css.maxWidth
+
+
+minHeight : Float -> Css.Style
+minHeight =
+    toPx >> Css.minHeight
+
+
+minWidth : Float -> Css.Style
+minWidth =
+    toPx >> Css.minWidth
+
+
+marginRight : Float -> Css.Style
+marginRight =
+    toPx >> Css.marginRight
+
+
+textAlignCenter : Css.Style
+textAlignCenter =
+    Css.textAlign Css.center
+
+
+paddingLeft : Float -> Css.Style
+paddingLeft =
+    toPx >> Css.paddingLeft
+
+
+paddingRight : Float -> Css.Style
+paddingRight =
+    toPx >> Css.paddingRight
+
+
+paddingTop : Float -> Css.Style
+paddingTop =
+    toPx >> Css.paddingTop
+
+
+paddingBottom : Float -> Css.Style
+paddingBottom =
+    toPx >> Css.paddingBottom
+
+
+property : String -> String -> Css.Style
+property =
+    Css.property
 
 
 color : Css.Color -> Css.Style
 color =
     Css.color
-
-
-cursorPointer : Css.Style
-cursorPointer =
-    Css.cursor Css.pointer
 
 
 fontSize : Float -> Css.Style
@@ -45,12 +160,7 @@ fontSize =
 
 fontWeight : Int -> Css.Style
 fontWeight =
-    Css.int >> Css.fontWeight
-
-
-gap : Float -> Css.Style
-gap gapValue =
-    Css.property "gap" (String.fromFloat gapValue ++ "px")
+    Css.fontWeight << Css.int
 
 
 marginBottom : Float -> Css.Style
@@ -68,29 +178,39 @@ marginLeftAuto =
     Css.marginLeft Css.auto
 
 
+marginRightAuto : Css.Style
+marginRightAuto =
+    Css.marginRight Css.auto
+
+
 marginTop : Float -> Css.Style
 marginTop =
     toPx >> Css.marginTop
 
 
 outline3 : Float -> Css.Color -> Css.Style
-outline3 width_ =
-    Css.outline3 (Css.px width_) Css.solid
+outline3 outlineWidth outlineColor =
+    Css.outline3 (toPx outlineWidth) Css.solid outlineColor
 
 
 padding : Float -> Css.Style
-padding value =
-    padding4 value value value value
+padding =
+    toPx >> Css.padding
 
 
 padding2 : Float -> Float -> Css.Style
-padding2 topBottom rightLeft =
-    padding4 topBottom rightLeft topBottom rightLeft
+padding2 v h =
+    Css.padding2 (toPx v) (toPx h)
 
 
-padding4 : Float -> Float -> Float -> Float -> Css.Style
-padding4 paddingTop paddingRight paddingBottom paddingLeft =
-    Css.padding4 (toPx paddingTop) (toPx paddingRight) (toPx paddingBottom) (toPx paddingLeft)
+cursorPointer : Css.Style
+cursorPointer =
+    Css.cursor Css.pointer
+
+
+borderRadius : Float -> Css.Style
+borderRadius =
+    toPx >> Css.borderRadius
 
 
 textCenter : Css.Style
@@ -145,7 +265,7 @@ flexColumn : Css.Style
 flexColumn =
     Css.batch
         [ Css.displayFlex
-        , Css.property "flex-direction" "column"
+        , Css.flexDirection Css.column
         ]
 
 
@@ -153,7 +273,7 @@ flexRow : Css.Style
 flexRow =
     Css.batch
         [ Css.displayFlex
-        , Css.property "flex-direction" "row"
+        , Css.flexDirection Css.row
         ]
 
 
@@ -188,9 +308,14 @@ itemsCenter =
     Css.property "align-items" "center"
 
 
-justifyCenter : Css.Style
-justifyCenter =
-    Css.property "justify-content" "center"
+justifyContentCenter : Css.Style
+justifyContentCenter =
+    Css.justifyContent Css.center
+
+
+justifyContentSpaceBetween : Css.Style
+justifyContentSpaceBetween =
+    Css.justifyContent Css.spaceBetween
 
 
 roundedLg : Css.Style

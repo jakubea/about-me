@@ -1,4 +1,4 @@
-module Atom.Heading exposing (h2, h3)
+module Atom.Heading exposing (HeadingLevel, h2, h3)
 
 import Css
 import Html.Styled as Html exposing (Html)
@@ -15,10 +15,9 @@ type HeadingLevel
 
 baseStyle : List Css.Style
 baseStyle =
-    [ Css.fontFamily Css.sansSerif
-    , CssUtil.color Theme.color.text
+    [ CssUtil.color Theme.color.text
     , CssUtil.fontWeight 700
-    , Css.marginBottom (Css.px 12)
+    , CssUtil.marginBottom 12
     ]
 
 
@@ -27,17 +26,17 @@ styleForLevel level =
     case level of
         H1 ->
             [ CssUtil.fontSize 36
-            , Css.marginBottom (Css.px 20)
+            , CssUtil.marginBottom 20
             ]
 
         H2 ->
             [ CssUtil.fontSize 28
-            , Css.marginBottom (Css.px 16)
+            , CssUtil.marginBottom 16
             ]
 
         H3 ->
             [ CssUtil.fontSize 20
-            , Css.marginBottom (Css.px 12)
+            , CssUtil.marginBottom 12
             ]
 
 

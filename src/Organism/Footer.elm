@@ -15,33 +15,33 @@ view cvData =
         [ Attributes.css
             [ CssUtil.backgroundColor Theme.color.primary
             , CssUtil.borderTop Theme.color.border 1
-            , Css.paddingTop (Css.px 40)
-            , Css.paddingBottom (Css.px 40)
-            , Css.paddingLeft (Css.px 16)
-            , Css.paddingRight (Css.px 16)
+            , CssUtil.paddingTop 40
+            , CssUtil.paddingBottom 40
+            , CssUtil.paddingLeft 16
+            , CssUtil.paddingRight 16
             , CssUtil.color Theme.color.textLight
             , CssUtil.fontSize Theme.fontSize.sm
-            , Css.property "background-image" "linear-gradient(180deg, #000 0%, #232326 100%)"
+            , CssUtil.property "background-image" "linear-gradient(180deg, #000 0%, #232326 100%)"
             ]
         ]
         [ Html.div
             [ Attributes.css
                 [ CssUtil.container
                 , CssUtil.flexColumn
-                , CssUtil.gap 28
+                , CssUtil.gapPx 28
                 ]
             ]
             [ Html.div
                 [ Attributes.css
                     [ CssUtil.flex
-                    , Css.flexWrap Css.wrap
-                    , CssUtil.gap 20
-                    , Css.justifyContent Css.spaceBetween
+                    , CssUtil.flexWrapWrap
+                    , CssUtil.gapPx 20
+                    , CssUtil.justifyContentSpaceBetween
                     , CssUtil.itemsCenter
                     ]
                 ]
                 [ Html.div
-                    [ Attributes.css [ CssUtil.flexColumn, CssUtil.gap 12 ] ]
+                    [ Attributes.css [ CssUtil.flexColumn, CssUtil.gapPx 12 ] ]
                     [ Html.a
                         [ Attributes.href ("mailto:" ++ cvData.contact.email)
                         , Attributes.css
@@ -49,7 +49,7 @@ view cvData =
                             , Css.textDecoration Css.none
                             , CssUtil.flex
                             , CssUtil.itemsCenter
-                            , CssUtil.gap 10
+                            , CssUtil.gapPx 10
                             , CssUtil.transition [ "color" ]
                             , Css.hover [ Css.textDecoration Css.underline, CssUtil.color Theme.color.accent ]
                             ]
@@ -62,7 +62,7 @@ view cvData =
                             , Css.textDecoration Css.none
                             , CssUtil.flex
                             , CssUtil.itemsCenter
-                            , CssUtil.gap 10
+                            , CssUtil.gapPx 10
                             , CssUtil.transition [ "color" ]
                             , Css.hover [ Css.textDecoration Css.underline, CssUtil.color Theme.color.accent ]
                             ]
@@ -72,14 +72,14 @@ view cvData =
                         [ Attributes.css
                             [ CssUtil.flex
                             , CssUtil.itemsCenter
-                            , CssUtil.gap 10
+                            , CssUtil.gapPx 10
                             , CssUtil.color Theme.color.textLight
                             ]
                         ]
                         [ Icon.mapPin, Html.text cvData.contact.location ]
                     ]
                 , Html.div
-                    [ Attributes.css [ CssUtil.flex, CssUtil.gap 10 ] ]
+                    [ Attributes.css [ CssUtil.flex, CssUtil.gapPx 10 ] ]
                     (List.map
                         (\link ->
                             Html.a
@@ -94,7 +94,7 @@ view cvData =
                                     , CssUtil.color Theme.color.text
                                     , CssUtil.flex
                                     , CssUtil.itemsCenter
-                                    , CssUtil.justifyCenter
+                                    , CssUtil.justifyContentCenter
                                     , CssUtil.transition [ "background-color", "color" ]
                                     , Css.hover
                                         [ CssUtil.backgroundColor Theme.color.primary
@@ -123,8 +123,8 @@ view cvData =
                 ]
             , Html.div
                 [ Attributes.css
-                    [ Css.textAlign Css.center
-                    , Css.paddingTop (Css.px 20)
+                    [ CssUtil.textAlignCenter
+                    , CssUtil.paddingTop 20
                     , CssUtil.borderTop Theme.color.border 1
                     , CssUtil.fontSize Theme.fontSize.xs
                     , CssUtil.color Theme.color.textLight

@@ -2,7 +2,6 @@ module Molecule.ExperienceCard exposing (view)
 
 import Atom.Heading as Heading
 import Atom.Text as Text
-import Css
 import Html.Styled as Html exposing (Html)
 import Html.Styled.Attributes as Attributes
 import Molecule.Badge as Badge
@@ -39,15 +38,15 @@ view experience =
         , Html.div
             [ Attributes.css
                 [ CssUtil.flexColumn
-                , CssUtil.gap 8
+                , CssUtil.gapPx 8
                 , CssUtil.marginTop 16
                 ]
             ]
             [ Html.div
                 [ Attributes.css
                     [ CssUtil.flex
-                    , CssUtil.gap 8
-                    , Css.flexWrap Css.wrap
+                    , CssUtil.gapPx 8
+                    , CssUtil.flexWrapWrap
                     ]
                 ]
                 (List.map (Badge.view Badge.Black) experience.technologies)

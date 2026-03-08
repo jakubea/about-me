@@ -14,7 +14,7 @@ view cvData =
         [ Attributes.css
             [ CssUtil.backgroundColor Theme.color.background
             , CssUtil.borderBottom Theme.color.border 1
-            , Css.padding2 (Css.px 48) (Css.px 16)
+            , CssUtil.padding2 48 16
             , CssUtil.flex1
             ]
         ]
@@ -24,8 +24,8 @@ view cvData =
                 , CssUtil.flexRow
                 , CssUtil.itemsCenter
                 , CssUtil.textCenter
-                , Css.flexWrap Css.wrapReverse
-                , CssUtil.justifyCenter
+                , CssUtil.flexWrapWrap
+                , CssUtil.justifyContentCenter
                 ]
             ]
             [ Html.div
@@ -34,15 +34,15 @@ view cvData =
                     , CssUtil.flexColumn
                     , CssUtil.itemsCenter
                     , CssUtil.textCenter
-                    , Css.marginTop (Css.px 32)
+                    , CssUtil.marginTop 32
                     ]
                 ]
                 [ Html.h1
                     [ Attributes.css
                         [ CssUtil.fontSize Theme.fontSize.xxl
                         , CssUtil.fontWeight 700
-                        , Css.margin (Css.px 0)
-                        , Css.marginBottom (Css.px 8)
+                        , CssUtil.marginZero
+                        , CssUtil.marginBottom 8
                         , CssUtil.color Theme.color.text
                         ]
                     ]
@@ -74,7 +74,7 @@ view cvData =
                     [ CssUtil.widthPct 80
                     , Css.maxWidth (Css.px 360)
                     , Css.height Css.auto
-                    , Css.property "aspect-ratio" "1 / 1"
+                    , CssUtil.property "aspect-ratio" "1 / 1"
                     , Css.borderRadius (Css.pct 50)
                     , Css.overflow Css.hidden
                     , Css.position Css.relative
@@ -90,8 +90,8 @@ view cvData =
                         , Css.left (Css.px 0)
                         , CssUtil.widthPct 100
                         , Css.height (Css.pct 100)
-                        , Css.property "object-fit" "cover"
-                        , Css.property "object-position" "top"
+                        , CssUtil.property "object-fit" "cover"
+                        , CssUtil.property "object-position" "top"
                         , CssUtil.shadowMd
                         ]
                     ]

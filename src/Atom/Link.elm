@@ -9,12 +9,12 @@ import Util.Css as CssUtil
 
 baseStyle : List Css.Style
 baseStyle =
-    [ Css.textDecoration Css.none
-    , CssUtil.color Theme.color.primary
+    [ CssUtil.textDecorationNone
+    , CssUtil.color Theme.color.textLight
     , CssUtil.fontWeight 500
-    , Css.hover
+    , CssUtil.hover
         [ CssUtil.color Theme.color.accent
-        , Css.textDecoration Css.underline
+        , CssUtil.textDecorationUnderline
         ]
     ]
 

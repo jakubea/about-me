@@ -1,6 +1,5 @@
 module Page.Languages exposing (view)
 
-import Css
 import Html.Styled as Html exposing (Html)
 import Html.Styled.Attributes as Attributes
 import Molecule.LanguageCircle
@@ -20,16 +19,20 @@ view cvData =
     in
     Html.section
         [ Attributes.css
-            [ CssUtil.container
-            , CssUtil.roundedLg
-            , CssUtil.shadowMd
-            , CssUtil.backgroundColor Theme.color.surface
-            , Css.marginTop (Css.px 40)
-            , Css.marginBottom (Css.px 40)
-            , Css.padding (Css.px 32)
-            ]
+            [ CssUtil.container, CssUtil.padding 40, CssUtil.flex1 ]
         ]
         [ Html.div
-            [ Attributes.css [ CssUtil.flex, CssUtil.gap 40, CssUtil.justifyCenter, CssUtil.flexRow, Css.flexWrap Css.wrap ] ]
+            [ Attributes.css
+                [ CssUtil.roundedLg
+                , CssUtil.shadowMd
+                , CssUtil.backgroundColor Theme.color.surface
+                , CssUtil.padding2 30 0
+                , CssUtil.flex
+                , CssUtil.gapPx 40
+                , CssUtil.justifyContentCenter
+                , CssUtil.flexRow
+                , CssUtil.flexWrapWrap
+                ]
+            ]
             (List.map (toCircle >> Molecule.LanguageCircle.view) langs)
         ]

@@ -18,10 +18,11 @@ type alias CvData =
     , summary : List String
     , profileImage : String
     , experiences : List Experience
-    , projects : List Project
+    , projects : { description : String, githubProjects : List Project }
     , skills : List Skill
     , languages : List LanguageProficiency
     , contact : Contact
+    , elmTopics : List String
     }
 
 

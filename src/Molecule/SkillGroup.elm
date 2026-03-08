@@ -1,6 +1,5 @@
 module Molecule.SkillGroup exposing (view)
 
-import Css
 import Html.Styled as Html exposing (Html)
 import Html.Styled.Attributes as Attributes
 import Molecule.Badge as Badge
@@ -14,7 +13,7 @@ view skill =
     Html.div
         [ Attributes.css
             [ CssUtil.marginBottom 16
-            , CssUtil.gap 20
+            , CssUtil.gapPx 20
             ]
         ]
         [ Html.h3
@@ -30,8 +29,8 @@ view skill =
         , Html.div
             [ Attributes.css
                 [ CssUtil.flex
-                , CssUtil.gap 8
-                , Css.flexWrap Css.wrap
+                , CssUtil.gapPx 8
+                , CssUtil.flexWrapWrap
                 ]
             ]
             (List.map (Badge.view Badge.White) skill.items)

@@ -1,4 +1,4 @@
-module Atom.Text exposing (view)
+module Atom.Text exposing (TextSize, view)
 
 import Css
 import Html.Styled as Html exposing (Html)
@@ -15,9 +15,8 @@ type TextSize
 
 baseStyle : List Css.Style
 baseStyle =
-    [ Css.fontFamily Css.sansSerif
-    , CssUtil.color Theme.color.text
-    , Css.lineHeight (Css.num 1.6)
+    [ CssUtil.color Theme.color.text
+    , CssUtil.lineHeight 1.6
     ]
 
 

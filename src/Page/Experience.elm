@@ -1,7 +1,6 @@
 module Page.Experience exposing (view)
 
 import Atom.Heading as Heading
-import Css
 import Html.Styled as Html exposing (Html)
 import Html.Styled.Attributes as Attributes
 import Molecule.ExperienceCard as ExperienceCard
@@ -14,16 +13,16 @@ view cvData =
     Html.div
         [ Attributes.css
             [ CssUtil.padding 24
-            , Css.maxWidth (Css.px 900)
+            , CssUtil.maxWidth 900
             , CssUtil.marginLeftAuto
-            , Css.marginRight Css.auto
+            , CssUtil.marginRight 0
             ]
         ]
         [ Heading.h2 "Experience"
         , Html.div
             [ Attributes.css
                 [ CssUtil.flexColumn
-                , CssUtil.gap 16
+                , CssUtil.gapPx 16
                 , CssUtil.marginTop 24
                 ]
             ]

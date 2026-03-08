@@ -18,7 +18,7 @@ view =
             , Css.maxWidth (Css.px 800)
             , CssUtil.marginLeftAuto
             , Css.marginRight Css.auto
-            , Css.textAlign Css.center
+            , CssUtil.textAlignCenter
             ]
         ]
         [ Html.h1
