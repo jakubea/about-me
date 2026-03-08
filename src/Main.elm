@@ -154,6 +154,7 @@ pageView model =
                 [ Css.flex (Css.num 1)
                 , CssUtil.backgroundColor Theme.color.primary
                 , CssUtil.minHeight 400
+                , CssUtil.justifyContentCenter
                 , CssUtil.displayFlex
                 , CssUtil.fontFamilies [ "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Inter", "system-ui", "sans-serif" ]
                 , Css.boxSizing Css.borderBox

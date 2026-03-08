@@ -16,8 +16,6 @@ view cvData =
             [ Attributes.css
                 [ CssUtil.padding 24
                 , CssUtil.maxWidth 900
-                , CssUtil.marginLeftAuto
-                , CssUtil.marginRightAuto
                 , CssUtil.gapPx 20
                 ]
             ]

@@ -173,16 +173,6 @@ marginLeft =
     toPx >> Css.marginLeft
 
 
-marginLeftAuto : Css.Style
-marginLeftAuto =
-    Css.marginLeft Css.auto
-
-
-marginRightAuto : Css.Style
-marginRightAuto =
-    Css.marginRight Css.auto
-
-
 marginTop : Float -> Css.Style
 marginTop =
     toPx >> Css.marginTop

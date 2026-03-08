@@ -16,7 +16,6 @@ view =
         [ Attributes.css
             [ CssUtil.padding Theme.spacing.lg
             , Css.maxWidth (Css.px 800)
-            , CssUtil.marginLeftAuto
             , Css.marginRight Css.auto
             , CssUtil.textAlignCenter
             ]
