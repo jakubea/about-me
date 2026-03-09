@@ -42,9 +42,11 @@ src/
 ├── Page/                 # Full pages
 │   ├── Home.elm          # Home page
 │   ├── Experience.elm    # Experience page
-│   ├── NotFound.elm      # 404 page
 │   ├── Projects.elm      # Projects page
-│   └── Skills.elm        # Skills page
+│   ├── Skills.elm        # Skills page
+│   ├── Languages.elm     # Languages page
+│   ├── Elm.elm           # Elm topics page
+│   └── NotFound.elm      # 404 page
 └── Util/
     └── Css.elm           # CSS utility functions
 ```
