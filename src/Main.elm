@@ -8,10 +8,10 @@ import Data.CvData exposing (cvData)
 import Html.Styled as Html
 import Html.Styled.Attributes as Attributes
 import Organism.Footer as Footer
-import Organism.Header as Header
 import Organism.Navigation as Navigation
 import Page.Elm as ElmPage
 import Page.Experience as ExperiencePage
+import Page.Home as Home
 import Page.Languages as LanguagesPage
 import Page.NotFound as NotFoundPage
 import Page.Projects as ProjectsPage
@@ -129,7 +129,7 @@ pageView model =
             content =
                 case model.route of
                     Route.Home ->
-                        Header.view model.cvData
+                        Home.view model.cvData
 
                     Route.Experience ->
                         ExperiencePage.view model.cvData

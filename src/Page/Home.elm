@@ -4,170 +4,97 @@ import Css
 import Html.Styled as Html exposing (Html)
 import Html.Styled.Attributes as Attributes
 import Theme
+import Types exposing (CvData)
 import Util.Css as CssUtil
 
 
-view : Html msg
-view =
+view : CvData -> Html msg
+view cvData =
     Html.div
         [ Attributes.css
             [ CssUtil.backgroundColor Theme.color.background
-            , Css.minHeight (Css.vh 100)
+            , CssUtil.padding2 48 16
+            , CssUtil.flex1
             ]
         ]
-        [ Html.section
+        [ Html.div
             [ Attributes.css
                 [ CssUtil.container
-                , CssUtil.roundedLg
-                , CssUtil.shadowMd
-                , CssUtil.backgroundColor Theme.color.surface
-                , Css.marginTop (Css.px 40)
-                , Css.marginBottom (Css.px 40)
-                , Css.padding (Css.px 32)
+                , CssUtil.flexRow
+                , CssUtil.itemsCenter
+                , CssUtil.textCenter
+                , CssUtil.flexWrapWrap
+                , CssUtil.justifyContentCenter
                 ]
             ]
-            [ Html.h1
+            [ Html.div
                 [ Attributes.css
-                    [ CssUtil.fontSize 48
-                    , CssUtil.fontWeight 900
-                    , CssUtil.color Theme.color.text
-                    , Css.marginBottom (Css.px 8)
+                    [ CssUtil.container
+                    , CssUtil.flexColumn
+                    , CssUtil.itemsCenter
+                    , CssUtil.textCenter
+                    , CssUtil.marginTop 32
                     ]
                 ]
-                [ Html.text "PROGRAMMER" ]
-            , Html.hr
-                [ Attributes.css
-                    [ CssUtil.backgroundColor Theme.color.accent
-                    , Css.height (Css.px 4)
-                    , CssUtil.width 80
-                    , Css.marginBottom (Css.px 24)
-                    ]
-                ]
-                []
-            , Html.div
-                [ Attributes.css [ CssUtil.flex, CssUtil.gap 24, CssUtil.marginBottom 32 ] ]
-                [ Html.div [] [ Html.text "France" ]
-                , Html.div [] [ Html.text "USA" ]
-                , Html.div [] [ Html.text "German" ]
-                ]
-            , Html.h2
-                [ Attributes.css
-                    [ CssUtil.fontSize 32
-                    , CssUtil.fontWeight 700
-                    , CssUtil.color Theme.color.text
-                    , Css.marginBottom (Css.px 8)
-                    ]
-                ]
-                [ Html.text "About Me" ]
-            , Html.hr
-                [ Attributes.css
-                    [ CssUtil.backgroundColor Theme.color.accent
-                    , Css.height (Css.px 2)
-                    , CssUtil.width 48
-                    , Css.marginBottom (Css.px 24)
-                    ]
-                ]
-                []
-            , Html.p
-                [ Attributes.css
-                    [ CssUtil.color Theme.color.textLight
-                    , CssUtil.fontSize 18
-                    , Css.marginBottom (Css.px 32)
-                    ]
-                ]
-                [ Html.text "I am a website designer from Louisiana, with a strong focus in UI/UX design. I love to get new experiences and always learn from my surroundings. I've done more than 285 projects. You can check it through portfolio section on this website. I looking forward to any opportunities and challenges." ]
-            , Html.div
-                [ Attributes.css [ CssUtil.flex, CssUtil.gap 32, CssUtil.justifyCenter, CssUtil.marginBottom 40 ] ]
-                [ Html.div
-                    [ Attributes.css [ CssUtil.flexColumn, CssUtil.itemsCenter ] ]
-                    [ Html.div
-                        [ Attributes.css
-                            [ CssUtil.width 120
-                            , Css.height (Css.px 120)
-                            , CssUtil.roundedFull
-                            , CssUtil.backgroundColor Theme.color.background
-                            , Css.border3 (Css.px 4) Css.solid Theme.color.accent
-                            , CssUtil.flex
-                            , CssUtil.justifyCenter
-                            , CssUtil.itemsCenter
-                            ]
+                [ Html.h1
+                    [ Attributes.css
+                        [ CssUtil.fontSize Theme.fontSize.xxl
+                        , CssUtil.fontWeight 700
+                        , CssUtil.marginZero
+                        , CssUtil.marginBottom 8
+                        , CssUtil.color Theme.color.text
                         ]
-                        [ Html.text "48.1%" ]
-                    , Html.p [ Attributes.css [ CssUtil.color Theme.color.accent, CssUtil.fontWeight 700, Css.marginTop (Css.px 8) ] ] [ Html.text "HTML" ]
                     ]
-                , Html.div
-                    [ Attributes.css [ CssUtil.flexColumn, CssUtil.itemsCenter ] ]
-                    [ Html.div
-                        [ Attributes.css
-                            [ CssUtil.width 120
-                            , Css.height (Css.px 120)
-                            , CssUtil.roundedFull
-                            , CssUtil.backgroundColor Theme.color.background
-                            , Css.border3 (Css.px 4) Css.solid Theme.color.accent
-                            , CssUtil.flex
-                            , CssUtil.justifyCenter
-                            , CssUtil.itemsCenter
-                            ]
-                        ]
-                        [ Html.text "45.2%" ]
-                    , Html.p [ Attributes.css [ CssUtil.color Theme.color.accent, CssUtil.fontWeight 700, Css.marginTop (Css.px 8) ] ] [ Html.text "CSS5" ]
-                    ]
-                , Html.div
-                    [ Attributes.css [ CssUtil.flexColumn, CssUtil.itemsCenter ] ]
-                    [ Html.div
-                        [ Attributes.css
-                            [ CssUtil.width 120
-                            , Css.height (Css.px 120)
-                            , CssUtil.roundedFull
-                            , CssUtil.backgroundColor Theme.color.background
-                            , Css.border3 (Css.px 4) Css.solid Theme.color.accent
-                            , CssUtil.flex
-                            , CssUtil.justifyCenter
-                            , CssUtil.itemsCenter
-                            ]
-                        ]
-                        [ Html.text "42.5%" ]
-                    , Html.p [ Attributes.css [ CssUtil.color Theme.color.accent, CssUtil.fontWeight 700, Css.marginTop (Css.px 8) ] ] [ Html.text "PHP" ]
-                    ]
-                , Html.div
-                    [ Attributes.css [ CssUtil.flexColumn, CssUtil.itemsCenter ] ]
-                    [ Html.div
-                        [ Attributes.css
-                            [ CssUtil.width 120
-                            , Css.height (Css.px 120)
-                            , CssUtil.roundedFull
-                            , CssUtil.backgroundColor Theme.color.background
-                            , Css.border3 (Css.px 4) Css.solid Theme.color.accent
-                            , CssUtil.flex
-                            , CssUtil.justifyCenter
-                            , CssUtil.itemsCenter
-                            ]
-                        ]
-                        [ Html.text "39.9%" ]
-                    , Html.p [ Attributes.css [ CssUtil.color Theme.color.accent, CssUtil.fontWeight 700, Css.marginTop (Css.px 8) ] ] [ Html.text "jQuery" ]
-                    ]
-                ]
-            , Html.section
-                [ Attributes.css
-                    [ CssUtil.backgroundColor Theme.color.background
-                    , CssUtil.roundedLg
-                    , CssUtil.shadowMd
-                    , Css.padding (Css.px 32)
-                    , Css.marginTop (Css.px 40)
-                    ]
-                ]
-                [ Html.div
-                    [ Attributes.css [ CssUtil.flex, CssUtil.itemsCenter, CssUtil.gap 16 ] ]
-                    [ Html.span
-                        [ Attributes.css [ CssUtil.fontSize 48, CssUtil.color Theme.color.accent, CssUtil.fontWeight 900 ] ]
-                        [ Html.text "“" ]
-                    , Html.p
-                        [ Attributes.css [ CssUtil.color Theme.color.text, CssUtil.fontSize 20, CssUtil.fontWeight 600 ] ]
-                        [ Html.text "Do more than is required. What is the distance between someone who achieves their goals consistently and those who spend their lives and careers merely following? The extra mile." ]
-                    ]
+                    [ Html.text cvData.name ]
                 , Html.p
-                    [ Attributes.css [ CssUtil.color Theme.color.textLight, CssUtil.fontSize 16, Css.marginTop (Css.px 16) ] ]
-                    [ Html.text "Kyros Noriaki" ]
+                    [ Attributes.css
+                        [ CssUtil.fontSize Theme.fontSize.lg
+                        , CssUtil.color Theme.color.accent
+                        , CssUtil.fontWeight 700
+                        , Css.margin (Css.px 0)
+                        , Css.marginBottom (Css.px 20)
+                        ]
+                    ]
+                    [ Html.text cvData.title ]
+                , List.map (Html.text >> List.singleton >> Html.p []) cvData.summary
+                    |> Html.div
+                        [ Attributes.css
+                            [ CssUtil.fontSize Theme.fontSize.md
+                            , CssUtil.color Theme.color.textLight
+                            , Css.margin (Css.px 0)
+                            , Css.lineHeight (Css.num 1.8)
+                            , Css.maxWidth (Css.px 550)
+                            , CssUtil.flexColumn
+                            ]
+                        ]
+                ]
+            , Html.div
+                [ Attributes.css
+                    [ CssUtil.widthPct 80
+                    , Css.maxWidth (Css.px 360)
+                    , Css.height Css.auto
+                    , CssUtil.property "aspect-ratio" "1 / 1"
+                    , Css.borderRadius (Css.pct 50)
+                    , Css.overflow Css.hidden
+                    , Css.position Css.relative
+                    , Css.backgroundColor Theme.color.primary
+                    ]
+                ]
+                [ Html.img
+                    [ Attributes.src cvData.profileImage
+                    , Attributes.alt "Profile photo"
+                    , Attributes.css
+                        [ Css.position Css.absolute
+                        , Css.top (Css.px 0)
+                        , Css.left (Css.px 0)
+                        , CssUtil.widthPct 100
+                        , Css.height (Css.pct 100)
+                        , CssUtil.property "object-fit" "cover"
+                        , CssUtil.property "object-position" "top"
+                        , CssUtil.shadowMd
+                        ]
+                    ]
+                    []
                 ]
             ]
         ]

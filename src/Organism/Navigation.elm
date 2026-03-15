@@ -1,7 +1,7 @@
 module Organism.Navigation exposing (view)
 
 import Atom.Icon as Icon
-import Atom.Text2 as Text
+import Atom.Text as Text
 import Html.Styled as Html exposing (Html)
 import Html.Styled.Attributes as Attributes
 import Route exposing (Route)
