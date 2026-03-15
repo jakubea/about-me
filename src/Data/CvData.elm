@@ -176,6 +176,7 @@ cvData =
         , "Extensive use of exposing and import aliasing"
         , "Handling of multiple languages (I18Next, I18n)"
         , "Mocking and test helpers"
+        , "Design system"
         , "i18n (internationalization)"
         , "Theming (Theme.elm)"
         , "Unit tests (tests/ directory)"

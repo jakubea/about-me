@@ -24,7 +24,7 @@ book : Html msg
 book =
     svg
         [ SvgAttributes.css
-            [ CssUtil.width 24
+            [ CssUtil.widthPx 24
             , Css.height (Css.px 24)
             , Css.display Css.inlineBlock
             , Css.verticalAlign Css.middle
@@ -46,7 +46,7 @@ globe : Html msg
 globe =
     svg
         [ SvgAttributes.css
-            [ CssUtil.width 24
+            [ CssUtil.widthPx 24
             , Css.height (Css.px 24)
             , Css.display Css.inlineBlock
             , Css.verticalAlign Css.middle
@@ -80,7 +80,7 @@ home : Svg msg
 home =
     svg
         [ SvgAttributes.css
-            [ CssUtil.width 24
+            [ CssUtil.widthPx 24
             , Css.height (Css.px 24)
             , Css.display Css.inlineBlock
             , Css.verticalAlign Css.middle
@@ -99,7 +99,7 @@ briefcase : Html msg
 briefcase =
     svg
         [ SvgAttributes.css
-            [ CssUtil.width 24
+            [ CssUtil.widthPx 24
             , Css.height (Css.px 24)
             , Css.display Css.inlineBlock
             , Css.verticalAlign Css.middle
@@ -120,7 +120,7 @@ code : Html msg
 code =
     svg
         [ SvgAttributes.css
-            [ CssUtil.width 24
+            [ CssUtil.widthPx 24
             , Css.height (Css.px 24)
             , Css.display Css.inlineBlock
             , Css.verticalAlign Css.middle
@@ -139,7 +139,7 @@ target : Html msg
 target =
     svg
         [ SvgAttributes.css
-            [ CssUtil.width 24
+            [ CssUtil.widthPx 24
             , Css.height (Css.px 24)
             , Css.display Css.inlineBlock
             , Css.verticalAlign Css.middle
@@ -161,7 +161,7 @@ github : Html msg
 github =
     svg
         [ SvgAttributes.css
-            [ CssUtil.width 24
+            [ CssUtil.widthPx 24
             , Css.height (Css.px 24)
             , Css.display Css.inlineBlock
             , Css.verticalAlign Css.middle
@@ -176,7 +176,7 @@ linkedin : Html msg
 linkedin =
     svg
         [ SvgAttributes.css
-            [ CssUtil.width 24
+            [ CssUtil.widthPx 24
             , Css.height (Css.px 24)
             , Css.display Css.inlineBlock
             , Css.verticalAlign Css.middle
@@ -191,7 +191,7 @@ mail : Html msg
 mail =
     svg
         [ SvgAttributes.css
-            [ CssUtil.width 24
+            [ CssUtil.widthPx 24
             , Css.height (Css.px 24)
             , Css.display Css.inlineBlock
             , Css.verticalAlign Css.middle
@@ -212,7 +212,7 @@ phone : Html msg
 phone =
     svg
         [ SvgAttributes.css
-            [ CssUtil.width 24
+            [ CssUtil.widthPx 24
             , Css.height (Css.px 24)
             , Css.display Css.inlineBlock
             , Css.verticalAlign Css.middle
@@ -231,7 +231,7 @@ mapPin : Html msg
 mapPin =
     svg
         [ SvgAttributes.css
-            [ CssUtil.width 24
+            [ CssUtil.widthPx 24
             , Css.height (Css.px 24)
             , Css.display Css.inlineBlock
             , Css.verticalAlign Css.middle
@@ -252,7 +252,7 @@ heart : Html msg
 heart =
     svg
         [ SvgAttributes.css
-            [ CssUtil.width 24
+            [ CssUtil.widthPx 24
             , Css.height (Css.px 24)
             , Css.display Css.inlineBlock
             , Css.verticalAlign Css.middle

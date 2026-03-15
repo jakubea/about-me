@@ -35,7 +35,7 @@ textDecorationUnderline =
 
 hover : List Css.Style -> Css.Style
 hover styles =
-    Css.pseudoClass ":hover" styles
+    Css.hover styles
 
 
 marginZero : Css.Style
@@ -98,6 +98,16 @@ gapPx =
     toPx >> gap
 
 
+heightPx : Float -> Css.Style
+heightPx =
+    toPx >> Css.height
+
+
+widthPx : Float -> Css.Style
+widthPx =
+    toPx >> Css.width
+
+
 maxWidth : Float -> Css.Style
 maxWidth =
     toPx >> Css.maxWidth
@@ -106,6 +116,11 @@ maxWidth =
 minHeight : Float -> Css.Style
 minHeight =
     toPx >> Css.minHeight
+
+
+minHeightVh : Float -> Css.Style
+minHeightVh =
+    Css.vh >> Css.minHeight
 
 
 minWidth : Float -> Css.Style
@@ -217,11 +232,6 @@ zIndex =
 -- SIZE
 
 
-width : Float -> Css.Style
-width =
-    toPx >> Css.width
-
-
 widthPct : Float -> Css.Style
 widthPct =
     toPct >> Css.width
@@ -316,3 +326,18 @@ roundedLg =
 shadowMd : Css.Style
 shadowMd =
     Css.boxShadow4 (Css.px 0) (Css.px 4) (Css.px 6) (Css.rgba 0 0 0 0.1)
+
+
+positionSticky : Css.Style
+positionSticky =
+    Css.position Css.sticky
+
+
+topPx : Float -> Css.Style
+topPx =
+    toPx >> Css.top
+
+
+verticalAlignMiddle : Css.Style
+verticalAlignMiddle =
+    Css.verticalAlign Css.middle

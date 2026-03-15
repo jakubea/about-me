@@ -87,7 +87,7 @@ view cvData =
                                 , Attributes.target "_blank"
                                 , Attributes.rel "noopener noreferrer"
                                 , Attributes.css
-                                    [ CssUtil.width 40
+                                    [ CssUtil.widthPx 40
                                     , Css.height (Css.px 40)
                                     , CssUtil.roundedLg
                                     , CssUtil.backgroundColor Theme.color.gray
