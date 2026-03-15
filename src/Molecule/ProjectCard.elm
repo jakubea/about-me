@@ -16,7 +16,7 @@ view : Project -> Html msg
 view project =
     Card.viewWithBorder
         [ Heading.h3 project.name
-        , Text.view project.description
+        , Text.view [] project.description
         , Html.div
             [ Attributes.css
                 [ CssUtil.flexColumn

@@ -34,7 +34,7 @@ view experience =
                 ]
             ]
             [ Html.text (experience.startDate ++ " - " ++ experience.endDate) ]
-        , List.map (Text.view >> List.singleton >> Html.li []) experience.description |> Html.ul []
+        , List.map (Text.view [] >> List.singleton >> Html.li []) experience.description |> Html.ul []
         , Html.div
             [ Attributes.css
                 [ CssUtil.flexColumn

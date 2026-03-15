@@ -29,7 +29,7 @@ view =
             ]
             [ Html.text "404" ]
         , Heading.h2 "Page Not Found"
-        , Text.view "The page you're looking for doesn't exist."
+        , Text.view [] "The page you're looking for doesn't exist."
         , Html.div
             [ Attributes.css [ CssUtil.marginTop Theme.spacing.lg ] ]
             [ Link.view "← Back to Home" "/" ]
