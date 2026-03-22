@@ -1,15 +1,13 @@
 module Atom.Text exposing
-    ( black
-    , bold
-    , gray
+    ( bold
+    , grayLight
     , hoverColor
     , large
-    , paragraph
+    , none
     , red
     , regular
     , small
     , view
-    , white
     )
 
 import Css
@@ -52,9 +50,9 @@ view modifiers content =
     element Html.span modifiers content
 
 
-paragraph : List (Config -> Config) -> String -> Html msg
-paragraph modifiers content =
-    element Html.p modifiers content
+none : Html msg
+none =
+    Html.text ""
 
 
 element : (List (Html.Attribute msg) -> List (Html msg) -> Html msg) -> List (Config -> Config) -> String -> Html msg
@@ -88,24 +86,14 @@ bold config =
     { config | weight = Bold }
 
 
-black : Config -> Config
-black config =
-    { config | color = Just Theme.color.primary }
-
-
-gray : Config -> Config
-gray config =
-    { config | color = Just Theme.color.gray }
+grayLight : Config -> Config
+grayLight config =
+    { config | color = Just Theme.color.textLight }
 
 
 red : Config -> Config
 red config =
     { config | color = Just Theme.color.accent }
-
-
-white : Config -> Config
-white config =
-    { config | color = Just Theme.color.white }
 
 
 hoverColor : (Config -> Config) -> Config -> Config

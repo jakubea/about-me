@@ -1,21 +1,59 @@
-module Util.Css exposing (..)
+module Util.Css exposing
+    ( backgroundColor
+    , border
+    , borderBottom
+    , borderRadius
+    , borderRadiusPct
+    , borderTop
+    , boxSizingBorderBox
+    , color
+    , cursorPointer
+    , fontFamilies
+    , fontSize
+    , fontWeight
+    , gapPx
+    , heightPct
+    , heightPx
+    , hover
+    , lastChild
+    , leftPx
+    , lineHeight
+    , marginBottom
+    , marginRight
+    , marginTop
+    , marginZero
+    , maxWidth
+    , maxWidthPct
+    , minHeightVh
+    , outline3
+    , overflowHidden
+    , padding
+    , padding2
+    , paddingBottom
+    , paddingTop
+    , paddingZero
+    , positionSticky
+    , property
+    , roundedLg
+    , shadowMd
+    , textAlignCenter
+    , textCenter
+    , textDecorationNone
+    , toHex
+    , topPx
+    , transition
+    , verticalAlignMiddle
+    , widthPct
+    , widthPx
+    , zIndex
+    )
 
 import Css
 
 
-alignItemsCenter : Css.Style
-alignItemsCenter =
-    Css.alignItems Css.center
-
-
-boxShadow : String -> Css.Style
-boxShadow val =
-    Css.property "box-shadow" val
-
-
-listStyleTypeDisc : Css.Style
-listStyleTypeDisc =
-    Css.property "list-style-type" "disc"
+boxSizingBorderBox : Css.Style
+boxSizingBorderBox =
+    Css.boxSizing Css.borderBox
 
 
 lineHeight : Float -> Css.Style
@@ -26,11 +64,6 @@ lineHeight n =
 textDecorationNone : Css.Style
 textDecorationNone =
     Css.textDecoration Css.none
-
-
-textDecorationUnderline : Css.Style
-textDecorationUnderline =
-    Css.textDecoration Css.underline
 
 
 hover : List Css.Style -> Css.Style
@@ -73,21 +106,6 @@ borderBottom color_ borderWidth_ =
     Css.borderBottom3 (toPx borderWidth_) Css.solid color_
 
 
-displayInlineBlock : Css.Style
-displayInlineBlock =
-    Css.display Css.inlineBlock
-
-
-displayFlex : Css.Style
-displayFlex =
-    Css.displayFlex
-
-
-flexWrapWrap : Css.Style
-flexWrapWrap =
-    Css.flexWrap Css.wrap
-
-
 gap : Css.Length compatible units -> Css.Style
 gap =
     .value >> Css.property "gap"
@@ -113,19 +131,14 @@ maxWidth =
     toPx >> Css.maxWidth
 
 
-minHeight : Float -> Css.Style
-minHeight =
-    toPx >> Css.minHeight
+maxWidthPct : Float -> Css.Style
+maxWidthPct =
+    toPct >> Css.maxWidth
 
 
 minHeightVh : Float -> Css.Style
 minHeightVh =
     Css.vh >> Css.minHeight
-
-
-minWidth : Float -> Css.Style
-minWidth =
-    toPx >> Css.minWidth
 
 
 marginRight : Float -> Css.Style
@@ -136,16 +149,6 @@ marginRight =
 textAlignCenter : Css.Style
 textAlignCenter =
     Css.textAlign Css.center
-
-
-paddingLeft : Float -> Css.Style
-paddingLeft =
-    toPx >> Css.paddingLeft
-
-
-paddingRight : Float -> Css.Style
-paddingRight =
-    toPx >> Css.paddingRight
 
 
 paddingTop : Float -> Css.Style
@@ -168,9 +171,9 @@ color =
     Css.color
 
 
-fontSize : Float -> Css.Style
+fontSize : Css.Rem -> Css.Style
 fontSize =
-    toPx >> Css.fontSize
+    Css.fontSize
 
 
 fontWeight : Int -> Css.Style
@@ -181,11 +184,6 @@ fontWeight =
 marginBottom : Float -> Css.Style
 marginBottom =
     toPx >> Css.marginBottom
-
-
-marginLeft : Float -> Css.Style
-marginLeft =
-    toPx >> Css.marginLeft
 
 
 marginTop : Float -> Css.Style
@@ -218,6 +216,11 @@ borderRadius =
     toPx >> Css.borderRadius
 
 
+borderRadiusPct : Float -> Css.Style
+borderRadiusPct =
+    toPct >> Css.borderRadius
+
+
 textCenter : Css.Style
 textCenter =
     Css.textAlign Css.center
@@ -228,13 +231,14 @@ zIndex =
     Css.int >> Css.zIndex
 
 
-
--- SIZE
-
-
 widthPct : Float -> Css.Style
 widthPct =
     toPct >> Css.width
+
+
+heightPct : Float -> Css.Style
+heightPct =
+    toPct >> Css.height
 
 
 
@@ -256,66 +260,9 @@ toPx =
     Css.px
 
 
-margin : Float -> Css.Style
-margin value =
-    Css.margin (toPx value)
-
-
-flexColumn : Css.Style
-flexColumn =
-    Css.batch
-        [ Css.displayFlex
-        , Css.flexDirection Css.column
-        ]
-
-
-flexRow : Css.Style
-flexRow =
-    Css.batch
-        [ Css.displayFlex
-        , Css.flexDirection Css.row
-        ]
-
-
-flex : Css.Style
-flex =
-    Css.displayFlex
-
-
-flex1 : Css.Style
-flex1 =
-    Css.flex <| Css.int 1
-
-
-container : Css.Style
-container =
-    Css.batch
-        [ Css.maxWidth (Css.px 1200)
-        , Css.marginLeft Css.auto
-        , Css.marginRight Css.auto
-        , Css.paddingLeft (Css.px 16)
-        , Css.paddingRight (Css.px 16)
-        ]
-
-
 transition : List String -> Css.Style
 transition props =
     Css.property "transition" (String.join ", " (List.map (\p -> p ++ " 0.2s ease-in-out") props))
-
-
-itemsCenter : Css.Style
-itemsCenter =
-    Css.property "align-items" "center"
-
-
-justifyContentCenter : Css.Style
-justifyContentCenter =
-    Css.justifyContent Css.center
-
-
-justifyContentSpaceBetween : Css.Style
-justifyContentSpaceBetween =
-    Css.justifyContent Css.spaceBetween
 
 
 roundedLg : Css.Style
@@ -328,6 +275,11 @@ shadowMd =
     Css.boxShadow4 (Css.px 0) (Css.px 4) (Css.px 6) (Css.rgba 0 0 0 0.1)
 
 
+overflowHidden : Css.Style
+overflowHidden =
+    Css.overflow Css.hidden
+
+
 positionSticky : Css.Style
 positionSticky =
     Css.position Css.sticky
@@ -338,6 +290,16 @@ topPx =
     toPx >> Css.top
 
 
+leftPx : Float -> Css.Style
+leftPx =
+    toPx >> Css.left
+
+
 verticalAlignMiddle : Css.Style
 verticalAlignMiddle =
     Css.verticalAlign Css.middle
+
+
+lastChild : List Css.Style -> Css.Style
+lastChild =
+    Css.lastChild

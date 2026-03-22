@@ -1,5 +1,7 @@
 module Page.Elm exposing (view)
 
+import Atom.Layout as Layout
+import Css
 import Data.CvData as CvData
 import Html.Styled as Html exposing (Html)
 import Html.Styled.Attributes as Attributes
@@ -15,7 +17,7 @@ view =
             CvData.cvData.elmTopics
 
         fontSizes =
-            [ 12, 14, 16, 18, 20, 22, 24 ]
+            [ Css.rem 0.875, Css.rem 1, Css.rem 1.25, Css.rem 1.5 ]
 
         colors =
             [ CssUtil.toHex "#60B5CC"
@@ -29,60 +31,33 @@ view =
         styledWord idx word =
             let
                 size =
-                    case List.Extra.getAt (modBy (List.length fontSizes) idx) fontSizes of
-                        Just s ->
-                            s
-
-                        Nothing ->
-                            18
+                    List.Extra.getAt (modBy (List.length fontSizes) idx) fontSizes
+                        |> Maybe.withDefault Theme.fontSize.lg
 
                 color =
-                    case List.Extra.getAt (modBy (List.length colors) idx) colors of
-                        Just c ->
-                            c
-
-                        Nothing ->
-                            Theme.color.text
-
-                weight =
-                    400 + modBy 3 idx * 100
+                    List.Extra.getAt (modBy (List.length colors) idx) colors
+                        |> Maybe.withDefault Theme.color.text
             in
             Html.span
                 [ Attributes.css
-                    [ CssUtil.fontSize (toFloat size)
+                    [ CssUtil.fontSize size
                     , CssUtil.color color
-                    , CssUtil.displayInlineBlock
                     , CssUtil.marginRight 12
                     , CssUtil.marginBottom 12
-                    , CssUtil.fontWeight weight
                     , CssUtil.transition [ "color", "font-size" ]
                     , CssUtil.cursorPointer
                     ]
                 ]
                 [ Html.text word ]
     in
-    Html.div
-        [ Attributes.css
-            [ CssUtil.displayFlex
-            , CssUtil.flexColumn
-            , CssUtil.alignItemsCenter
-            , CssUtil.paddingTop 32
-            , CssUtil.paddingBottom 32
-            , CssUtil.backgroundColor Theme.color.surface
-            , CssUtil.borderRadius 16
-            , CssUtil.boxShadow "0 4px 24px rgba(0,0,0,0.08)"
-            ]
-        ]
-        [ Html.div
-            [ Attributes.css
+    Layout.flexColumn [ CssUtil.gapPx 24 ]
+        [ List.indexedMap styledWord topics
+            |> Layout.flexRow
                 [ CssUtil.widthPct 100
-                , CssUtil.displayFlex
-                , CssUtil.flexWrapWrap
-                , CssUtil.justifyContentCenter
-                , CssUtil.alignItemsCenter
+                , Layout.flexWrapWrap
+                , Layout.justifyContentCenter
+                , Layout.alignItemsCenter
                 , CssUtil.gapPx 8
                 , CssUtil.marginBottom 32
                 ]
-            ]
-            (List.indexedMap styledWord topics)
         ]

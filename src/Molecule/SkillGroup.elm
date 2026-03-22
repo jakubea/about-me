@@ -1,7 +1,8 @@
 module Molecule.SkillGroup exposing (view)
 
-import Html.Styled as Html exposing (Html)
-import Html.Styled.Attributes as Attributes
+import Atom.Heading as Heading
+import Atom.Layout as Layout
+import Html.Styled exposing (Html)
 import Molecule.Badge as Badge
 import Theme
 import Types exposing (Skill)
@@ -9,29 +10,9 @@ import Util.Css as CssUtil
 
 
 view : Skill -> Html msg
-view skill =
-    Html.div
-        [ Attributes.css
-            [ CssUtil.marginBottom 16
-            , CssUtil.gapPx 20
-            ]
-        ]
-        [ Html.h3
-            [ Attributes.css
-                [ CssUtil.color Theme.color.white
-                , CssUtil.fontSize 16
-                , CssUtil.fontWeight 600
-                , CssUtil.marginBottom 8
-                , CssUtil.margin 0
-                ]
-            ]
-            [ String.toUpper skill.category |> Html.text ]
-        , Html.div
-            [ Attributes.css
-                [ CssUtil.flex
-                , CssUtil.gapPx 8
-                , CssUtil.flexWrapWrap
-                ]
-            ]
-            (List.map (Badge.view Badge.White) skill.items)
+view { category, items } =
+    Layout.flexColumn [ CssUtil.borderBottom Theme.color.white 1, CssUtil.lastChild [ CssUtil.borderBottom Theme.color.white 0 ], CssUtil.padding2 20 0, CssUtil.gapPx 5 ]
+        [ Heading.h3 category
+        , List.map (Badge.view Badge.White) items
+            |> Layout.flexRow [ CssUtil.gapPx 8, Layout.flexWrapWrap ]
         ]

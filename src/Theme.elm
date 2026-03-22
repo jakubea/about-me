@@ -74,23 +74,23 @@ stringColor =
 
 
 type alias FontSize =
-    { xs : Float
-    , sm : Float
-    , md : Float
-    , lg : Float
-    , xl : Float
-    , xxl : Float
+    { xs : Css.Rem
+    , sm : Css.Rem
+    , md : Css.Rem
+    , lg : Css.Rem
+    , xl : Css.Rem
+    , xxl : Css.Rem
     }
 
 
 fontSize : FontSize
 fontSize =
-    { xs = 12
-    , sm = 13
-    , md = 14
-    , lg = 16
-    , xl = 20
-    , xxl = 28
+    { xs = Css.rem 0.75 -- 12px
+    , sm = Css.rem 0.875 -- 14px
+    , md = Css.rem 1 -- 16px (The Standard Base)
+    , lg = Css.rem 1.25 -- 20px
+    , xl = Css.rem 1.5 -- 24px
+    , xxl = Css.rem 2 -- 32px
     }
 
 

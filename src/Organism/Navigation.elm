@@ -1,6 +1,8 @@
 module Organism.Navigation exposing (view)
 
 import Atom.Icon as Icon
+import Atom.Layout as Layout
+import Atom.Link as Link
 import Atom.Text as Text
 import Html.Styled as Html exposing (Html)
 import Html.Styled.Attributes as Attributes
@@ -19,12 +21,11 @@ navItem isActive label icon route =
             else
                 ( [], Theme.color.textLight )
     in
-    Html.a
-        [ Attributes.href (Route.toPath route)
-        , Attributes.css
-            ([ CssUtil.displayFlex
-             , CssUtil.itemsCenter
-             , CssUtil.gapPx 6
+    Layout.flexRow [ CssUtil.gapPx 6 ]
+        [ icon, String.toUpper label |> Text.view [] ]
+        |> Link.navLink (Route.toPath route)
+            isActive
+            ([ Layout.alignItemsCenter
              , CssUtil.padding2 8 12
              , CssUtil.color color
              , CssUtil.textDecorationNone
@@ -32,10 +33,6 @@ navItem isActive label icon route =
              ]
                 ++ borderBottom
             )
-        ]
-        [ icon
-        , String.toUpper label |> Text.view []
-        ]
 
 
 view : Route -> Html msg
@@ -51,14 +48,7 @@ view currentRoute =
             ]
         , Attributes.attribute "aria-label" "Main navigation"
         ]
-        [ Html.div
-            [ Attributes.css
-                [ CssUtil.container
-                , CssUtil.flex
-                , CssUtil.gapPx 4
-                , CssUtil.flexWrapWrap
-                ]
-            ]
+        [ Layout.flexRow [ CssUtil.gapPx 4, Layout.flexWrapWrap ]
             [ navItem (currentRoute == Route.Home) "Home" Icon.home Route.Home
             , navItem (currentRoute == Route.Experience) "Experience" Icon.briefcase Route.Experience
             , navItem (currentRoute == Route.Projects) "Projects" Icon.code Route.Projects

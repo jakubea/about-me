@@ -8,9 +8,9 @@ cvData =
     { name = "Bea Jakubcova"
     , title = "Elm Developer"
     , summary =
-        [ "Elm developer with 9 years of production experience."
-        , "I love building type-safe, reliable web apps and solving complex problems with functional programming. Elm has shaped how I think about software — simplicity, strong types, and making invalid states impossible."
-        , "I’m curious, enjoy learning new things, and like trying out new ideas."
+        [ "Passionate Elm developer with 9 years of production experience building type-safe, maintainable web applications — mainly in the financial domain. Experienced in functional programming, state management, and creating elegant solutions to complex problems."
+        , "Strong focus on code quality, testing, and performance, with experience working on large-scale applications and handling real-world production deployments."
+        , "Elm has shaped how I think about software — favouring simplicity, strong types, and making invalid states impossible. I’m also always curious and open to learning new things."
         , "Outside of work, I’m a passionate traveller, gym enthusiast, and beer lover."
         ]
     , profileImage = "/me.jpg"

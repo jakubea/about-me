@@ -1,5 +1,6 @@
 module Molecule.Badge exposing (ColorVariant(..), view)
 
+import Atom.Text as Text
 import Html.Styled as Html exposing (Html)
 import Html.Styled.Attributes as Attributes
 import Theme
@@ -29,10 +30,8 @@ view colorVariant label =
             , CssUtil.padding 4
             , CssUtil.padding2 4 8
             , CssUtil.borderRadius 4
-            , CssUtil.fontSize 14
             , CssUtil.fontWeight 500
-            , CssUtil.displayInlineBlock
             , CssUtil.border textColor 1
             ]
         ]
-        [ Html.text label ]
+        [ Text.view [ Text.small ] label ]

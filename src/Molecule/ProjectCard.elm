@@ -1,6 +1,7 @@
 module Molecule.ProjectCard exposing (view)
 
 import Atom.Heading as Heading
+import Atom.Layout as Layout
 import Atom.Link as Link
 import Atom.Text as Text
 import Html.Styled as Html exposing (Html)
@@ -17,67 +18,32 @@ view project =
     Card.viewWithBorder
         [ Heading.h3 project.name
         , Text.view [] project.description
-        , Html.div
-            [ Attributes.css
-                [ CssUtil.flexColumn
-                , CssUtil.gapPx Theme.spacing.md
-                , CssUtil.marginTop Theme.spacing.md
-                ]
+        , Layout.flexColumn
+            [ CssUtil.gapPx Theme.spacing.md
+            , CssUtil.marginTop Theme.spacing.md
             ]
-            [ Html.div
-                []
-                [ Html.p
-                    [ Attributes.css
-                        [ CssUtil.margin 0
-                        , CssUtil.marginBottom 4
-                        , CssUtil.fontSize 12
-                        , CssUtil.fontWeight 600
-                        , CssUtil.color Theme.color.accent
-                        ]
-                    ]
-                    [ Html.text "Technologies:" ]
-                , Html.div
-                    [ Attributes.css
-                        [ CssUtil.flex
-                        , CssUtil.gapPx Theme.spacing.sm
-                        , CssUtil.flexWrapWrap
-                        ]
+            [ Layout.flexColumn [ CssUtil.gapPx 5 ]
+                [ Text.view [ Text.red, Text.hoverColor Text.red ] "Technologies:"
+                , Layout.flexRow
+                    [ CssUtil.gapPx Theme.spacing.sm
+                    , Layout.flexWrapWrap
                     ]
                     (List.map (Badge.view Badge.Black) project.technologies)
                 ]
             , if List.isEmpty project.highlights then
-                Html.text ""
+                Text.none
 
               else
-                Html.div
-                    []
-                    [ Html.p
-                        [ Attributes.css
-                            [ CssUtil.margin 0
-                            , CssUtil.marginBottom 4
-                            , CssUtil.fontSize 12
-                            , CssUtil.fontWeight 600
-                            , CssUtil.color Theme.color.accent
-                            ]
-                        ]
-                        [ Html.text "Highlights:" ]
-                    , Html.ul
-                        [ Attributes.css
-                            [ CssUtil.marginBottom 0
-                            , CssUtil.marginTop 0
-                            , CssUtil.padding Theme.spacing.md
-                            ]
-                        ]
-                        (List.map highlightItem project.highlights)
+                Layout.flexColumn [ CssUtil.gapPx 5 ]
+                    [ Text.view [ Text.red, Text.hoverColor Text.red ] "Highlights:"
+                    , List.map highlightItem project.highlights |> Html.ul []
                     ]
             , case project.link of
                 Just url ->
-                    Html.div
-                        [ Attributes.css [ CssUtil.marginTop Theme.spacing.md ] ]
-                        [ Link.viewExternal "View Project →" url ]
+                    Text.view [ Text.grayLight, Text.hoverColor Text.red ] "View Project →" |> Link.externalLink url []
 
                 Nothing ->
-                    Html.text ""
+                    Text.none
             ]
         ]
 
@@ -90,4 +56,4 @@ highlightItem text =
             , CssUtil.color Theme.color.text
             ]
         ]
-        [ Html.text text ]
+        [ Text.view [] text ]

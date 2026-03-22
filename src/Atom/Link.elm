@@ -1,39 +1,35 @@
-module Atom.Link exposing (view, viewExternal)
+module Atom.Link exposing (externalLink, navLink)
 
 import Css
 import Html.Styled as Html exposing (Html)
 import Html.Styled.Attributes as Attributes
-import Theme
-import Util.Css as CssUtil
 
 
-baseStyle : List Css.Style
-baseStyle =
-    [ CssUtil.textDecorationNone
-    , CssUtil.color Theme.color.textLight
-    , CssUtil.fontWeight 500
-    , CssUtil.hover
-        [ CssUtil.color Theme.color.accent
-        , CssUtil.textDecorationUnderline
-        ]
-    ]
-
-
-view : String -> String -> Html msg
-view label href =
+navLink : String -> Bool -> List Css.Style -> Html msg -> Html msg
+navLink targetPath isActive styles child =
     Html.a
-        [ Attributes.href href
-        , Attributes.css baseStyle
-        ]
-        [ Html.text label ]
+        ([ Attributes.href targetPath
+         , Attributes.tabindex 0
+         , Attributes.attribute "role" "link"
+         ]
+            ++ ((if isActive then
+                    [ Attributes.attribute "aria-current" "page" ]
+
+                 else
+                    []
+                )
+                    ++ [ Attributes.css styles ]
+               )
+        )
+        [ child ]
 
 
-viewExternal : String -> String -> Html msg
-viewExternal label url =
+externalLink : String -> List Css.Style -> Html msg -> Html msg
+externalLink url styles child =
     Html.a
         [ Attributes.href url
-        , Attributes.target "_blank"
-        , Attributes.rel "noopener noreferrer"
-        , Attributes.css baseStyle
+        , Attributes.attribute "target" "_blank"
+        , Attributes.attribute "rel" "noopener noreferrer"
+        , Attributes.css styles
         ]
-        [ Html.text label ]
+        [ child ]

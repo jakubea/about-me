@@ -1,5 +1,7 @@
 module Molecule.LanguageCircle exposing (view)
 
+import Atom.Layout as Layout
+import Atom.Text as Text
 import Html.Styled as Html exposing (Html)
 import Html.Styled.Attributes as Attributes
 import Svg.Styled as Svg
@@ -26,12 +28,9 @@ view { percent, label } =
         progress =
             circumference * (1 - percent / 100)
     in
-    Html.div
-        [ Attributes.css
-            [ CssUtil.flexColumn
-            , CssUtil.itemsCenter
-            , CssUtil.padding2 0 80
-            ]
+    Layout.flexColumn
+        [ Layout.alignItemsCenter
+        , CssUtil.padding2 0 80
         ]
         [ Svg.svg
             [ SvgAttr.width (String.fromFloat size)
@@ -73,5 +72,5 @@ view { percent, label } =
             ]
         , Html.p
             [ Attributes.css [ CssUtil.color Theme.color.textLight, CssUtil.marginTop 8, CssUtil.textCenter ] ]
-            [ Html.text label ]
+            [ Text.view [] label ]
         ]

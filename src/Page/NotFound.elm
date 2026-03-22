@@ -1,36 +1,17 @@
 module Page.NotFound exposing (view)
 
 import Atom.Heading as Heading
+import Atom.Layout as Layout
 import Atom.Link as Link
 import Atom.Text as Text
-import Css
-import Html.Styled as Html exposing (Html)
-import Html.Styled.Attributes as Attributes
-import Theme
+import Html.Styled exposing (Html)
 import Util.Css as CssUtil
 
 
 view : Html msg
 view =
-    Html.div
-        [ Attributes.css
-            [ CssUtil.padding Theme.spacing.lg
-            , Css.maxWidth (Css.px 800)
-            , Css.marginRight Css.auto
-            , CssUtil.textAlignCenter
-            ]
-        ]
-        [ Html.h1
-            [ Attributes.css
-                [ CssUtil.fontSize 64
-                , CssUtil.color Theme.color.primary
-                , CssUtil.margin 0
-                ]
-            ]
-            [ Html.text "404" ]
-        , Heading.h2 "Page Not Found"
+    Layout.flexColumn [ CssUtil.gapPx 24 ]
+        [ String.toUpper "Page Not Found" |> Heading.h2
         , Text.view [] "The page you're looking for doesn't exist."
-        , Html.div
-            [ Attributes.css [ CssUtil.marginTop Theme.spacing.lg ] ]
-            [ Link.view "← Back to Home" "/" ]
+        , Text.view [ Text.grayLight, Text.hoverColor Text.red ] "← Back to Home" |> Link.navLink "/" False []
         ]

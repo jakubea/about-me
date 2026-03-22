@@ -1,6 +1,8 @@
 module Page.Home exposing (view)
 
-import Css
+import Atom.Heading as Heading
+import Atom.Layout as Layout
+import Atom.Text as Text
 import Html.Styled as Html exposing (Html)
 import Html.Styled.Attributes as Attributes
 import Theme
@@ -9,92 +11,42 @@ import Util.Css as CssUtil
 
 
 view : CvData -> Html msg
-view cvData =
-    Html.div
-        [ Attributes.css
-            [ CssUtil.backgroundColor Theme.color.background
-            , CssUtil.padding2 48 16
-            , CssUtil.flex1
+view { name, title, summary, profileImage } =
+    Layout.flexRow [ Layout.flexWrapWrap, CssUtil.widthPct 100, Layout.justifyContentCenter, CssUtil.gapPx 20 ]
+        [ Layout.flexColumn
+            [ Layout.alignItemsCenter
+            , CssUtil.gapPx 10
+            , CssUtil.maxWidth 620
             ]
-        ]
-        [ Html.div
-            [ Attributes.css
-                [ CssUtil.container
-                , CssUtil.flexRow
-                , CssUtil.itemsCenter
-                , CssUtil.textCenter
-                , CssUtil.flexWrapWrap
-                , CssUtil.justifyContentCenter
-                ]
+            [ Heading.h1 name
+            , Text.view [ Text.red, Text.bold, Text.large ] title
+            , List.map (Text.view [ Text.grayLight ]) summary
+                |> Layout.flexColumn [ Layout.alignItemsCenter ]
             ]
-            [ Html.div
-                [ Attributes.css
-                    [ CssUtil.container
-                    , CssUtil.flexColumn
-                    , CssUtil.itemsCenter
-                    , CssUtil.textCenter
-                    , CssUtil.marginTop 32
+        , Layout.flexColumn
+            [ CssUtil.widthPct 50
+            , CssUtil.widthPx 360
+            , CssUtil.heightPx 360
+            , CssUtil.property "aspect-ratio" "1 / 1"
+            , CssUtil.borderRadiusPct 50
+            , CssUtil.overflowHidden
+            , Layout.positionRelative
+            , CssUtil.backgroundColor Theme.color.primary
+            ]
+            [ Html.img
+                [ Attributes.src profileImage
+                , Attributes.alt "Profile photo"
+                , Attributes.css
+                    [ Layout.positionAbsolute
+                    , CssUtil.topPx 0
+                    , CssUtil.leftPx 0
+                    , CssUtil.widthPct 100
+                    , CssUtil.heightPct 100
+                    , CssUtil.property "object-fit" "cover"
+                    , CssUtil.property "object-position" "top"
+                    , CssUtil.shadowMd
                     ]
                 ]
-                [ Html.h1
-                    [ Attributes.css
-                        [ CssUtil.fontSize Theme.fontSize.xxl
-                        , CssUtil.fontWeight 700
-                        , CssUtil.marginZero
-                        , CssUtil.marginBottom 8
-                        , CssUtil.color Theme.color.text
-                        ]
-                    ]
-                    [ Html.text cvData.name ]
-                , Html.p
-                    [ Attributes.css
-                        [ CssUtil.fontSize Theme.fontSize.lg
-                        , CssUtil.color Theme.color.accent
-                        , CssUtil.fontWeight 700
-                        , Css.margin (Css.px 0)
-                        , Css.marginBottom (Css.px 20)
-                        ]
-                    ]
-                    [ Html.text cvData.title ]
-                , List.map (Html.text >> List.singleton >> Html.p []) cvData.summary
-                    |> Html.div
-                        [ Attributes.css
-                            [ CssUtil.fontSize Theme.fontSize.md
-                            , CssUtil.color Theme.color.textLight
-                            , Css.margin (Css.px 0)
-                            , Css.lineHeight (Css.num 1.8)
-                            , Css.maxWidth (Css.px 550)
-                            , CssUtil.flexColumn
-                            ]
-                        ]
-                ]
-            , Html.div
-                [ Attributes.css
-                    [ CssUtil.widthPct 80
-                    , Css.maxWidth (Css.px 360)
-                    , Css.height Css.auto
-                    , CssUtil.property "aspect-ratio" "1 / 1"
-                    , Css.borderRadius (Css.pct 50)
-                    , Css.overflow Css.hidden
-                    , Css.position Css.relative
-                    , Css.backgroundColor Theme.color.primary
-                    ]
-                ]
-                [ Html.img
-                    [ Attributes.src cvData.profileImage
-                    , Attributes.alt "Profile photo"
-                    , Attributes.css
-                        [ Css.position Css.absolute
-                        , Css.top (Css.px 0)
-                        , Css.left (Css.px 0)
-                        , CssUtil.widthPct 100
-                        , Css.height (Css.pct 100)
-                        , CssUtil.property "object-fit" "cover"
-                        , CssUtil.property "object-position" "top"
-                        , CssUtil.shadowMd
-                        ]
-                    ]
-                    []
-                ]
+                []
             ]
         ]

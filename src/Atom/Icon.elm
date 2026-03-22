@@ -1,6 +1,5 @@
 module Atom.Icon exposing
-    ( book
-    , briefcase
+    ( briefcase
     , code
     , github
     , globe
@@ -18,28 +17,6 @@ import Html.Styled exposing (Attribute, Html)
 import Svg.Styled as Svg exposing (Svg)
 import Svg.Styled.Attributes as SvgAttributes
 import Util.Css as CssUtil
-
-
-book : Html msg
-book =
-    svg
-        [ SvgAttributes.css
-            [ CssUtil.widthPx 24
-            , Css.height (Css.px 24)
-            , Css.display Css.inlineBlock
-            , Css.verticalAlign Css.middle
-            ]
-        , SvgAttributes.stroke "currentColor"
-        , SvgAttributes.viewBox "0 0 24 24"
-        , SvgAttributes.fill "none"
-        , SvgAttributes.strokeWidth "2"
-        , SvgAttributes.strokeLinecap "round"
-        , SvgAttributes.strokeLinejoin "round"
-        ]
-        [ Svg.path [ SvgAttributes.d "M4 19.5A2.5 2.5 0 0 1 6.5 17H20" ] []
-        , Svg.path [ SvgAttributes.d "M20 2H6.5A2.5 2.5 0 0 0 4 4.5v15" ] []
-        , Svg.path [ SvgAttributes.d "M20 2v17" ] []
-        ]
 
 
 globe : Html msg

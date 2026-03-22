@@ -1,6 +1,9 @@
 module Organism.Footer exposing (view)
 
 import Atom.Icon as Icon
+import Atom.Layout as Layout
+import Atom.Link as Link
+import Atom.Text as Text
 import Css
 import Html.Styled as Html exposing (Html)
 import Html.Styled.Attributes as Attributes
@@ -15,124 +18,86 @@ view cvData =
         [ Attributes.css
             [ CssUtil.backgroundColor Theme.color.primary
             , CssUtil.borderTop Theme.color.border 1
-            , CssUtil.paddingTop 40
-            , CssUtil.paddingBottom 40
-            , CssUtil.paddingLeft 16
-            , CssUtil.paddingRight 16
-            , CssUtil.color Theme.color.textLight
-            , CssUtil.fontSize Theme.fontSize.sm
+            , CssUtil.padding2 40 16
             , CssUtil.property "background-image" "linear-gradient(180deg, #000 0%, #232326 100%)"
+            , CssUtil.widthPct 100
             ]
         ]
-        [ Html.div
-            [ Attributes.css
-                [ CssUtil.container
-                , CssUtil.flexColumn
-                , CssUtil.gapPx 28
+        [ Layout.flexRow [ Layout.justifyContentSpaceBetween, CssUtil.paddingBottom 40, Layout.alignItemsCenter ]
+            [ Layout.flexColumn [ CssUtil.gapPx 10 ]
+                [ Layout.flexRow [ CssUtil.gapPx 8 ] [ Icon.mail, Text.view [ Text.regular ] cvData.contact.email ]
+                    |> Link.navLink ("mailto:" ++ cvData.contact.email)
+                        False
+                        [ CssUtil.color Theme.color.textLight
+                        , CssUtil.hover [ Css.textDecoration Css.underline, CssUtil.color Theme.color.accent ]
+                        ]
+                , Layout.flexRow [ CssUtil.gapPx 8 ] [ Icon.phone, Text.view [ Text.regular ] cvData.contact.phone ]
+                    |> Link.navLink ("tel:" ++ cvData.contact.phone)
+                        False
+                        [ CssUtil.color Theme.color.textLight
+                        , CssUtil.hover [ Css.textDecoration Css.underline, CssUtil.color Theme.color.accent ]
+                        ]
+                , Layout.flexRow [ Layout.alignItemsCenter, CssUtil.gapPx 8 ]
+                    [ Icon.mapPin, Text.view [ Text.regular ] cvData.contact.location ]
+                    |> Link.externalLink "https://maps.app.goo.gl/T911joMC6EY5BW6P6"
+                        [ CssUtil.color Theme.color.textLight
+                        , CssUtil.hover [ Css.textDecoration Css.underline, CssUtil.color Theme.color.accent ]
+                        ]
                 ]
-            ]
-            [ Html.div
-                [ Attributes.css
-                    [ CssUtil.flex
-                    , CssUtil.flexWrapWrap
-                    , CssUtil.gapPx 20
-                    , CssUtil.justifyContentSpaceBetween
-                    , CssUtil.itemsCenter
-                    ]
-                ]
-                [ Html.div
-                    [ Attributes.css [ CssUtil.flexColumn, CssUtil.gapPx 12 ] ]
-                    [ Html.a
-                        [ Attributes.href ("mailto:" ++ cvData.contact.email)
-                        , Attributes.css
-                            [ CssUtil.color Theme.color.textLight
-                            , Css.textDecoration Css.none
-                            , CssUtil.flex
-                            , CssUtil.itemsCenter
-                            , CssUtil.gapPx 10
-                            , CssUtil.transition [ "color" ]
-                            , Css.hover [ Css.textDecoration Css.underline, CssUtil.color Theme.color.accent ]
-                            ]
-                        ]
-                        [ Icon.mail, Html.text cvData.contact.email ]
-                    , Html.a
-                        [ Attributes.href ("tel:" ++ cvData.contact.phone)
-                        , Attributes.css
-                            [ CssUtil.color Theme.color.textLight
-                            , Css.textDecoration Css.none
-                            , CssUtil.flex
-                            , CssUtil.itemsCenter
-                            , CssUtil.gapPx 10
-                            , CssUtil.transition [ "color" ]
-                            , Css.hover [ Css.textDecoration Css.underline, CssUtil.color Theme.color.accent ]
-                            ]
-                        ]
-                        [ Icon.phone, Html.text cvData.contact.phone ]
-                    , Html.div
-                        [ Attributes.css
-                            [ CssUtil.flex
-                            , CssUtil.itemsCenter
-                            , CssUtil.gapPx 10
-                            , CssUtil.color Theme.color.textLight
-                            ]
-                        ]
-                        [ Icon.mapPin, Html.text cvData.contact.location ]
-                    ]
-                , Html.div
-                    [ Attributes.css [ CssUtil.flex, CssUtil.gapPx 10 ] ]
-                    (List.map
-                        (\link ->
-                            Html.a
-                                [ Attributes.href link.url
-                                , Attributes.target "_blank"
-                                , Attributes.rel "noopener noreferrer"
-                                , Attributes.css
-                                    [ CssUtil.widthPx 40
-                                    , Css.height (Css.px 40)
-                                    , CssUtil.roundedLg
-                                    , CssUtil.backgroundColor Theme.color.gray
-                                    , CssUtil.color Theme.color.text
-                                    , CssUtil.flex
-                                    , CssUtil.itemsCenter
-                                    , CssUtil.justifyContentCenter
-                                    , CssUtil.transition [ "background-color", "color" ]
-                                    , Css.hover
-                                        [ CssUtil.backgroundColor Theme.color.primary
-                                        , CssUtil.color Theme.color.white
-                                        ]
-                                    , Css.focus
-                                        [ CssUtil.outline3 2 Theme.color.primary
-                                        , Css.outlineOffset (Css.px 2)
-                                        ]
+            , Layout.flexRow [ CssUtil.gapPx 10 ]
+                (List.map
+                    (\link ->
+                        let
+                            style =
+                                [ CssUtil.widthPx 40
+                                , CssUtil.heightPx 40
+                                , CssUtil.roundedLg
+                                , CssUtil.backgroundColor Theme.color.textLight
+
+                                -- , CssUtil.color Theme.color.text
+                                , Layout.alignItemsCenter
+                                , Layout.displayFlex
+                                , Layout.justifyContentCenter
+                                , CssUtil.transition [ "background-color", "color" ]
+                                , Css.hover
+                                    [ CssUtil.backgroundColor Theme.color.accent
+                                    , CssUtil.color Theme.color.white
                                     ]
-                                , Attributes.title link.label
-                                , Attributes.attribute "aria-label" link.label
+                                , Css.focus
+                                    [ CssUtil.outline3 2 Theme.color.accent
+                                    , Css.outlineOffset (Css.px 2)
+                                    ]
                                 ]
-                                [ if link.label == "GitHub" then
-                                    Icon.github
+                        in
+                        -- [ Attributes.href link.url
+                        -- , Attributes.target "_blank"
+                        -- , Attributes.rel "noopener noreferrer"
+                        -- , Attributes.css
+                        -- , Attributes.title link.label
+                        -- , Attributes.attribute "aria-label" link.label
+                        -- ]
+                        if link.label == "GitHub" then
+                            Link.externalLink link.url style Icon.github
 
-                                  else if link.label == "LinkedIn" then
-                                    Icon.linkedin
+                        else if link.label == "LinkedIn" then
+                            Link.externalLink link.url style Icon.linkedin
 
-                                  else
-                                    Html.text link.label
-                                ]
-                        )
-                        cvData.contact.links
+                        else
+                            Html.text link.label
                     )
-                ]
-            , Html.div
-                [ Attributes.css
-                    [ CssUtil.textAlignCenter
-                    , CssUtil.paddingTop 20
-                    , CssUtil.borderTop Theme.color.border 1
-                    , CssUtil.fontSize Theme.fontSize.xs
-                    , CssUtil.color Theme.color.textLight
-                    ]
-                ]
-                [ Html.text "© 2026. Made with "
-                , Html.span [ Attributes.css [ CssUtil.color Theme.color.accent, CssUtil.marginLeft 4, Css.marginRight (Css.px 4) ] ] [ Icon.heart ]
-                , Html.text "and Elm."
-                ]
+                    cvData.contact.links
+                )
+            ]
+        , Layout.flexRow
+            [ CssUtil.textAlignCenter
+            , CssUtil.paddingTop 20
+            , CssUtil.borderTop Theme.color.border 1
+            , Layout.justifyContentCenter
+            , CssUtil.gapPx 4
+            , Layout.alignItemsCenter
+            ]
+            [ Text.view [ Text.grayLight, Text.small ] "© 2026. Made with "
+            , Html.span [ Attributes.css [ CssUtil.color Theme.color.accent ] ] [ Icon.heart ]
+            , Text.view [ Text.grayLight, Text.small ] "and Elm."
             ]
         ]

@@ -1,8 +1,8 @@
 module Page.Experience exposing (view)
 
 import Atom.Heading as Heading
-import Html.Styled as Html exposing (Html)
-import Html.Styled.Attributes as Attributes
+import Atom.Layout as Layout
+import Html.Styled exposing (Html)
 import Molecule.ExperienceCard as ExperienceCard
 import Types exposing (CvData)
 import Util.Css as CssUtil
@@ -10,20 +10,8 @@ import Util.Css as CssUtil
 
 view : CvData -> Html msg
 view cvData =
-    Html.div
-        [ Attributes.css
-            [ CssUtil.padding 24
-            , CssUtil.maxWidth 900
-            , CssUtil.marginRight 0
-            ]
-        ]
-        [ Heading.h2 "Experience"
-        , Html.div
-            [ Attributes.css
-                [ CssUtil.flexColumn
-                , CssUtil.gapPx 16
-                , CssUtil.marginTop 24
-                ]
-            ]
+    Layout.flexColumn [ CssUtil.gapPx 24 ]
+        [ String.toUpper "Experience" |> Heading.h2
+        , Layout.flexColumn [ CssUtil.gapPx 16 ]
             (List.map ExperienceCard.view cvData.experiences)
         ]

@@ -1,4 +1,4 @@
-module Atom.Heading exposing (HeadingLevel, h2, h3)
+module Atom.Heading exposing (HeadingLevel, h1, h2, h3)
 
 import Css
 import Html.Styled as Html exposing (Html)
@@ -17,7 +17,6 @@ baseStyle : List Css.Style
 baseStyle =
     [ CssUtil.color Theme.color.text
     , CssUtil.fontWeight 700
-    , CssUtil.marginBottom 12
     ]
 
 
@@ -25,33 +24,44 @@ styleForLevel : HeadingLevel -> List Css.Style
 styleForLevel level =
     case level of
         H1 ->
-            [ CssUtil.fontSize 36
-            , CssUtil.marginBottom 20
+            [ CssUtil.fontSize Theme.fontSize.xxl
             ]
 
         H2 ->
-            [ CssUtil.fontSize 28
-            , CssUtil.marginBottom 16
+            [ CssUtil.fontSize Theme.fontSize.xl
             ]
 
         H3 ->
-            [ CssUtil.fontSize 20
-            , CssUtil.marginBottom 12
+            [ CssUtil.fontSize Theme.fontSize.lg
             ]
 
 
-viewAtLevel : HeadingLevel -> String -> Html msg
-viewAtLevel level text =
-    Html.div
+view : HeadingLevel -> String -> Html msg
+view level text =
+    (case level of
+        H1 ->
+            Html.h1
+
+        H2 ->
+            Html.h2
+
+        H3 ->
+            Html.h3
+    )
         [ Attributes.css (baseStyle ++ styleForLevel level) ]
         [ Html.text text ]
 
 
+h1 : String -> Html msg
+h1 =
+    view H1
+
+
 h2 : String -> Html msg
 h2 =
-    viewAtLevel H2
+    view H2
 
 
 h3 : String -> Html msg
 h3 =
-    viewAtLevel H3
+    view H3

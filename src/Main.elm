@@ -1,5 +1,6 @@
 module Main exposing (main)
 
+import Atom.Layout as Layout
 import Browser
 import Browser.Navigation exposing (Key)
 import Css
@@ -98,32 +99,35 @@ globalStyles : Html.Html msg
 globalStyles =
     Html.div []
         [ Css.Global.global
-            [ Css.Global.body
-                [ CssUtil.backgroundColor Theme.color.background
-                , CssUtil.color Theme.color.text
-                , CssUtil.marginZero
+            [ Css.Global.selector "*, *::before, *::after"
+                [ CssUtil.boxSizingBorderBox ]
+            , Css.Global.body
+                [ CssUtil.marginZero
                 , CssUtil.paddingZero
-                , Css.fontFamilies [ "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "sans-serif" ]
-                , Css.lineHeight (Css.num 1.6)
+                , CssUtil.backgroundColor Theme.color.background
+                , CssUtil.color Theme.color.text
+                , CssUtil.fontFamilies [ "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "sans-serif" ]
+                , CssUtil.lineHeight 1.6
                 , CssUtil.property "-webkit-font-smoothing" "antialiased"
                 ]
-            , Css.Global.h1 [ CssUtil.marginZero ]
-            , Css.Global.h2 [ CssUtil.marginZero ]
-            , Css.Global.h3 [ CssUtil.marginZero ]
-            , Css.Global.p [ CssUtil.marginZero ]
-            , Css.Global.a [ CssUtil.cursorPointer ]
+            , Css.Global.selector "h1, h2, h3, p"
+                [ CssUtil.marginZero ]
+            , Css.Global.a
+                [ CssUtil.cursorPointer
+                , CssUtil.textDecorationNone
+                , Css.color Theme.color.primary
+                ]
+            , Css.Global.selector "img, video, canvas, svg"
+                [ CssUtil.maxWidthPct 100
+                , Layout.displayBlock
+                ]
             ]
         ]
 
 
 pageView : Model -> Html.Html Msg
 pageView model =
-    Html.div
-        [ Attributes.css
-            [ CssUtil.flexColumn
-            , Css.minHeight (Css.vh 100)
-            ]
-        ]
+    Layout.flexColumn [ CssUtil.minHeightVh 100 ]
         [ Navigation.view model.route
         , let
             content =
@@ -151,16 +155,14 @@ pageView model =
           in
           Html.main_
             [ Attributes.css
-                [ Css.flex (Css.num 1)
-                , CssUtil.backgroundColor Theme.color.primary
-                , CssUtil.minHeight 400
-                , CssUtil.justifyContentCenter
-                , CssUtil.displayFlex
-                , CssUtil.fontFamilies [ "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Inter", "system-ui", "sans-serif" ]
-                , Css.boxSizing Css.borderBox
+                [ CssUtil.backgroundColor Theme.color.primary
+                , CssUtil.padding 20
+                , Layout.displayFlex
+                , Layout.flexInt 1
+                , Layout.justifyContentCenter
                 ]
             ]
-            [ content ]
+            [ Layout.spacing [ CssUtil.maxWidth 1000 ] content ]
         , Footer.view model.cvData
         ]
 
