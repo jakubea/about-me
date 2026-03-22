@@ -169,7 +169,7 @@ pageView model =
 
 view : Model -> Browser.Document Msg
 view model =
-    { title = "CV - Your Name"
+    { title = "About Bea"
     , body =
         [ globalStyles |> Html.toUnstyled
         , pageView model |> Html.toUnstyled
