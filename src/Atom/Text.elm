@@ -1,5 +1,6 @@
 module Atom.Text exposing
     ( bold
+    , center
     , grayLight
     , hoverColor
     , large
@@ -21,6 +22,7 @@ type alias Config =
     { size : Size
     , weight : Weight
     , color : Maybe Css.Color
+    , textAlign : TextAlign
     , hover : Maybe Css.Color
     }
 
@@ -36,12 +38,18 @@ type Weight
     | Bold
 
 
+type TextAlign
+    = Left
+    | Center
+
+
 defaultConfig : Config
 defaultConfig =
     { size = Regular
     , weight = Normal
     , color = Nothing
     , hover = Nothing
+    , textAlign = Left
     }
 
 
@@ -67,8 +75,8 @@ element tag modifiers content =
 
 
 small : Config -> Config
-small c =
-    { c | size = Small }
+small config =
+    { config | size = Small }
 
 
 regular : Config -> Config
@@ -105,6 +113,11 @@ hoverColor modifier config =
     { config | hover = config_.color }
 
 
+center : Config -> Config
+center config =
+    { config | textAlign = Center }
+
+
 styles : Config -> List Css.Style
 styles config =
     baseStyle
@@ -112,6 +125,7 @@ styles config =
         ++ weightStyle config.weight
         ++ maybeColor config.color
         ++ hoverStyle config.hover
+        ++ textAlign config.textAlign
 
 
 maybeColor : Maybe Css.Color -> List Css.Style
@@ -161,3 +175,13 @@ hoverStyle maybeColor_ =
 
         Just color ->
             [ Css.hover [ Css.color color ] ]
+
+
+textAlign : TextAlign -> List Css.Style
+textAlign textAlign_ =
+    case textAlign_ of
+        Center ->
+            [ Css.textAlign Css.center ]
+
+        Left ->
+            [ Css.textAlign Css.left ]

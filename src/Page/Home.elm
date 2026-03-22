@@ -20,7 +20,7 @@ view { name, title, summary, profileImage } =
             ]
             [ Heading.h1 name
             , Text.view [ Text.red, Text.bold, Text.large ] title
-            , List.map (Text.view [ Text.grayLight ]) summary
+            , List.map (Text.view [ Text.grayLight, Text.center ]) summary
                 |> Layout.flexColumn [ Layout.alignItemsCenter ]
             ]
         , Layout.flexColumn
