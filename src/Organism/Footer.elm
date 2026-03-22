@@ -21,9 +21,19 @@ view cvData =
             , CssUtil.padding2 40 16
             , CssUtil.property "background-image" "linear-gradient(180deg, #000 0%, #232326 100%)"
             , CssUtil.widthPct 100
+            , Layout.flexDirectionColumn
+            , Layout.displayFlex
             ]
         ]
-        [ Layout.flexRow [ Layout.justifyContentSpaceBetween, CssUtil.paddingBottom 40, Layout.alignItemsCenter ]
+        [ Layout.flexRow
+            [ Layout.justifyContentSpaceBetween
+            , CssUtil.paddingBottom 40
+            , Layout.alignItemsCenter
+            , CssUtil.maxWidth 1000
+            , CssUtil.widthPct 100
+            , CssUtil.borderBottom Theme.color.border 1
+            , Css.alignSelf Css.center
+            ]
             [ Layout.flexColumn [ CssUtil.gapPx 10 ]
                 [ Layout.flexRow [ CssUtil.gapPx 8 ] [ Icon.mail, Text.view [ Text.regular ] cvData.contact.email ]
                     |> Link.navLink ("mailto:" ++ cvData.contact.email)
@@ -69,13 +79,6 @@ view cvData =
                                     ]
                                 ]
                         in
-                        -- [ Attributes.href link.url
-                        -- , Attributes.target "_blank"
-                        -- , Attributes.rel "noopener noreferrer"
-                        -- , Attributes.css
-                        -- , Attributes.title link.label
-                        -- , Attributes.attribute "aria-label" link.label
-                        -- ]
                         if link.label == "GitHub" then
                             Link.externalLink link.url style Icon.github
 
@@ -91,7 +94,6 @@ view cvData =
         , Layout.flexRow
             [ CssUtil.textAlignCenter
             , CssUtil.paddingTop 20
-            , CssUtil.borderTop Theme.color.border 1
             , Layout.justifyContentCenter
             , CssUtil.gapPx 4
             , Layout.alignItemsCenter

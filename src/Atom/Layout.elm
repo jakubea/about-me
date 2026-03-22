@@ -3,6 +3,7 @@ module Atom.Layout exposing
     , displayBlock
     , displayFlex
     , flexColumn
+    , flexDirectionColumn
     , flexInt
     , flexRow
     , flexWrapWrap
@@ -60,6 +61,11 @@ display =
 flexWrapWrap : Css.Style
 flexWrapWrap =
     Css.flexWrap Css.wrap
+
+
+flexDirectionColumn : Css.Style
+flexDirectionColumn =
+    Css.flexDirection Css.column
 
 
 
