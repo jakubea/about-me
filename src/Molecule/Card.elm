@@ -1,10 +1,10 @@
 module Molecule.Card exposing (viewWithBorder)
 
 import Css
-import Html.Styled as Html exposing (Html)
-import Html.Styled.Attributes as Attributes
+import Html.Styled exposing (Html)
 import Theme
 import Util.Css as CssUtil
+import Util.Layout as Layout
 
 
 baseStyle : List Css.Style
@@ -23,4 +23,4 @@ withBorderStyle =
 
 viewWithBorder : List (Html msg) -> Html msg
 viewWithBorder =
-    Html.div [ Attributes.css withBorderStyle ]
+    Layout.flexColumn withBorderStyle

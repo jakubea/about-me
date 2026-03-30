@@ -56,7 +56,7 @@ view currentRoute =
             , navItem (currentRoute == Route.Elm)
                 "Elm skills"
                 (Html.img
-                    [ Attributes.src "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Elm_logo.svg/1280px-Elm_logo.svg.png?_=20160911065740"
+                    [ Attributes.src "/elm-logo.svg"
                     , Attributes.alt "Elm logo"
                     , Attributes.css
                         [ CssUtil.heightPx 22

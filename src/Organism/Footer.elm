@@ -13,6 +13,10 @@ import Util.Layout as Layout
 
 view : CvData -> Html msg
 view cvData =
+    let
+        wrapper =
+            Layout.flexRow [ Layout.alignItemsCenter, CssUtil.gapPx 8 ]
+    in
     Html.footer
         [ Attributes.css
             [ CssUtil.backgroundColor Theme.color.primary
@@ -34,20 +38,19 @@ view cvData =
             , Layout.alignSelfCenter
             ]
             [ Layout.flexColumn [ CssUtil.gapPx 10 ]
-                [ Layout.flexRow [ CssUtil.gapPx 8 ] [ Icon.mail, Text.view [ Text.regular ] cvData.contact.email ]
+                [ wrapper [ Icon.mail, Text.view [ Text.regular ] cvData.contact.email ]
                     |> Link.navLink ("mailto:" ++ cvData.contact.email)
                         False
                         [ CssUtil.color Theme.color.textLight
                         , CssUtil.hover [ CssUtil.textDecorationUnderline, CssUtil.color Theme.color.accent ]
                         ]
-                , Layout.flexRow [ CssUtil.gapPx 8 ] [ Icon.phone, Text.view [ Text.regular ] cvData.contact.phone ]
+                , wrapper [ Icon.phone, Text.view [ Text.regular ] cvData.contact.phone ]
                     |> Link.navLink ("tel:" ++ cvData.contact.phone)
                         False
                         [ CssUtil.color Theme.color.textLight
                         , CssUtil.hover [ CssUtil.textDecorationUnderline, CssUtil.color Theme.color.accent ]
                         ]
-                , Layout.flexRow [ Layout.alignItemsCenter, CssUtil.gapPx 8 ]
-                    [ Icon.mapPin, Text.view [ Text.regular ] cvData.contact.location ]
+                , wrapper [ Icon.mapPin, Text.view [ Text.regular ] cvData.contact.location ]
                     |> Link.externalLink "https://maps.app.goo.gl/T911joMC6EY5BW6P6"
                         [ CssUtil.color Theme.color.textLight
                         , CssUtil.hover [ CssUtil.textDecorationUnderline, CssUtil.color Theme.color.accent ]
@@ -62,8 +65,6 @@ view cvData =
                                 , CssUtil.heightPx 40
                                 , CssUtil.roundedLg
                                 , CssUtil.backgroundColor Theme.color.textLight
-
-                                -- , CssUtil.color Theme.color.text
                                 , Layout.alignItemsCenter
                                 , Layout.displayFlex
                                 , Layout.justifyContentCenter
