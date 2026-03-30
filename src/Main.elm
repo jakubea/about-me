@@ -1,4 +1,4 @@
-module Main exposing (main)
+port module Main exposing (main)
 
 import Browser
 import Browser.Navigation exposing (Key)
@@ -23,7 +23,7 @@ import Util.Css as CssUtil
 import Util.Layout as Layout
 
 
-main : Program () Model Msg
+main : Program Flags Model Msg
 main =
     Browser.application
         { init = init
@@ -39,11 +39,18 @@ type alias Model =
     { route : Route
     , key : Key
     , cvData : CvData
+    , isLanguageMenuOpen : Bool
+    , selectedLanguage : String
     }
 
 
-init : () -> Url.Url -> Key -> ( Model, Cmd Msg )
-init _ url key =
+type alias Flags =
+    { selectedLanguage : String
+    }
+
+
+init : Flags -> Url.Url -> Key -> ( Model, Cmd Msg )
+init flags url key =
     let
         route =
             Route.fromUrl url
@@ -51,6 +58,8 @@ init _ url key =
     ( { route = route
       , key = key
       , cvData = cvData
+      , isLanguageMenuOpen = False
+      , selectedLanguage = flags.selectedLanguage
       }
     , Cmd.none
     )
@@ -59,6 +68,12 @@ init _ url key =
 type Msg
     = LinkClicked Browser.UrlRequest
     | UrlChanged Url.Url
+    | OpenLanguageMenu
+    | CloseLanguageMenu
+    | LanguageChanged String
+
+
+port setLanguageStorage : String -> Cmd msg
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -67,19 +82,34 @@ update msg model =
         LinkClicked urlRequest ->
             case urlRequest of
                 Browser.Internal url ->
-                    ( model
+                    ( { model | isLanguageMenuOpen = False }
                     , Browser.Navigation.pushUrl model.key (Url.toString url)
                     )
 
                 Browser.External href ->
-                    ( model
+                    ( { model | isLanguageMenuOpen = False }
                     , Browser.Navigation.load href
                     )
 
         UrlChanged url ->
-            ( { model | route = Route.fromUrl url }
+            ( { model | route = Route.fromUrl url, isLanguageMenuOpen = False }
             , Cmd.none
             )
+
+        OpenLanguageMenu ->
+            ( { model | isLanguageMenuOpen = True }, Cmd.none )
+
+        CloseLanguageMenu ->
+            ( { model | isLanguageMenuOpen = False }, Cmd.none )
+
+        LanguageChanged language ->
+            if language == model.selectedLanguage then
+                ( { model | isLanguageMenuOpen = False }, Cmd.none )
+
+            else
+                ( { model | selectedLanguage = language, isLanguageMenuOpen = False }
+                , setLanguageStorage language
+                )
 
 
 globalStyles : Html.Html msg
@@ -120,7 +150,7 @@ globalStyles =
 pageView : Model -> Html.Html Msg
 pageView model =
     Layout.flexColumn [ CssUtil.minHeightVh 100 ]
-        [ Navigation.view model.route
+        [ Navigation.view model.route model.selectedLanguage model.isLanguageMenuOpen OpenLanguageMenu CloseLanguageMenu LanguageChanged
         , let
             content =
                 case model.route of

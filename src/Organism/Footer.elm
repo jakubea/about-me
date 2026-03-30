@@ -86,7 +86,7 @@ view cvData =
                             Link.externalLinkWithLabel link.url "LinkedIn profile (opens in a new tab)" style Icon.linkedin
 
                         else
-                            Html.text link.label
+                            Text.view [ Text.small ] link.label
                     )
                     cvData.contact.links
                 )

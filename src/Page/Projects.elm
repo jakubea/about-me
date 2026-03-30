@@ -1,6 +1,7 @@
 module Page.Projects exposing (view)
 
 import Atom.Heading as Heading
+import Atom.Text as Text
 import Html.Styled as Html exposing (Html)
 import Molecule.ProjectCard as ProjectCard
 import Types exposing (CvData)
@@ -12,7 +13,7 @@ view : CvData -> Html msg
 view cvData =
     Layout.flexColumn [ CssUtil.gapPx 24 ]
         [ String.toUpper "Projects" |> Heading.h2
-        , Html.text cvData.projects.description
+        , Text.view [ Text.small ] cvData.projects.description
         , Layout.flexColumn
             [ CssUtil.gapPx 16
             , CssUtil.marginTop 24

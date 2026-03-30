@@ -5,6 +5,7 @@ import Atom.Link as Link
 import Atom.Text as Text
 import Html.Styled as Html exposing (Html)
 import Html.Styled.Attributes as Attributes
+import Molecule.LanguageSelector as LanguageSelector
 import Route exposing (Route)
 import Theme
 import Util.Css as CssUtil
@@ -35,8 +36,8 @@ navItem isActive label icon route =
             )
 
 
-view : Route -> Html msg
-view currentRoute =
+view : Route -> String -> Bool -> msg -> msg -> (String -> msg) -> Html msg
+view currentRoute selectedLanguage isLanguageMenuOpen openLanguageMenu closeLanguageMenu toLanguageMsg =
     Html.nav
         [ Attributes.css
             [ CssUtil.backgroundColor Theme.color.surface
@@ -48,25 +49,36 @@ view currentRoute =
             ]
         , Attributes.attribute "aria-label" "Main navigation"
         ]
-        [ Layout.flexRow [ CssUtil.gapPx 4, Layout.flexWrapWrap ]
-            [ navItem (currentRoute == Route.Home) "Home" Icon.home Route.Home
-            , navItem (currentRoute == Route.Experience) "Experience" Icon.briefcase Route.Experience
-            , navItem (currentRoute == Route.Projects) "Projects" Icon.code Route.Projects
-            , navItem (currentRoute == Route.Skills) "Skills" Icon.target Route.Skills
-            , navItem (currentRoute == Route.Elm)
-                "Elm skills"
-                (Html.img
-                    [ Attributes.src "/elm-logo.svg"
-                    , Attributes.alt "Elm logo"
-                    , Attributes.css
-                        [ CssUtil.heightPx 22
-                        , CssUtil.widthPx 22
-                        , CssUtil.marginRight 2
+        [ Html.div
+            [ Attributes.css
+                [ Layout.displayFlex
+                , Layout.justifyContentSpaceBetween
+                , Layout.alignItemsCenter
+                , Layout.flexWrapWrap
+                , CssUtil.gapPx 12
+                ]
+            ]
+            [ Layout.flexRow [ CssUtil.gapPx 4, Layout.flexWrapWrap ]
+                [ navItem (currentRoute == Route.Home) "Home" Icon.home Route.Home
+                , navItem (currentRoute == Route.Experience) "Experience" Icon.briefcase Route.Experience
+                , navItem (currentRoute == Route.Projects) "Projects" Icon.code Route.Projects
+                , navItem (currentRoute == Route.Skills) "Skills" Icon.target Route.Skills
+                , navItem (currentRoute == Route.Elm)
+                    "Elm skills"
+                    (Html.img
+                        [ Attributes.src "/elm-logo.svg"
+                        , Attributes.alt "Elm logo"
+                        , Attributes.css
+                            [ CssUtil.heightPx 22
+                            , CssUtil.widthPx 22
+                            , CssUtil.marginRight 2
+                            ]
                         ]
-                    ]
-                    []
-                )
-                Route.Elm
-            , navItem (currentRoute == Route.Languages) "Languages" Icon.globe Route.Languages
+                        []
+                    )
+                    Route.Elm
+                , navItem (currentRoute == Route.Languages) "Languages" Icon.globe Route.Languages
+                ]
+            , LanguageSelector.view selectedLanguage isLanguageMenuOpen openLanguageMenu closeLanguageMenu toLanguageMsg
             ]
         ]
