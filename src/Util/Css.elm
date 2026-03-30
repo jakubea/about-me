@@ -8,12 +8,12 @@ module Util.Css exposing
     , boxSizingBorderBox
     , color
     , colorInherit
-    , cursorPointer
     , focus
     , fontFamilies
     , fontSize
     , fontWeight
     , gapPx
+    , heightAuto
     , heightPct
     , heightPx
     , hover
@@ -101,11 +101,6 @@ colorInherit =
     Css.color Css.inherit
 
 
-cursorPointer : Css.Style
-cursorPointer =
-    Css.cursor Css.pointer
-
-
 focus : List Css.Style -> Css.Style
 focus =
     Css.focus
@@ -134,6 +129,11 @@ gap =
 gapPx : Float -> Css.Style
 gapPx =
     toPx >> gap
+
+
+heightAuto : Css.Style
+heightAuto =
+    Css.height Css.auto
 
 
 heightPct : Float -> Css.Style

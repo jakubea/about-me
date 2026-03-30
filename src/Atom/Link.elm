@@ -52,13 +52,6 @@ srOnlyStyles =
     ]
 
 
-focusStyles : List Css.Style
-focusStyles =
-    [ Css.focus
-        [ Css.outline3 (Css.px 2) Css.solid (Css.hex "2684FF") ]
-    ]
-
-
 link : { target : LinkTarget, ariaCurrent : Maybe AriaCurrent, styles : List Css.Style, srOnlyLabel : Maybe String } -> Html msg -> Html msg
 link config child =
     let
@@ -108,7 +101,7 @@ link config child =
     in
     Html.a
         ([ Attributes.href href
-         , Attributes.css (config.styles ++ focusStyles)
+         , Attributes.css config.styles
          ]
             ++ targetAttrs
             ++ ariaAttrs

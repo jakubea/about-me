@@ -62,7 +62,6 @@ view currentRoute =
                         [ CssUtil.heightPx 22
                         , CssUtil.widthPx 22
                         , CssUtil.marginRight 2
-                        , CssUtil.verticalAlignMiddle
                         ]
                     ]
                     []

@@ -120,8 +120,7 @@ center config =
 
 styles : Config -> List Css.Style
 styles config =
-    baseStyle
-        ++ sizeStyle config.size
+    sizeStyle config.size
         ++ weightStyle config.weight
         ++ maybeColor config.color
         ++ hoverStyle config.hover
@@ -137,11 +136,6 @@ maybeColor color =
         Just color_ ->
             CssUtil.color color_
     ]
-
-
-baseStyle : List Css.Style
-baseStyle =
-    [ CssUtil.lineHeight 1.6 ]
 
 
 sizeStyle : Size -> List Css.Style

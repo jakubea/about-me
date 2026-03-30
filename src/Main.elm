@@ -2,7 +2,6 @@ module Main exposing (main)
 
 import Browser
 import Browser.Navigation exposing (Key)
-import Css
 import Css.Global
 import Data.CvData exposing (cvData)
 import Html.Styled as Html
@@ -97,16 +96,21 @@ globalStyles =
                 , CssUtil.fontFamilies [ "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "sans-serif" ]
                 , CssUtil.lineHeight 1.6
                 , CssUtil.property "-webkit-font-smoothing" "antialiased"
+                , CssUtil.minHeightVh 100
                 ]
             , Css.Global.selector "h1, h2, h3, p"
                 [ CssUtil.marginZero ]
             , Css.Global.a
-                [ CssUtil.cursorPointer
-                , CssUtil.textDecorationNone
-                , Css.color Theme.color.primary
+                [ CssUtil.color Theme.color.primary
+                , CssUtil.textDecorationUnderline
+                ]
+            , Css.Global.selector "a:focus, button:focus"
+                [ CssUtil.outline3 2 Theme.color.accent
+                , CssUtil.outlineOffsetPx 2
                 ]
             , Css.Global.selector "img, video, canvas, svg"
                 [ CssUtil.maxWidthPct 100
+                , CssUtil.heightAuto
                 , Layout.displayBlock
                 ]
             ]
