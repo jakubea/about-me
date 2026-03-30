@@ -1,6 +1,5 @@
 module ReviewConfig exposing (config)
 
-
 import NoBooleanCase
 import NoDebug.Log
 import NoDebug.TodoOrToString

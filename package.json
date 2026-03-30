@@ -5,16 +5,32 @@
   "type": "module",
   "packageManager": "pnpm@9.15.9",
   "scripts": {
+    "dev": "pnpm clean && vite --host",
+    "dev:nodebug": "cross-env ELM_DEBUGGER=false pnpm dev",
     "build": "vite build",
-    "dev": "vite",
     "preview": "vite preview",
-    "review": "elm-review"
+    "make": "elm make",
+    "test": "elm-test \"tests/**/*Tests.elm\"",
+    "review": "elm-review",
+    "format": "pnpm format:elm-format && pnpm format:prettier",
+    "format:elm-format": "elm-format --yes ./src/ ./tests/ ./review/",
+    "format:prettier": "prettier --write \"{config,scripts,src}/**/*.{js,json}\" README.md",
+    "precommit": "pnpm format && pnpm test && pnpm review",
+    "clean": "rimraf elm-stuff dist",
+    "elm:outdated": "elm-outdated",
+    "elm:install": "node --version"
   },
   "devDependencies": {
     "elm": "0.19.1-6",
+    "elm-test": "^0.19.1-revision12",
+    "elm-format": "^0.8.7",
     "elm-review": "^2.13.5",
-    "terser": "^5.46.0",
-    "vite": "^5.0.0",
-    "vite-plugin-elm": "^3.0.1"
+    "elm-outdated": "^2.0.3",
+    "vite": "^5.4.14",
+    "vite-plugin-elm": "^3.0.1",
+    "prettier": "3.3.3",
+    "rimraf": "^6.0.1",
+    "cross-env": "^7.0.3",
+    "terser": "^5.37.0"
   }
 }
