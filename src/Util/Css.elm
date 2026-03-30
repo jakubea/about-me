@@ -128,7 +128,7 @@ fontWeight =
 
 gap : Css.Length compatible units -> Css.Style
 gap =
-    .value >> Css.property "gap"
+    .value >> property "gap"
 
 
 gapPx : Float -> Css.Style
@@ -293,7 +293,7 @@ topPx =
 
 transition : List String -> Css.Style
 transition props =
-    Css.property "transition" (String.join ", " (List.map (\p -> p ++ " 0.2s ease-in-out") props))
+    property "transition" (String.join ", " (List.map (\p -> p ++ " 0.2s ease-in-out") props))
 
 
 verticalAlignMiddle : Css.Style
