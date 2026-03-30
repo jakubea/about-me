@@ -1,0 +1,23 @@
+{
+  "upload": {
+    "type": "json",
+    "filterSource": false,
+    "deprecateMissing": true,
+    "files": [
+      {
+        "pattern": "src/js/i18n/en.json",
+        "lang": "inherited"
+      },
+      {
+        "group": "existing",
+        "pattern": "src/js/i18n/*.json",
+        "excludes": ["src/js/i18n/en.json"],
+        "lang": "${autodetectLang}"
+      }
+    ]
+  },
+  "download": {
+    "files": "src/js/i18n/${lang}.json",
+    "includeSourceLang": true
+  }
+}

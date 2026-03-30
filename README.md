@@ -184,6 +184,55 @@ This project demonstrates:
 
 This project is open source and available for reference and customization.
 
----
+## Install
 
-**Built with ❤️ in Elm**
+```bash
+cd ../.. ## Run pnpm install from root workspace
+pnpm install
+```
+
+## Install New Elm Package
+
+```bash
+pnpm elm install <package>
+```
+
+## Run Dev Server
+
+- run Vite (JavaScript and Elm compiler + dev server):
+
+```bash
+pnpm dev
+```
+
+## Check before merge
+
+```bash
+pnpm precommit
+```
+
+## Run Tests
+
+- once:
+
+```bash
+pnpm test
+```
+
+- with watcher:
+
+```bash
+pnpm test:watch
+```
+
+Open [localhost:3000](http://localhost:3000/).
+
+### Run Build
+
+```bash
+pnpm build
+```
+
+## Handling Translations
+
+[Translations HOW-TO](https://docs-internal.test.avarda.com/knowledge-base/frontend-knowledge-base/translations/localazy/)
