@@ -95,7 +95,7 @@ cvData =
         }
     , skills =
         [ { category = "Languages"
-          , items = [ "Elm", "JavaScript", "HTML5", "CSS3", "SASS", "F# (basics)", "SwiftUI# (basics)" ]
+          , items = [ "Elm", "JavaScript", "HTML5", "CSS3", "SASS", "F# (basics)", "SwiftUI (basics)" ]
           }
         , { category = "Architecture & Patterns"
           , items = [ "Model-View-Update (MVU)", "Type-driven development", "State machines", "Component-based architecture (Atomic Design)", "Client-side routing" ]

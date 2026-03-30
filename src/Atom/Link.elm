@@ -1,4 +1,4 @@
-module Atom.Link exposing (externalLink, navLink)
+module Atom.Link exposing (externalLink, externalLinkWithLabel, navLink)
 
 import Css
 import Html.Styled as Html exposing (Html)
@@ -30,6 +30,18 @@ externalLink url styles child =
         [ Attributes.href url
         , Attributes.attribute "target" "_blank"
         , Attributes.attribute "rel" "noopener noreferrer"
+        , Attributes.css styles
+        ]
+        [ child ]
+
+
+externalLinkWithLabel : String -> String -> List Css.Style -> Html msg -> Html msg
+externalLinkWithLabel url label styles child =
+    Html.a
+        [ Attributes.href url
+        , Attributes.attribute "target" "_blank"
+        , Attributes.attribute "rel" "noopener noreferrer"
+        , Attributes.attribute "aria-label" label
         , Attributes.css styles
         ]
         [ child ]

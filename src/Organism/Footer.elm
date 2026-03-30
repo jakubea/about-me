@@ -79,10 +79,10 @@ view cvData =
                                 ]
                         in
                         if link.label == "GitHub" then
-                            Link.externalLink link.url style Icon.github
+                            Link.externalLinkWithLabel link.url "GitHub profile (opens in a new tab)" style Icon.github
 
                         else if link.label == "LinkedIn" then
-                            Link.externalLink link.url style Icon.linkedin
+                            Link.externalLinkWithLabel link.url "LinkedIn profile (opens in a new tab)" style Icon.linkedin
 
                         else
                             Html.text link.label
