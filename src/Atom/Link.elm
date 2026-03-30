@@ -5,43 +5,147 @@ import Html.Styled as Html exposing (Html)
 import Html.Styled.Attributes as Attributes
 
 
-navLink : String -> Bool -> List Css.Style -> Html msg -> Html msg
-navLink targetPath isActive styles child =
-    Html.a
-        ([ Attributes.href targetPath
-         , Attributes.tabindex 0
-         , Attributes.attribute "role" "link"
-         ]
-            ++ ((if isActive then
-                    [ Attributes.attribute "aria-current" "page" ]
+type LinkTarget
+    = Internal String
+    | External String
 
-                 else
+
+type AriaCurrent
+    = Page
+    | Step
+    | Location
+
+
+ariaCurrentToString : AriaCurrent -> String
+ariaCurrentToString current =
+    case current of
+        Page ->
+            "page"
+
+        Step ->
+            "step"
+
+        Location ->
+            "location"
+
+
+externalNoticeText : String
+externalNoticeText =
+    "opens in a new tab"
+
+
+
+-- STYLES
+
+
+srOnlyStyles : List Css.Style
+srOnlyStyles =
+    [ Css.position Css.absolute
+    , Css.width (Css.px 1)
+    , Css.height (Css.px 1)
+    , Css.margin (Css.px -1)
+    , Css.overflow Css.hidden
+    , Css.padding Css.zero
+    , Css.property "clip-path" "inset(50%)"
+    , Css.property "white-space" "nowrap"
+    , Css.border Css.zero
+    ]
+
+
+focusStyles : List Css.Style
+focusStyles =
+    [ Css.focus
+        [ Css.outline3 (Css.px 2) Css.solid (Css.hex "2684FF") ]
+    ]
+
+
+link : { target : LinkTarget, ariaCurrent : Maybe AriaCurrent, styles : List Css.Style, srOnlyLabel : Maybe String } -> Html msg -> Html msg
+link config child =
+    let
+        ( href, targetAttrs, autoNotice ) =
+            case config.target of
+                Internal url ->
+                    ( url, [], Nothing )
+
+                External url ->
+                    ( url
+                    , [ Attributes.target "_blank"
+                      , Attributes.rel "noopener noreferrer"
+                      ]
+                    , Just externalNoticeText
+                    )
+
+        ariaAttrs =
+            case config.ariaCurrent of
+                Just value ->
+                    [ Attributes.attribute "aria-current" (ariaCurrentToString value) ]
+
+                Nothing ->
                     []
-                )
-                    ++ [ Attributes.css styles ]
-               )
+
+        combinedTexts =
+            case ( config.srOnlyLabel, autoNotice ) of
+                ( Nothing, Nothing ) ->
+                    []
+
+                ( Just label, Nothing ) ->
+                    [ label ]
+
+                ( Nothing, Just notice ) ->
+                    [ notice ]
+
+                ( Just label, Just notice ) ->
+                    [ label ++ ", " ++ notice ]
+
+        screenReaderElement =
+            if List.isEmpty combinedTexts then
+                []
+
+            else
+                [ Html.span [ Attributes.css srOnlyStyles ]
+                    [ " (" :: combinedTexts ++ [ ")" ] |> String.concat |> Html.text ]
+                ]
+    in
+    Html.a
+        ([ Attributes.href href
+         , Attributes.css (config.styles ++ focusStyles)
+         ]
+            ++ targetAttrs
+            ++ ariaAttrs
         )
-        [ child ]
+        (child :: screenReaderElement)
+
+
+navLink : String -> Bool -> List Css.Style -> Html msg -> Html msg
+navLink url isActive styles =
+    link
+        { target = Internal url
+        , ariaCurrent =
+            if isActive then
+                Just Page
+
+            else
+                Nothing
+        , styles = styles
+        , srOnlyLabel = Nothing
+        }
 
 
 externalLink : String -> List Css.Style -> Html msg -> Html msg
-externalLink url styles child =
-    Html.a
-        [ Attributes.href url
-        , Attributes.attribute "target" "_blank"
-        , Attributes.attribute "rel" "noopener noreferrer"
-        , Attributes.css styles
-        ]
-        [ child ]
+externalLink url styles =
+    link
+        { target = External url
+        , ariaCurrent = Nothing
+        , styles = styles
+        , srOnlyLabel = Nothing
+        }
 
 
 externalLinkWithLabel : String -> String -> List Css.Style -> Html msg -> Html msg
-externalLinkWithLabel url label styles child =
-    Html.a
-        [ Attributes.href url
-        , Attributes.attribute "target" "_blank"
-        , Attributes.attribute "rel" "noopener noreferrer"
-        , Attributes.attribute "aria-label" label
-        , Attributes.css styles
-        ]
-        [ child ]
+externalLinkWithLabel url label styles =
+    link
+        { target = External url
+        , ariaCurrent = Nothing
+        , styles = styles
+        , srOnlyLabel = Just label
+        }
