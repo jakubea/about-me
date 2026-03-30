@@ -1,12 +1,12 @@
 module Molecule.SkillGroup exposing (view)
 
 import Atom.Heading as Heading
-import Atom.Layout as Layout
 import Html.Styled exposing (Html)
 import Molecule.Badge as Badge
 import Theme
 import Types exposing (Skill)
 import Util.Css as CssUtil
+import Util.Layout as Layout
 
 
 view : Skill -> Html msg

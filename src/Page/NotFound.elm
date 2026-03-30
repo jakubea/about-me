@@ -1,11 +1,11 @@
 module Page.NotFound exposing (view)
 
 import Atom.Heading as Heading
-import Atom.Layout as Layout
 import Atom.Link as Link
 import Atom.Text as Text
 import Html.Styled exposing (Html)
 import Util.Css as CssUtil
+import Util.Layout as Layout
 
 
 view : Html msg

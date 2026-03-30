@@ -1,6 +1,5 @@
 module Molecule.LanguageCircle exposing (view)
 
-import Atom.Layout as Layout
 import Atom.Text as Text
 import Html.Styled as Html exposing (Html)
 import Html.Styled.Attributes as Attributes
@@ -8,6 +7,7 @@ import Svg.Styled as Svg
 import Svg.Styled.Attributes as SvgAttr
 import Theme
 import Util.Css as CssUtil
+import Util.Layout as Layout
 
 
 view : { percent : Float, label : String } -> Html msg

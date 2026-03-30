@@ -1,11 +1,11 @@
 module Page.Projects exposing (view)
 
 import Atom.Heading as Heading
-import Atom.Layout as Layout
 import Html.Styled as Html exposing (Html)
 import Molecule.ProjectCard as ProjectCard
 import Types exposing (CvData)
 import Util.Css as CssUtil
+import Util.Layout as Layout
 
 
 view : CvData -> Html msg

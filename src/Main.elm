@@ -1,6 +1,5 @@
 module Main exposing (main)
 
-import Atom.Layout as Layout
 import Browser
 import Browser.Navigation exposing (Key)
 import Css
@@ -22,6 +21,7 @@ import Theme
 import Types exposing (CvData)
 import Url
 import Util.Css as CssUtil
+import Util.Layout as Layout
 
 
 main : Program () Model Msg

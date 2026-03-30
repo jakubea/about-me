@@ -1,13 +1,13 @@
 module Molecule.ExperienceCard exposing (view)
 
 import Atom.Heading as Heading
-import Atom.Layout as Layout
 import Atom.Text as Text
 import Html.Styled as Html exposing (Html)
 import Molecule.Badge as Badge
 import Molecule.Card as Card
 import Types exposing (Experience)
 import Util.Css as CssUtil
+import Util.Layout as Layout
 
 
 view : Experience -> Html msg

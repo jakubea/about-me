@@ -1,13 +1,13 @@
 module Page.Home exposing (view)
 
 import Atom.Heading as Heading
-import Atom.Layout as Layout
 import Atom.Text as Text
 import Html.Styled as Html exposing (Html)
 import Html.Styled.Attributes as Attributes
 import Theme
 import Types exposing (CvData)
 import Util.Css as CssUtil
+import Util.Layout as Layout
 
 
 view : CvData -> Html msg

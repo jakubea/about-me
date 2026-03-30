@@ -1,7 +1,6 @@
 module Molecule.ProjectCard exposing (view)
 
 import Atom.Heading as Heading
-import Atom.Layout as Layout
 import Atom.Link as Link
 import Atom.Text as Text
 import Html.Styled as Html exposing (Html)
@@ -11,6 +10,7 @@ import Molecule.Card as Card
 import Theme
 import Types exposing (Project)
 import Util.Css as CssUtil
+import Util.Layout as Layout
 
 
 view : Project -> Html msg

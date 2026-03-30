@@ -1,15 +1,14 @@
 module Organism.Footer exposing (view)
 
 import Atom.Icon as Icon
-import Atom.Layout as Layout
 import Atom.Link as Link
 import Atom.Text as Text
-import Css
 import Html.Styled as Html exposing (Html)
 import Html.Styled.Attributes as Attributes
 import Theme
 import Types exposing (CvData)
 import Util.Css as CssUtil
+import Util.Layout as Layout
 
 
 view : CvData -> Html msg
@@ -32,26 +31,26 @@ view cvData =
             , CssUtil.maxWidth 1000
             , CssUtil.widthPct 100
             , CssUtil.borderBottom Theme.color.border 1
-            , Css.alignSelf Css.center
+            , Layout.alignSelfCenter
             ]
             [ Layout.flexColumn [ CssUtil.gapPx 10 ]
                 [ Layout.flexRow [ CssUtil.gapPx 8 ] [ Icon.mail, Text.view [ Text.regular ] cvData.contact.email ]
                     |> Link.navLink ("mailto:" ++ cvData.contact.email)
                         False
                         [ CssUtil.color Theme.color.textLight
-                        , CssUtil.hover [ Css.textDecoration Css.underline, CssUtil.color Theme.color.accent ]
+                        , CssUtil.hover [ CssUtil.textDecorationUnderline, CssUtil.color Theme.color.accent ]
                         ]
                 , Layout.flexRow [ CssUtil.gapPx 8 ] [ Icon.phone, Text.view [ Text.regular ] cvData.contact.phone ]
                     |> Link.navLink ("tel:" ++ cvData.contact.phone)
                         False
                         [ CssUtil.color Theme.color.textLight
-                        , CssUtil.hover [ Css.textDecoration Css.underline, CssUtil.color Theme.color.accent ]
+                        , CssUtil.hover [ CssUtil.textDecorationUnderline, CssUtil.color Theme.color.accent ]
                         ]
                 , Layout.flexRow [ Layout.alignItemsCenter, CssUtil.gapPx 8 ]
                     [ Icon.mapPin, Text.view [ Text.regular ] cvData.contact.location ]
                     |> Link.externalLink "https://maps.app.goo.gl/T911joMC6EY5BW6P6"
                         [ CssUtil.color Theme.color.textLight
-                        , CssUtil.hover [ Css.textDecoration Css.underline, CssUtil.color Theme.color.accent ]
+                        , CssUtil.hover [ CssUtil.textDecorationUnderline, CssUtil.color Theme.color.accent ]
                         ]
                 ]
             , Layout.flexRow [ CssUtil.gapPx 10 ]
@@ -69,13 +68,13 @@ view cvData =
                                 , Layout.displayFlex
                                 , Layout.justifyContentCenter
                                 , CssUtil.transition [ "background-color", "color" ]
-                                , Css.hover
+                                , CssUtil.hover
                                     [ CssUtil.backgroundColor Theme.color.accent
                                     , CssUtil.color Theme.color.white
                                     ]
-                                , Css.focus
+                                , CssUtil.focus
                                     [ CssUtil.outline3 2 Theme.color.accent
-                                    , Css.outlineOffset (Css.px 2)
+                                    , CssUtil.outlineOffsetPx 2
                                     ]
                                 ]
                         in

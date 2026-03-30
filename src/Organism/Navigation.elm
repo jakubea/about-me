@@ -1,7 +1,6 @@
 module Organism.Navigation exposing (view)
 
 import Atom.Icon as Icon
-import Atom.Layout as Layout
 import Atom.Link as Link
 import Atom.Text as Text
 import Html.Styled as Html exposing (Html)
@@ -9,6 +8,7 @@ import Html.Styled.Attributes as Attributes
 import Route exposing (Route)
 import Theme
 import Util.Css as CssUtil
+import Util.Layout as Layout
 
 
 navItem : Bool -> String -> Html msg -> Route -> Html msg

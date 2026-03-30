@@ -1,7 +1,9 @@
-module Atom.Layout exposing
+module Util.Layout exposing
     ( alignItemsCenter
+    , alignSelfCenter
     , displayBlock
     , displayFlex
+    , displayInlineBlock
     , flexColumn
     , flexDirectionColumn
     , flexInt
@@ -43,6 +45,11 @@ alignItemsCenter =
     Css.alignItems Css.center
 
 
+alignSelfCenter : Css.Style
+alignSelfCenter =
+    Css.alignSelf Css.center
+
+
 justifyContentCenter : Css.Style
 justifyContentCenter =
     Css.justifyContent Css.center
@@ -80,6 +87,11 @@ displayFlex =
 displayBlock : Css.Style
 displayBlock =
     display Css.block
+
+
+displayInlineBlock : Css.Style
+displayInlineBlock =
+    display Css.inlineBlock
 
 
 positionAbsolute : Css.Style

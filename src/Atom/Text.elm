@@ -132,10 +132,10 @@ maybeColor : Maybe Css.Color -> List Css.Style
 maybeColor color =
     [ case color of
         Nothing ->
-            Css.color Css.inherit
+            CssUtil.colorInherit
 
         Just color_ ->
-            Css.color color_
+            CssUtil.color color_
     ]
 
 
@@ -171,17 +171,17 @@ hoverStyle : Maybe Css.Color -> List Css.Style
 hoverStyle maybeColor_ =
     case maybeColor_ of
         Nothing ->
-            [ Css.hover [ Css.color Css.inherit ] ]
+            [ CssUtil.hover [ CssUtil.colorInherit ] ]
 
         Just color ->
-            [ Css.hover [ Css.color color ] ]
+            [ CssUtil.hover [ CssUtil.color color ] ]
 
 
 textAlign : TextAlign -> List Css.Style
 textAlign textAlign_ =
     case textAlign_ of
         Center ->
-            [ Css.textAlign Css.center ]
+            [ CssUtil.textAlignCenter ]
 
         Left ->
-            [ Css.textAlign Css.left ]
+            [ CssUtil.textAlignLeft ]

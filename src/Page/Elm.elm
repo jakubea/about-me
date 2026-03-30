@@ -1,6 +1,5 @@
 module Page.Elm exposing (view)
 
-import Atom.Layout as Layout
 import Css
 import Data.CvData as CvData
 import Html.Styled as Html exposing (Html)
@@ -8,6 +7,7 @@ import Html.Styled.Attributes as Attributes
 import List.Extra
 import Theme
 import Util.Css as CssUtil
+import Util.Layout as Layout
 
 
 view : Html msg
@@ -45,7 +45,6 @@ view =
                     , CssUtil.marginRight 12
                     , CssUtil.marginBottom 12
                     , CssUtil.transition [ "color", "font-size" ]
-                    , CssUtil.cursorPointer
                     ]
                 ]
                 [ Html.text word ]
