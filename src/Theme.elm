@@ -59,17 +59,17 @@ type alias StringColor =
 
 stringColor : StringColor
 stringColor =
-    { primary = "#18181a" -- deep black
-    , accent = "#ff2d2d" -- red accent
-    , text = "#ffffff" -- white text
-    , textLight = "#cccccc" -- lighter gray
-    , background = "#18181a" -- deep black
-    , surface = "#232326" -- dark gray for cards
-    , border = "#ff2d2d" -- red border
+    { primary = "#18181a"
+    , accent = "#ff2d2d"
+    , text = "#ffffff"
+    , textLight = "#cccccc"
+    , background = "#18181a"
+    , surface = "#232326"
+    , border = "#ff2d2d"
     , white = "#ffffff"
-    , gray = "#232326" -- dark gray
+    , gray = "#232326"
     , success = "#22c55e"
-    , error = "#ff2d2d" -- red for errors
+    , error = "#ff2d2d"
     }
 
 

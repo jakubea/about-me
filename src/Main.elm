@@ -36,10 +36,6 @@ main =
         }
 
 
-
----- MODEL ----
-
-
 type alias Model =
     { route : Route
     , key : Key
@@ -59,10 +55,6 @@ init _ url key =
       }
     , Cmd.none
     )
-
-
-
----- UPDATE ----
 
 
 type Msg
@@ -89,10 +81,6 @@ update msg model =
             ( { model | route = Route.fromUrl url }
             , Cmd.none
             )
-
-
-
----- VIEW ----
 
 
 globalStyles : Html.Html msg
