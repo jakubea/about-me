@@ -101,7 +101,7 @@ cvData =
           , items = [ "Model-View-Update (MVU)", "Type-driven development", "State machines", "Component-based architecture (Atomic Design)", "Client-side routing" ]
           }
         , { category = "Frontend Tools"
-          , items = [ "SPA (Single Page Applications)", "elm-ui", "Tailwind", "elm-css", "elm-test", "elm-review", "i18n", "Vite", "Webpack" ]
+          , items = [ "SPA (Single Page Applications)", "elm-css", "elm-review", "elm-test", "Vite", "i18n", "elm-ui", "Webpack", "Tailwind", "Browser DevTools", "Debugging with DevTools", "Performance profiling", "Network inspection" ]
           }
         , { category = "CI/CD & Ops"
           , items = [ "CI/CD workflows", "Code review", "Release & Deployment", "pnpm", "Git", "Azure DevOps", "GitHub", "Netlify" ]
