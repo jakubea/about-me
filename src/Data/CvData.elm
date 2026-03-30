@@ -118,9 +118,9 @@ cvData =
         ]
     , languages =
         [ { name = "Slovak", percent = 100 }
-        , { name = "Czech", percent = 90 }
-        , { name = "English", percent = 85 }
-        , { name = "Spanish (in progress)", percent = 40 }
+        , { name = "Czech", percent = 95 }
+        , { name = "English", percent = 90 }
+        , { name = "Spanish (in progress)", percent = 35 }
         , { name = "French", percent = 15 }
         ]
     , contact =
