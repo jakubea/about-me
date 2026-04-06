@@ -17,9 +17,13 @@ import Util.Layout as Layout
 navItem : Bool -> String -> Html msg -> Route -> Html msg
 navItem isActive label icon route =
     let
-        ( borderBottom, color ) =
+        ( activeStyles, color ) =
             if isActive then
-                ( [ CssUtil.borderBottom Theme.color.accent 2 ], Theme.color.accent )
+                ( [ CssUtil.backgroundColor Theme.color.surface
+                  , CssUtil.roundedLg
+                  ]
+                , Theme.color.accent
+                )
 
             else
                 ( [], Theme.color.textLight )
@@ -30,11 +34,21 @@ navItem isActive label icon route =
             isActive
             ([ Layout.alignItemsCenter
              , CssUtil.padding2 8 12
+             , CssUtil.roundedLg
              , CssUtil.color color
              , CssUtil.textDecorationNone
-             , CssUtil.hover [ CssUtil.color Theme.color.accent ]
+             , CssUtil.transition [ "color", "transform", "background-color", "box-shadow" ]
+             , CssUtil.hover
+                [ CssUtil.color Theme.color.accent
+                , CssUtil.property "transform" "translate3d(0, -1px, 0)"
+                , CssUtil.property "background" "rgba(255, 255, 255, 0.04)"
+                ]
+             , CssUtil.focus
+                [ CssUtil.outlineNone
+                , CssUtil.boxShadowValue "0 0 0 1px rgba(255, 45, 45, 0.55)"
+                ]
              ]
-                ++ borderBottom
+                ++ activeStyles
             )
 
 

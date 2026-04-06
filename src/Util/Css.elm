@@ -1,10 +1,14 @@
 module Util.Css exposing
-    ( backgroundColor
+    ( animationDelayMs
+    , animationDurationMs
+    , animationName
+    , backgroundColor
     , border
     , borderBottom
     , borderRadius
     , borderRadiusPct
     , borderTop
+    , boxShadowValue
     , boxSizingBorderBox
     , color
     , colorInherit
@@ -21,6 +25,7 @@ module Util.Css exposing
     , lastChild
     , leftPx
     , lineHeight
+    , listStyleNone
     , marginBottom
     , marginRight
     , marginTop
@@ -28,7 +33,10 @@ module Util.Css exposing
     , maxWidth
     , maxWidthPct
     , minHeightVh
+    , minWidthPx
+    , opacity
     , outline3
+    , outlineNone
     , outlineOffsetPx
     , overflowHidden
     , padding
@@ -52,10 +60,28 @@ module Util.Css exposing
     , verticalAlignMiddle
     , widthPct
     , widthPx
+    , willChangeOpacityTransform
+    , willChangeTransform
     , zIndex
     )
 
 import Css
+import Css.Animations as Animations
+
+
+animationDelayMs : Float -> Css.Style
+animationDelayMs =
+    Css.ms >> Css.animationDelay
+
+
+animationDurationMs : Float -> Css.Style
+animationDurationMs =
+    Css.ms >> Css.animationDuration
+
+
+animationName : Animations.Keyframes {} -> Css.Style
+animationName =
+    Css.animationName
 
 
 backgroundColor : Css.Color -> Css.Style
@@ -91,6 +117,11 @@ borderTop color_ borderWidth_ =
 boxSizingBorderBox : Css.Style
 boxSizingBorderBox =
     Css.boxSizing Css.borderBox
+
+
+boxShadowValue : String -> Css.Style
+boxShadowValue =
+    property "box-shadow"
 
 
 color : Css.Color -> Css.Style
@@ -173,6 +204,11 @@ lineHeight n =
     Css.lineHeight (Css.num n)
 
 
+listStyleNone : Css.Style
+listStyleNone =
+    Css.listStyle Css.none
+
+
 marginBottom : Float -> Css.Style
 marginBottom =
     toPx >> Css.marginBottom
@@ -208,6 +244,16 @@ minHeightVh =
     Css.vh >> Css.minHeight
 
 
+minWidthPx : Float -> Css.Style
+minWidthPx =
+    toPx >> Css.minWidth
+
+
+opacity : Float -> Css.Style
+opacity =
+    Css.num >> Css.opacity
+
+
 overflowHidden : Css.Style
 overflowHidden =
     Css.overflow Css.hidden
@@ -216,6 +262,11 @@ overflowHidden =
 outline3 : Float -> Css.Color -> Css.Style
 outline3 outlineWidth outlineColor =
     Css.outline3 (toPx outlineWidth) Css.solid outlineColor
+
+
+outlineNone : Css.Style
+outlineNone =
+    Css.outline Css.none
 
 
 outlineOffsetPx : Float -> Css.Style
@@ -311,6 +362,21 @@ transition props =
 verticalAlignMiddle : Css.Style
 verticalAlignMiddle =
     Css.verticalAlign Css.middle
+
+
+willChange : String -> Css.Style
+willChange =
+    property "will-change"
+
+
+willChangeTransform : Css.Style
+willChangeTransform =
+    willChange "transform"
+
+
+willChangeOpacityTransform : Css.Style
+willChangeOpacityTransform =
+    willChange "opacity, transform"
 
 
 widthPct : Float -> Css.Style

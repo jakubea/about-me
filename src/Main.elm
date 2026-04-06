@@ -6,6 +6,7 @@ import Css.Global
 import Data.CvData exposing (cvData)
 import Html.Styled as Html
 import Html.Styled.Attributes as Attributes
+import Html.Styled.Keyed as Keyed
 import I18n
 import Json.Decode as Decode
 import Json.Decode.Pipeline as Pipeline
@@ -28,6 +29,7 @@ import Types exposing (Flags, LanguageCode(..))
 import Url
 import Util.Css as CssUtil
 import Util.Layout as Layout
+import Util.Motion as Motion
 import Util.Parser as Parser
 
 
@@ -206,6 +208,9 @@ globalStyles =
             , Css.Global.a
                 [ CssUtil.color Theme.color.primary
                 , CssUtil.textDecorationUnderline
+                , CssUtil.property "text-decoration-thickness" "0.08em"
+                , CssUtil.property "text-underline-offset" "0.16em"
+                , CssUtil.transition [ "color", "text-decoration-color", "text-underline-offset" ]
                 ]
             , Css.Global.selector "button"
                 [ CssUtil.marginZero
@@ -271,7 +276,21 @@ pageView taco route =
                 , Layout.justifyContentCenter
                 ]
             ]
-            [ Layout.spacing [ CssUtil.maxWidth 1000 ] content ]
+            [ Keyed.node "div"
+                []
+                [ ( Route.toPath route
+                  , Html.div
+                        [ Attributes.css
+                            (Motion.revealStyleWithEasing "cubic-bezier(0.2, 0.8, 0.2, 1)" "translate3d(0, -10px, 0)" 760 0
+                                ++ [ CssUtil.maxWidth 1000
+                                   , CssUtil.widthPct 100
+                                   ]
+                            )
+                        ]
+                        [ content ]
+                  )
+                ]
+            ]
         , Footer.view translators cvData
         ]
 

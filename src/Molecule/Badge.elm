@@ -32,6 +32,8 @@ view colorVariant label =
             , CssUtil.borderRadius 4
             , CssUtil.fontWeight 500
             , CssUtil.border textColor 1
+            , CssUtil.transition [ "transform" ]
+            , CssUtil.hover [ CssUtil.property "transform" "scale(1.06)" ]
             ]
         ]
         [ Text.view [ Text.small ] label ]

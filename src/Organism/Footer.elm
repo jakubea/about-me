@@ -48,18 +48,21 @@ view translators { contact } =
                     |> Link.navLink ("mailto:" ++ translateFn translators "email")
                         False
                         [ CssUtil.color Theme.color.textLight
-                        , CssUtil.hover [ CssUtil.textDecorationUnderline, CssUtil.color Theme.color.accent ]
+                        , CssUtil.transition [ "color", "transform" ]
+                        , CssUtil.hover [ CssUtil.textDecorationUnderline, CssUtil.color Theme.color.accent, CssUtil.property "transform" "translate3d(2px, 0, 0)" ]
                         ]
                 , wrapper [ Icon.phone, translateFn translators "phone" |> Text.view [ Text.regular ] ]
                     |> Link.navLink ("tel:" ++ translateFn translators "phone")
                         False
                         [ CssUtil.color Theme.color.textLight
-                        , CssUtil.hover [ CssUtil.textDecorationUnderline, CssUtil.color Theme.color.accent ]
+                        , CssUtil.transition [ "color", "transform" ]
+                        , CssUtil.hover [ CssUtil.textDecorationUnderline, CssUtil.color Theme.color.accent, CssUtil.property "transform" "translate3d(2px, 0, 0)" ]
                         ]
                 , wrapper [ Icon.mapPin, translateFn translators "location" |> Text.view [ Text.regular ] ]
                     |> Link.externalLink "https://maps.app.goo.gl/T911joMC6EY5BW6P6"
                         [ CssUtil.color Theme.color.textLight
-                        , CssUtil.hover [ CssUtil.textDecorationUnderline, CssUtil.color Theme.color.accent ]
+                        , CssUtil.transition [ "color", "transform" ]
+                        , CssUtil.hover [ CssUtil.textDecorationUnderline, CssUtil.color Theme.color.accent, CssUtil.property "transform" "translate3d(2px, 0, 0)" ]
                         ]
                 ]
             , Layout.flexRow [ CssUtil.gapPx 10 ]
@@ -74,10 +77,11 @@ view translators { contact } =
                                 , Layout.alignItemsCenter
                                 , Layout.displayFlex
                                 , Layout.justifyContentCenter
-                                , CssUtil.transition [ "background-color", "color" ]
+                                , CssUtil.transition [ "background-color", "color", "transform" ]
                                 , CssUtil.hover
                                     [ CssUtil.backgroundColor Theme.color.accent
                                     , CssUtil.color Theme.color.white
+                                    , CssUtil.property "transform" "translate3d(0, -2px, 0)"
                                     ]
                                 , CssUtil.focus
                                     [ CssUtil.outline3 2 Theme.color.accent

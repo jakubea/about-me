@@ -21,6 +21,17 @@ withBorderStyle =
     baseStyle ++ [ CssUtil.border Theme.color.white 1 ]
 
 
+hoverLiftStyle : List Css.Style
+hoverLiftStyle =
+    [ CssUtil.transition [ "transform", "box-shadow", "border-color" ]
+    , CssUtil.willChangeTransform
+    , CssUtil.hover
+        [ CssUtil.property "transform" "translate3d(0, -3px, 0)"
+        , CssUtil.boxShadowValue "0 9px 18px rgba(0, 0, 0, 0.16)"
+        ]
+    ]
+
+
 viewWithBorder : List (Html msg) -> Html msg
 viewWithBorder =
-    Layout.flexColumn withBorderStyle
+    Layout.flexColumn (hoverLiftStyle ++ Layout.displayFlex :: Layout.flexDirectionColumn :: withBorderStyle)

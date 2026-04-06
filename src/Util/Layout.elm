@@ -4,6 +4,7 @@ module Util.Layout exposing
     , alignSelfCenter
     , displayBlock
     , displayFlex
+    , displayGrid
     , displayInlineBlock
     , flexColumn
     , flexDirectionColumn
@@ -50,6 +51,11 @@ displayBlock =
 displayFlex : Css.Style
 displayFlex =
     Css.displayFlex
+
+
+displayGrid : Css.Style
+displayGrid =
+    Css.property "display" "grid"
 
 
 displayInlineBlock : Css.Style

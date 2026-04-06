@@ -8,6 +8,7 @@ import List.Extra
 import Theme
 import Util.Css as CssUtil
 import Util.Layout as Layout
+import Util.Motion as Motion
 
 
 view : Html msg
@@ -40,12 +41,14 @@ view =
             in
             Html.span
                 [ Attributes.css
-                    [ CssUtil.fontSize size
-                    , CssUtil.color color
-                    , CssUtil.marginRight 12
-                    , CssUtil.marginBottom 12
-                    , CssUtil.transition [ "color", "font-size" ]
-                    ]
+                    (Motion.revealStyle "translate3d(0, 10px, 0) scale(0.98)" 480 (toFloat (idx * 35))
+                        ++ [ CssUtil.fontSize size
+                           , CssUtil.color color
+                           , CssUtil.marginRight 12
+                           , CssUtil.marginBottom 12
+                           , CssUtil.transition [ "color", "font-size" ]
+                           ]
+                    )
                 ]
                 [ Html.text word ]
     in
@@ -53,6 +56,7 @@ view =
         [ List.indexedMap styledWord topics
             |> Layout.flexRow
                 [ CssUtil.widthPct 100
+                , CssUtil.property "animation" "none"
                 , Layout.flexWrapWrap
                 , Layout.justifyContentCenter
                 , Layout.alignItemsCenter
