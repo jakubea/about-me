@@ -60,7 +60,7 @@
       "experience": "Experience"
     },
     "Home": {
-      "experience": "Passionate Elm developer with 9 years of production experience building type-safe, maintainable web applications — mainly in the financial domain. Experienced in functional programming, state management, and creating elegant solutions to complex problems.",
+      "experience": "Passionate Elm developer with {{years}} years, {{months}} months and {{days}} days of production experience building type-safe, maintainable web applications — mainly in the financial domain. Experienced in functional programming, state management, and creating elegant solutions to complex problems.",
       "focus": "Strong focus on code quality, testing, and performance, with experience working on large-scale applications and handling real-world production deployments.",
       "freeTime": "Outside of work, I’m a passionate traveller ✈️, nature lover 🌳, gym enthusiast 💪, and beer gourmet 🍺.",
       "name": "Bea Jakubcova",
