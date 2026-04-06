@@ -1,5 +1,72 @@
 {
   "Main": {
-    "title": "About Bea"
+    "title": "Bea - o mně"
+  },
+  "Molecule": {
+    "ExperienceCard": {
+      "CnGroup": {
+        "company": "CN group / Ciklum",
+        "description": [
+          "8+ years in FinTech: Developing customer apps, payment gateways, and internal banking tools.",
+          "Technical Focus: Building reliable frontends using Elm.",
+          "Technical Design: Designing solutions and contributing to UI/UX to ensure features make sense for the user.",
+          "Team Support: Experienced in mentoring colleagues and briefly leading a small frontend team.",
+          "Task Management: Breaking down requirements into technical tasks and managing the backlog.",
+          "Release & Deploy: Owning the deployment process and ensuring code reaches production safely."
+        ],
+        "endDate": "Present",
+        "position": "Elm developer",
+        "startDate": "2017",
+        "technologies": [
+          "Elm",
+          "elm-css",
+          "HTML5",
+          "pnpm",
+          "Vite",
+          "REST APIs",
+          "OAuth 2.0 (PKCE)",
+          "i18n (Localazy)",
+          "elm-test",
+          "Frontend Architecture",
+          "Technical Design",
+          "Frontend Lead",
+          "Task Management",
+          "Release & Deployment",
+          "Payment Gateways",
+          "Internal Banking Tools"
+        ]
+      }
+    }
+  },
+  "Organism": {
+    "Footer": {
+      "andElm": "and Elm.",
+      "copyright": "© 2026. Made with ",
+      "email": "jakubea@gmail.com",
+      "location": "Praha, Česká republika",
+      "phone": "+420 777 229 264"
+    },
+    "Navigation": {
+      "elmSkills": "Elm dovednosti",
+      "experience": "Zkušenosti",
+      "home": "Domů",
+      "languages": "Jazyky",
+      "projects": "Projekty",
+      "skills": "Dovednosti"
+    }
+  },
+  "Page": {
+    "Experience": {
+      "experience": "Experience"
+    },
+    "Home": {
+      "experience": "Nadšená vývojářka v jazyce Elm s devítiletou praxí v produkčním prostředí, specializující se na tvorbu typově bezpečných a snadno udržovatelných webových aplikací – především v oblasti financí. Mám zkušenosti s funkcionálním programováním, správou stavu a vytvářením elegantních řešení složitých problémů.",
+      "focus": "Silný důraz na kvalitu kódu, testování a výkon, spolu se zkušenostmi s prací na rozsáhlých aplikacích a se správou reálných produkčních nasazení.",
+      "freeTime": "Mimo práci jsem vášnivá cestovatelka ✈️, milovnice přírody 🌳, nadšenkyně do cvičení 💪 a pivní gurmánka 🍺.",
+      "name": "Bea Jakubcová",
+      "profilePhotoAlt": "Profilová fotka",
+      "thinking": "Jazyk Elm ovlivnil můj pohled na software – upřednostňuji jednoduchost, silné typy a snahu zabránit vzniku neplatných stavů. Jsem také vždy zvědavá a otevřená učení se novým věcem.",
+      "title": "Elm vývojářka"
+    }
   }
 }

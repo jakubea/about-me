@@ -8,6 +8,7 @@ module Util.Css exposing
     , boxSizingBorderBox
     , color
     , colorInherit
+    , cursorPointer
     , focus
     , fontFamilies
     , fontSize
@@ -37,6 +38,7 @@ module Util.Css exposing
     , paddingZero
     , positionSticky
     , property
+    , rightPx
     , roundedLg
     , shadowMd
     , textAlignCenter
@@ -99,6 +101,11 @@ color =
 colorInherit : Css.Style
 colorInherit =
     Css.color Css.inherit
+
+
+cursorPointer : Css.Style
+cursorPointer =
+    Css.cursor Css.pointer
 
 
 focus : List Css.Style -> Css.Style
@@ -249,6 +256,11 @@ positionSticky =
 property : String -> String -> Css.Style
 property =
     Css.property
+
+
+rightPx : Float -> Css.Style
+rightPx =
+    toPx >> Css.right
 
 
 roundedLg : Css.Style

@@ -1,5 +1,6 @@
 module Util.Layout exposing
     ( alignItemsCenter
+    , alignItemsFlexEnd
     , alignSelfCenter
     , displayBlock
     , displayFlex
@@ -24,6 +25,11 @@ import Html.Styled.Attributes as Attributes
 alignItemsCenter : Css.Style
 alignItemsCenter =
     Css.alignItems Css.center
+
+
+alignItemsFlexEnd : Css.Style
+alignItemsFlexEnd =
+    Css.alignItems Css.flexEnd
 
 
 alignSelfCenter : Css.Style

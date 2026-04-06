@@ -6,7 +6,7 @@ export const getFlags = async () => {
   const translations = await translationsForSelectedLanguage(selectedLanguage);
 
   return {
-    translations,
-    selectedLanguage,
+    translations: translations,
+    selectedLanguage: selectedLanguage,
   };
 };

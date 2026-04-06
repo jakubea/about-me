@@ -1,11 +1,24 @@
-module Types exposing
-    ( Contact
-    , CvData
-    , Experience
-    , Project
-    , Skill
-    , SocialLink
-    )
+module Types exposing (Contact, CvData, Experience, Flags, LanguageCode(..), Project, Skill, SocialLink, allLanguageCodes)
+
+import I18n
+
+
+type alias Flags =
+    { translations : I18n.Translations
+    , selectedLanguage : LanguageCode
+    }
+
+
+type LanguageCode
+    = En
+    | Es
+    | Sk
+    | Cs
+
+
+allLanguageCodes : List LanguageCode
+allLanguageCodes =
+    [ En, Es, Cs, Sk ]
 
 
 type alias LanguageProficiency =

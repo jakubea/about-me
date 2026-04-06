@@ -165,7 +165,7 @@ hoverStyle : Maybe Css.Color -> List Css.Style
 hoverStyle maybeColor_ =
     case maybeColor_ of
         Nothing ->
-            [ CssUtil.hover [ CssUtil.colorInherit ] ]
+            []
 
         Just color ->
             [ CssUtil.hover [ CssUtil.color color ] ]

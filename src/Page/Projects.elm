@@ -2,7 +2,7 @@ module Page.Projects exposing (view)
 
 import Atom.Heading as Heading
 import Atom.Text as Text
-import Html.Styled as Html exposing (Html)
+import Html.Styled exposing (Html)
 import Molecule.ProjectCard as ProjectCard
 import Types exposing (CvData)
 import Util.Css as CssUtil

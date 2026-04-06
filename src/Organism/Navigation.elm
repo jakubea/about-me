@@ -5,9 +5,11 @@ import Atom.Link as Link
 import Atom.Text as Text
 import Html.Styled as Html exposing (Html)
 import Html.Styled.Attributes as Attributes
-import Molecule.LanguageSelector as LanguageSelector
+import I18n
 import Route exposing (Route)
+import Taco
 import Theme
+import Types exposing (LanguageCode)
 import Util.Css as CssUtil
 import Util.Layout as Layout
 
@@ -36,8 +38,17 @@ navItem isActive label icon route =
             )
 
 
-view : Route -> String -> Bool -> msg -> msg -> (String -> msg) -> Html msg
-view currentRoute selectedLanguage isLanguageMenuOpen openLanguageMenu closeLanguageMenu toLanguageMsg =
+translateFn : I18n.Translators -> String -> String
+translateFn translators =
+    I18n.translateFn translators "Organism.Navigation."
+
+
+view : Taco.Taco -> Route -> Bool -> msg -> msg -> (LanguageCode -> msg) -> Html msg
+view taco currentRoute _ _ _ _ =
+    let
+        translators =
+            Taco.getTranslators taco
+    in
     Html.nav
         [ Attributes.css
             [ CssUtil.backgroundColor Theme.color.surface
@@ -59,12 +70,12 @@ view currentRoute selectedLanguage isLanguageMenuOpen openLanguageMenu closeLang
                 ]
             ]
             [ Layout.flexRow [ CssUtil.gapPx 4, Layout.flexWrapWrap ]
-                [ navItem (currentRoute == Route.Home) "Home" Icon.home Route.Home
-                , navItem (currentRoute == Route.Experience) "Experience" Icon.briefcase Route.Experience
-                , navItem (currentRoute == Route.Projects) "Projects" Icon.code Route.Projects
-                , navItem (currentRoute == Route.Skills) "Skills" Icon.target Route.Skills
+                [ navItem (currentRoute == Route.Home) (translateFn translators "home") Icon.home Route.Home
+                , navItem (currentRoute == Route.Experience) (translateFn translators "experience") Icon.briefcase Route.Experience
+                , navItem (currentRoute == Route.Projects) (translateFn translators "projects") Icon.code Route.Projects
+                , navItem (currentRoute == Route.Skills) (translateFn translators "skills") Icon.target Route.Skills
                 , navItem (currentRoute == Route.Elm)
-                    "Elm skills"
+                    (translateFn translators "elmSkills")
                     (Html.img
                         [ Attributes.src "/elm-logo.svg"
                         , Attributes.alt "Elm logo"
@@ -77,8 +88,10 @@ view currentRoute selectedLanguage isLanguageMenuOpen openLanguageMenu closeLang
                         []
                     )
                     Route.Elm
-                , navItem (currentRoute == Route.Languages) "Languages" Icon.globe Route.Languages
+                , navItem (currentRoute == Route.Languages) (translateFn translators "languages") Icon.globe Route.Languages
                 ]
-            , LanguageSelector.view selectedLanguage isLanguageMenuOpen openLanguageMenu closeLanguageMenu toLanguageMsg
+
+            -- TODO: Add translations
+            -- , LanguageSelector.view (Taco.getLanguage taco) isLanguageMenuOpen openLanguageMenu closeLanguageMenu toLanguageMsg
             ]
         ]

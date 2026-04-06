@@ -5,7 +5,6 @@ module Atom.Icon exposing
     , globe
     , heart
     , home
-    , language
     , linkedin
     , mail
     , mapPin
@@ -107,17 +106,6 @@ heart =
 home : Svg msg
 home =
     strokedSvg [ Svg.path [ SvgAttributes.d "M3 12h18M12 3v18m-9-9l9-9 9 9" ] [] ]
-
-
-language : Html msg
-language =
-    strokedSvg
-        [ Svg.path [ SvgAttributes.d "M4.5 18L8 7l3.5 11M5.9 13.5h4.2" ] []
-        , Svg.path [ SvgAttributes.d "M11 9h2.5M12.5 7.5 14 9l-1.5 1.5" ] []
-        , Svg.path [ SvgAttributes.d "M15 7h5" ] []
-        , Svg.path [ SvgAttributes.d "M17.5 7c0 4.7-1.7 8-4.5 10" ] []
-        , Svg.path [ SvgAttributes.d "M15.5 11.5c.9 2.1 2.5 4.1 4.5 5.5" ] []
-        ]
 
 
 linkedin : Html msg

@@ -28,6 +28,14 @@ export const normalizeLanguage = (language) => {
   return null;
 };
 
+const getStoredLanguage = () => {
+  try {
+    return localStorage.getItem(LANGUAGE_STORAGE_KEY);
+  } catch {
+    return null;
+  }
+};
+
 export const getSelectedLanguage = () =>
   normalizeLanguage(getStoredLanguage()) ??
   normalizeLanguage(getPreferredLanguage()) ??
@@ -49,14 +57,6 @@ export const setSelectedLanguage = (language) => {
   } catch {}
 
   setLangAttribute(normalizedLanguage);
-};
-
-const getStoredLanguage = () => {
-  try {
-    return localStorage.getItem(LANGUAGE_STORAGE_KEY);
-  } catch {
-    return null;
-  }
 };
 
 export const subscribeSetLanguageStorage = (app) => {

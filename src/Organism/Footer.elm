@@ -5,14 +5,20 @@ import Atom.Link as Link
 import Atom.Text as Text
 import Html.Styled as Html exposing (Html)
 import Html.Styled.Attributes as Attributes
+import I18n
 import Theme
 import Types exposing (CvData)
 import Util.Css as CssUtil
 import Util.Layout as Layout
 
 
-view : CvData -> Html msg
-view cvData =
+translateFn : I18n.Translators -> String -> String
+translateFn translators =
+    I18n.translateFn translators "Organism.Footer."
+
+
+view : I18n.Translators -> CvData -> Html msg
+view translators { contact } =
     let
         wrapper =
             Layout.flexRow [ Layout.alignItemsCenter, CssUtil.gapPx 8 ]
@@ -38,19 +44,19 @@ view cvData =
             , Layout.alignSelfCenter
             ]
             [ Layout.flexColumn [ CssUtil.gapPx 10 ]
-                [ wrapper [ Icon.mail, Text.view [ Text.regular ] cvData.contact.email ]
-                    |> Link.navLink ("mailto:" ++ cvData.contact.email)
+                [ wrapper [ Icon.mail, translateFn translators "email" |> Text.view [ Text.regular ] ]
+                    |> Link.navLink ("mailto:" ++ translateFn translators "email")
                         False
                         [ CssUtil.color Theme.color.textLight
                         , CssUtil.hover [ CssUtil.textDecorationUnderline, CssUtil.color Theme.color.accent ]
                         ]
-                , wrapper [ Icon.phone, Text.view [ Text.regular ] cvData.contact.phone ]
-                    |> Link.navLink ("tel:" ++ cvData.contact.phone)
+                , wrapper [ Icon.phone, translateFn translators "phone" |> Text.view [ Text.regular ] ]
+                    |> Link.navLink ("tel:" ++ translateFn translators "phone")
                         False
                         [ CssUtil.color Theme.color.textLight
                         , CssUtil.hover [ CssUtil.textDecorationUnderline, CssUtil.color Theme.color.accent ]
                         ]
-                , wrapper [ Icon.mapPin, Text.view [ Text.regular ] cvData.contact.location ]
+                , wrapper [ Icon.mapPin, translateFn translators "location" |> Text.view [ Text.regular ] ]
                     |> Link.externalLink "https://maps.app.goo.gl/T911joMC6EY5BW6P6"
                         [ CssUtil.color Theme.color.textLight
                         , CssUtil.hover [ CssUtil.textDecorationUnderline, CssUtil.color Theme.color.accent ]
@@ -88,7 +94,7 @@ view cvData =
                         else
                             Text.view [ Text.small ] link.label
                     )
-                    cvData.contact.links
+                    contact.links
                 )
             ]
         , Layout.flexRow
@@ -98,8 +104,8 @@ view cvData =
             , CssUtil.gapPx 4
             , Layout.alignItemsCenter
             ]
-            [ Text.view [ Text.grayLight, Text.small ] "© 2026. Made with "
+            [ translateFn translators "copyright" |> Text.view [ Text.grayLight, Text.small ]
             , Html.span [ Attributes.css [ CssUtil.color Theme.color.accent ] ] [ Icon.heart ]
-            , Text.view [ Text.grayLight, Text.small ] "and Elm."
+            , translateFn translators "andElm" |> Text.view [ Text.grayLight, Text.small ]
             ]
         ]

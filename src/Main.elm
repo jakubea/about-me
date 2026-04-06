@@ -6,6 +6,10 @@ import Css.Global
 import Data.CvData exposing (cvData)
 import Html.Styled as Html
 import Html.Styled.Attributes as Attributes
+import I18n
+import Json.Decode as Decode
+import Json.Decode.Pipeline as Pipeline
+import Json.Encode as Encode
 import Organism.Footer as Footer
 import Organism.Navigation as Navigation
 import Page.Elm as ElmPage
@@ -16,53 +20,60 @@ import Page.NotFound as NotFoundPage
 import Page.Projects as ProjectsPage
 import Page.Skills as SkillsPage
 import Route exposing (Route)
+import Taco exposing (Taco)
 import Theme
-import Types exposing (CvData)
+import Types exposing (Flags, LanguageCode(..))
 import Url
 import Util.Css as CssUtil
 import Util.Layout as Layout
+import Util.Parser as Parser
 
 
-main : Program Flags Model Msg
+main : Program RawFlags Model Msg
 main =
     Browser.application
         { init = init
         , view = view
         , update = update
-        , subscriptions = \_ -> Sub.none
+        , subscriptions = subscriptions
         , onUrlRequest = LinkClicked
         , onUrlChange = UrlChanged
         }
 
 
-type alias Model =
-    { route : Route
-    , key : Key
-    , cvData : CvData
-    , isLanguageMenuOpen : Bool
-    , selectedLanguage : String
-    }
+type Model
+    = Ready Key Taco Route
+    | Error String
 
 
-type alias Flags =
-    { selectedLanguage : String
-    }
+type alias RawFlags =
+    Encode.Value
 
 
-init : Flags -> Url.Url -> Key -> ( Model, Cmd Msg )
-init flags url key =
-    let
-        route =
-            Route.fromUrl url
-    in
-    ( { route = route
-      , key = key
-      , cvData = cvData
-      , isLanguageMenuOpen = False
-      , selectedLanguage = flags.selectedLanguage
-      }
-    , Cmd.none
-    )
+init : RawFlags -> Url.Url -> Key -> ( Model, Cmd Msg )
+init rawFlags url key =
+    case Decode.decodeValue flagsDecoder rawFlags of
+        Ok flagsDecoded ->
+            let
+                route =
+                    Route.fromUrl url
+
+                taco =
+                    Taco.init flagsDecoded
+            in
+            ( Ready key taco route
+            , Cmd.none
+            )
+
+        Err error ->
+            ( Decode.errorToString error |> Error, Cmd.none )
+
+
+flagsDecoder : Decode.Decoder Flags
+flagsDecoder =
+    Decode.succeed Flags
+        |> Pipeline.optional "translations" I18n.decodeTranslations I18n.initialTranslations
+        |> Pipeline.optional "selectedLanguage" (Decode.map Parser.languageCodeFromString Decode.string) En
 
 
 type Msg
@@ -70,46 +81,71 @@ type Msg
     | UrlChanged Url.Url
     | OpenLanguageMenu
     | CloseLanguageMenu
-    | LanguageChanged String
+    | LanguageChanged LanguageCode
+    | GotTranslations Decode.Value
 
 
 port setLanguageStorage : String -> Cmd msg
 
 
+port getTranslationsForLanguage : String -> Cmd msg
+
+
+port gotTranslationsForLanguage : (Decode.Value -> msg) -> Sub msg
+
+
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
-    case msg of
-        LinkClicked urlRequest ->
-            case urlRequest of
-                Browser.Internal url ->
-                    ( { model | isLanguageMenuOpen = False }
-                    , Browser.Navigation.pushUrl model.key (Url.toString url)
+    case model of
+        Ready key taco route ->
+            case msg of
+                UrlChanged url ->
+                    ( Ready key (Taco.closeLanguageMenu taco) (Route.fromUrl url)
+                    , Cmd.none
                     )
 
-                Browser.External href ->
-                    ( { model | isLanguageMenuOpen = False }
-                    , Browser.Navigation.load href
-                    )
+                LinkClicked urlRequest ->
+                    let
+                        ( nextTaco, cmd ) =
+                            Taco.linkClicked urlRequest key taco
+                    in
+                    ( Ready key nextTaco route, cmd )
 
-        UrlChanged url ->
-            ( { model | route = Route.fromUrl url, isLanguageMenuOpen = False }
-            , Cmd.none
-            )
+                OpenLanguageMenu ->
+                    ( Ready key (Taco.openLanguageMenu taco) route, Cmd.none )
 
-        OpenLanguageMenu ->
-            ( { model | isLanguageMenuOpen = True }, Cmd.none )
+                CloseLanguageMenu ->
+                    ( Ready key (Taco.closeLanguageMenu taco) route, Cmd.none )
 
-        CloseLanguageMenu ->
-            ( { model | isLanguageMenuOpen = False }, Cmd.none )
+                LanguageChanged language ->
+                    if language == Taco.getLanguage taco then
+                        ( Ready key (Taco.closeLanguageMenu taco) route, Cmd.none )
 
-        LanguageChanged language ->
-            if language == model.selectedLanguage then
-                ( { model | isLanguageMenuOpen = False }, Cmd.none )
+                    else
+                        ( Ready key (taco |> Taco.setLanguage language |> Taco.closeLanguageMenu) route
+                        , Cmd.batch
+                            [ setLanguageStorage (Parser.languageCodeToString language)
+                            , getTranslationsForLanguage (Parser.languageCodeToString language)
+                            ]
+                        )
 
-            else
-                ( { model | selectedLanguage = language, isLanguageMenuOpen = False }
-                , setLanguageStorage language
-                )
+                GotTranslations value ->
+                    case Decode.decodeValue I18n.decodeTranslations value of
+                        Ok translations ->
+                            ( Ready key (Taco.setTranslators (I18n.translators translations) taco) route
+                            , Cmd.none
+                            )
+
+                        Err error_ ->
+                            ( Decode.errorToString error_ |> Error, Cmd.none )
+
+        Error _ ->
+            ( model, Cmd.none )
+
+
+subscriptions : Model -> Sub Msg
+subscriptions _ =
+    gotTranslationsForLanguage GotTranslations
 
 
 globalStyles : Html.Html msg
@@ -134,8 +170,19 @@ globalStyles =
                 [ CssUtil.color Theme.color.primary
                 , CssUtil.textDecorationUnderline
                 ]
+            , Css.Global.selector "button"
+                [ CssUtil.marginZero
+                , CssUtil.paddingZero
+                , CssUtil.colorInherit
+                , CssUtil.lineHeight 1.6
+                , CssUtil.property "background" "none"
+                , CssUtil.property "border" "0"
+                , CssUtil.property "appearance" "none"
+                , CssUtil.property "-webkit-appearance" "none"
+                , CssUtil.property "font" "inherit"
+                ]
             , Css.Global.selector "a:focus, button:focus"
-                [ CssUtil.outline3 2 Theme.color.accent
+                [ CssUtil.outline3 1 Theme.color.accent
                 , CssUtil.outlineOffsetPx 2
                 ]
             , Css.Global.selector "img, video, canvas, svg"
@@ -149,51 +196,71 @@ globalStyles =
 
 pageView : Model -> Html.Html Msg
 pageView model =
-    Layout.flexColumn [ CssUtil.minHeightVh 100 ]
-        [ Navigation.view model.route model.selectedLanguage model.isLanguageMenuOpen OpenLanguageMenu CloseLanguageMenu LanguageChanged
-        , let
-            content =
-                case model.route of
-                    Route.Home ->
-                        Home.view model.cvData
+    case model of
+        Ready _ taco route ->
+            let
+                translators =
+                    Taco.getTranslators taco
 
-                    Route.Experience ->
-                        ExperiencePage.view model.cvData
+                content =
+                    case route of
+                        Route.Home ->
+                            Home.view taco
 
-                    Route.Projects ->
-                        ProjectsPage.view model.cvData
+                        Route.Experience ->
+                            ExperiencePage.view translators cvData
 
-                    Route.Skills ->
-                        SkillsPage.view model.cvData
+                        Route.Projects ->
+                            ProjectsPage.view cvData
 
-                    Route.Languages ->
-                        LanguagesPage.view model.cvData
+                        Route.Skills ->
+                            SkillsPage.view cvData
 
-                    Route.Elm ->
-                        ElmPage.view
+                        Route.Languages ->
+                            LanguagesPage.view cvData
 
-                    Route.NotFound ->
-                        NotFoundPage.view
-          in
-          Html.main_
-            [ Attributes.css
-                [ CssUtil.backgroundColor Theme.color.primary
-                , CssUtil.padding 20
-                , Layout.displayFlex
-                , Layout.flexInt 1
-                , Layout.justifyContentCenter
+                        Route.Elm ->
+                            ElmPage.view
+
+                        Route.NotFound ->
+                            NotFoundPage.view
+            in
+            Layout.flexColumn [ CssUtil.minHeightVh 100 ]
+                [ Navigation.view taco route (Taco.getIsLanguageMenuOpen taco) OpenLanguageMenu CloseLanguageMenu LanguageChanged
+                , Html.main_
+                    [ Attributes.css
+                        [ CssUtil.backgroundColor Theme.color.primary
+                        , CssUtil.padding 20
+                        , Layout.displayFlex
+                        , Layout.flexInt 1
+                        , Layout.justifyContentCenter
+                        ]
+                    ]
+                    [ Layout.spacing [ CssUtil.maxWidth 1000 ] content ]
+                , Footer.view translators cvData
                 ]
-            ]
-            [ Layout.spacing [ CssUtil.maxWidth 1000 ] content ]
-        , Footer.view model.cvData
-        ]
+
+        Error error ->
+            Html.div [] [ Html.text error ]
+
+
+translateFn : I18n.Translators -> String -> String
+translateFn translators =
+    I18n.translateFn translators "Main."
 
 
 view : Model -> Browser.Document Msg
 view model =
-    { title = "About Bea"
-    , body =
-        [ globalStyles |> Html.toUnstyled
-        , pageView model |> Html.toUnstyled
-        ]
-    }
+    case model of
+        Ready _ taco _ ->
+            { title = translateFn (Taco.getTranslators taco) "title"
+            , body =
+                [ globalStyles |> Html.toUnstyled
+                , pageView model |> Html.toUnstyled
+                ]
+            }
+
+        Error error ->
+            { title = error
+            , body = []
+            }
