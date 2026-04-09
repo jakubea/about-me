@@ -171,7 +171,7 @@ cvData =
         , "Checkbox state management"
         , "Custom select"
         , "Date picker"
-        , "Date range icker"
+        , "Date range picker"
         , "Review rules (elm-review custom config)"
         , "Accessibility (focus management, keyboard navigation)"
         , "Tooltip"
