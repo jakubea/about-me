@@ -5,6 +5,7 @@ import Atom.Link as Link
 import Atom.Text as Text
 import Html.Styled as Html exposing (Html)
 import Html.Styled.Attributes as Attributes
+import Html.Styled.Extra as HtmlExtra
 import Molecule.Badge as Badge
 import Molecule.Card as Card
 import Theme
@@ -30,20 +31,12 @@ view project =
                     ]
                     (List.map (Badge.view Badge.Black) project.technologies)
                 ]
-            , if List.isEmpty project.highlights then
-                Text.none
-
-              else
-                Layout.flexColumn [ CssUtil.gapPx 5 ]
-                    [ Text.view [ Text.red, Text.hoverColor Text.red ] "Highlights:"
-                    , List.map highlightItem project.highlights |> Html.ul []
-                    ]
-            , case project.link of
-                Just url ->
-                    Text.view [ Text.grayLight, Text.hoverColor Text.red ] "View Project →" |> Link.externalLink url []
-
-                Nothing ->
-                    Text.none
+            , Layout.flexColumn [ CssUtil.gapPx 5 ]
+                [ Text.view [ Text.red, Text.hoverColor Text.red ] "Highlights:"
+                , List.map highlightItem project.highlights |> Html.ul []
+                ]
+                |> HtmlExtra.viewIf (List.isEmpty project.highlights |> not)
+            , HtmlExtra.viewMaybe (\url -> Text.view [ Text.grayLight, Text.hoverColor Text.red ] "View Project →" |> Link.externalLink url []) project.link
             ]
         ]
 

@@ -64,10 +64,8 @@ displayInlineBlock =
 
 
 flexColumn : List Css.Style -> List (Html msg) -> Html msg
-flexColumn styles children =
-    Html.div
-        [ Attributes.css (displayFlex :: Css.flexDirection Css.column :: styles) ]
-        children
+flexColumn styles =
+    Html.div [ Attributes.css (displayFlex :: Css.flexDirection Css.column :: styles) ]
 
 
 flexDirectionColumn : Css.Style
@@ -81,10 +79,8 @@ flexInt =
 
 
 flexRow : List Css.Style -> List (Html msg) -> Html msg
-flexRow styles children =
-    Html.div
-        [ Attributes.css (displayFlex :: Css.flexDirection Css.row :: styles) ]
-        children
+flexRow styles =
+    Html.div [ Attributes.css (displayFlex :: Css.flexDirection Css.row :: styles) ]
 
 
 flexWrapWrap : Css.Style

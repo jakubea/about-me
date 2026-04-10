@@ -74,10 +74,8 @@ descriptionItem : String -> Html msg
 descriptionItem text =
     Html.li
         [ Attributes.css descriptionItemStyle ]
-        [ Html.span [ Attributes.css bulletStyle ]
-            []
-        , Html.div [ Attributes.css descriptionTextStyle ]
-            [ Html.text text ]
+        [ Html.span [ Attributes.css bulletStyle ] []
+        , Html.div [ Attributes.css descriptionTextStyle ] [ Html.text text ]
         ]
 
 
@@ -97,8 +95,7 @@ view { position, company, endDate, startDate, technologies, description } =
                 , dateBadge (String.concat [ startDate, " - ", endDate ])
                 ]
             ]
-        , Html.ul
-            [ Attributes.css descriptionListStyle ]
+        , Html.ul [ Attributes.css descriptionListStyle ]
             (List.map descriptionItem description)
         , Layout.flexColumn
             [ CssUtil.gapPx 10

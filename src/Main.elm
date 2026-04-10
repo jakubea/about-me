@@ -279,14 +279,12 @@ pageView taco route =
             [ Keyed.node "div"
                 []
                 [ ( Route.toPath route
-                  , Html.div
-                        [ Attributes.css
-                            (Motion.revealStyleWithEasing "cubic-bezier(0.2, 0.8, 0.2, 1)" "translate3d(0, -10px, 0)" 760 0
-                                ++ [ CssUtil.maxWidth 1000
-                                   , CssUtil.widthPct 100
-                                   ]
-                            )
-                        ]
+                  , Layout.flexColumn
+                        (Motion.revealStyleWithEasing "cubic-bezier(0.2, 0.8, 0.2, 1)" "translate3d(0, -10px, 0)" 760 0
+                            ++ [ CssUtil.maxWidth 1000
+                               , CssUtil.widthPct 100
+                               ]
+                        )
                         [ content ]
                   )
                 ]

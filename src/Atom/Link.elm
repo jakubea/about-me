@@ -3,6 +3,7 @@ module Atom.Link exposing (externalLink, externalLinkWithLabel, navLink)
 import Css
 import Html.Styled as Html exposing (Html)
 import Html.Styled.Attributes as Attributes
+import Html.Styled.Attributes.Extra as AttributesExtra
 
 
 type LinkTarget
@@ -68,13 +69,8 @@ link config child =
                     , Just externalNoticeText
                     )
 
-        ariaAttrs =
-            case config.ariaCurrent of
-                Just value ->
-                    [ Attributes.attribute "aria-current" (ariaCurrentToString value) ]
-
-                Nothing ->
-                    []
+        ariaAttr =
+            AttributesExtra.attributeMaybe (ariaCurrentToString >> Attributes.attribute "aria-current") config.ariaCurrent
 
         combinedTexts =
             case ( config.srOnlyLabel, autoNotice ) of
@@ -102,9 +98,9 @@ link config child =
     Html.a
         ([ Attributes.href href
          , Attributes.css config.styles
+         , ariaAttr
          ]
             ++ targetAttrs
-            ++ ariaAttrs
         )
         (child :: screenReaderElement)
 

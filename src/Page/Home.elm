@@ -121,15 +121,14 @@ view taco =
     in
     Html.section []
         [ Layout.flexRow [ Layout.flexWrapWrap, CssUtil.widthPct 100, Layout.alignItemsCenter, Layout.justifyContentCenter, CssUtil.gapPx 20 ]
-            [ Html.div
-                [ Attributes.css [ Layout.displayFlex, Layout.flexDirectionColumn, Layout.alignItemsCenter, CssUtil.gapPx 10, CssUtil.maxWidth 620 ] ]
-                [ Html.div [ Attributes.css (heroHeadingMotion 20) ] [ translateFn translators "name" |> Heading.h1 ]
-                , Html.div [ Attributes.css (heroHeadingMotion 90) ] [ translateFn translators "title" |> Text.view [ Text.red, Text.bold, Text.large ] ]
+            [ Layout.flexColumn
+                [ Layout.displayFlex, Layout.flexDirectionColumn, Layout.alignItemsCenter, CssUtil.gapPx 10, CssUtil.maxWidth 620 ]
+                [ Layout.flexColumn (heroHeadingMotion 20) [ translateFn translators "name" |> Heading.h1 ]
+                , Layout.flexColumn (heroHeadingMotion 90) [ translateFn translators "title" |> Text.view [ Text.red, Text.bold, Text.large ] ]
                 , introLines
                     |> List.indexedMap
                         (\idx line ->
-                            Html.div
-                                [ Attributes.css (heroLineMotion idx) ]
+                            Layout.flexColumn (heroLineMotion idx)
                                 [ Text.view [ Text.grayLight, Text.center ] line ]
                         )
                     |> Layout.flexColumn [ Layout.alignItemsCenter, CssUtil.gapPx 10 ]

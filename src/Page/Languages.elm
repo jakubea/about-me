@@ -24,9 +24,7 @@ view cvData =
             }
     in
     Html.section
-        [ Attributes.css
-            [ CssUtil.padding 40, Layout.flexInt 1 ]
-        ]
+        [ Attributes.css [ CssUtil.padding 40, Layout.flexInt 1 ] ]
         [ Layout.flexColumn [ CssUtil.gapPx 32 ]
             [ SectionHeading.view "Languages"
             , Html.div
