@@ -9,6 +9,13 @@ Personal portfolio site built with Elm and Vite.
 - elm-css
 - pnpm
 
+## Patterns
+
+- Elm Architecture for state and updates
+- atomic-style UI split into atoms, molecules, organisms, and pages
+- route-based page modules with shared theme and utility modules
+- typed styling with `elm-css`
+
 ## Development
 
 ```bash
