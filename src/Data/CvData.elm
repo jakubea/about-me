@@ -6,7 +6,7 @@ import Types exposing (CvData)
 cvData : CvData
 cvData =
     { name = "Bea Jakubcova"
-    , title = "Elm Developer"
+    , title = "Senior Frontend Engineer (Functional Programming, Elm)"
     , summary =
         [ "Passionate Elm developer with 9 years of production experience building type-safe, maintainable web applications — mainly in the financial domain. Experienced in functional programming, state management, and creating elegant solutions to complex problems."
         , "Strong focus on code quality, testing, and performance, with experience working on large-scale applications and handling real-world production deployments."
@@ -143,11 +143,13 @@ cvData =
         , "Custom types"
         , "Extensible records"
         , "Routing"
+        , "QR code"
         , "Permission-based routing"
         , "JSON Decoders/encoders"
         , "HTTP error mapping"
         , "Reusable UI components"
         , "Modal dialogs"
+        , "Regex"
         , "Tabbed content"
         , "Loading spinners and placeholders"
         , "Centralized error display"
