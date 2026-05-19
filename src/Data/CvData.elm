@@ -110,7 +110,7 @@ cvData =
           , items = [ "Fintech systems", "Payment processing", "Financial calculations", "Role-based access control", "Complex form workflows", "Data Visualization" ]
           }
         , { category = "Product & Creative"
-          , items = [ "Technical Design", "Task Management (Jira/Trello)", "Adobe Photoshop", "Adobe Premiere Pro", "SEO", "Digital Production" ]
+          , items = [ "Technical Design", "Figma", "Task Management (Jira/Trello)", "Adobe Photoshop", "Adobe Premiere Pro", "SEO", "Canva", "Digital Production" ]
           }
         , { category = "Soft Skills"
           , items = [ "Attention to detail", "Team collaboration", "Client-facing communication", "Analytical thinking", "Mentoring & Knowledge sharing", "Quality-oriented mindset", "Ownership & Responsibility" ]
