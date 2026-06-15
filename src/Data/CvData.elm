@@ -125,7 +125,6 @@ cvData =
         ]
     , contact =
         { email = "jakubea@gmail.com"
-        , phone = "+420 777 229 264"
         , location = "Prague, Czech republic"
         , links =
             [ { label = "GitHub", url = "https://github.com/jakubea" }

@@ -51,13 +51,6 @@ view translators { contact } =
                         , CssUtil.transition [ "color", "transform" ]
                         , CssUtil.hover [ CssUtil.textDecorationUnderline, CssUtil.color Theme.color.accent, CssUtil.property "transform" "translate3d(2px, 0, 0)" ]
                         ]
-                , wrapper [ Icon.phone, translateFn translators "phone" |> Text.view [ Text.regular ] ]
-                    |> Link.navLink ("tel:" ++ translateFn translators "phone")
-                        False
-                        [ CssUtil.color Theme.color.textLight
-                        , CssUtil.transition [ "color", "transform" ]
-                        , CssUtil.hover [ CssUtil.textDecorationUnderline, CssUtil.color Theme.color.accent, CssUtil.property "transform" "translate3d(2px, 0, 0)" ]
-                        ]
                 , wrapper [ Icon.mapPin, translateFn translators "location" |> Text.view [ Text.regular ] ]
                     |> Link.externalLink "https://maps.app.goo.gl/T911joMC6EY5BW6P6"
                         [ CssUtil.color Theme.color.textLight

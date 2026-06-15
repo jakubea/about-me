@@ -66,7 +66,6 @@ type alias Skill =
 
 type alias Contact =
     { email : String
-    , phone : String
     , location : String
     , links : List SocialLink
     }
