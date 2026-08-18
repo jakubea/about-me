@@ -55,41 +55,56 @@ cvData =
           }
         ]
     , projects =
-        { description = "Most of my work over the past 9 years has been on production client applications, so I can’t share that code publicly—and there’s a lot of it!\nWhat you see here is just a small selection of personal apps, experiments, and projects for Elm meetups.\nThe best way to see my work is in practice 😊"
+        { description = "Most of my work over the past 9 years has been on production client applications, so I can’t share that code publicly — and there’s a lot of it.\nWhat you see here is a small selection of personal apps, experiments, and meetup projects.\nThe best way to see my work is in practice 😊"
         , githubProjects =
             [ { name = "about-me (this app)"
               , description = "A personal portfolio and CV web application built in Elm, demonstrating modular architecture, type safety, and clean UI."
               , technologies = [ "Elm 0.19.1", "elm-css", "Browser Navigation", "MVU Architecture", "Responsive Design" ]
               , highlights =
-                    [ "Fully functional Elm project with modular component structure (Atoms, Molecules, Pages)"
-                    , "Routing and dynamic content display per section"
-                    , "Type-safe styling with elm-css and responsive design"
-                    , "Well-documented and maintainable codebase"
+                    [ "Fully functional Elm project with a modular component structure (Atoms, Molecules, Pages)"
+                    , "Includes routing and dynamic content display per section"
+                    , "Uses type-safe styling with elm-css and responsive layout patterns"
+                    , "Built to be well-structured, maintainable, and easy to extend"
                     ]
               , link = Just "https://github.com/jakubea/about-me"
+              , liveLink = Nothing
+              }
+            , { name = "Pay-De-Bill (in progress)"
+              , description = "A shared-expense and bill-splitting app focused on group payments, balances, and settlement flows, with a clean and responsive user experience."
+              , technologies = [ "Elm 0.19.2", "Vite", "REST APIs", "Mobile UI", "Frontend Architecture", "State Management", "Google Authentication", "PWA" ]
+              , highlights =
+                    [ "Built the frontend for a Splitwise-style app with room for more advanced finance features"
+                    , "Focused on group expenses, balances, and transparent settlement flows"
+                    , "Live app is deployed and available at pay-de-bill.com"
+                    , "Designed with a careful, user-friendly financial UX"
+                    ]
+              , link = Just "https://github.com/pay-de-bill/frontend"
+              , liveLink = Just "https://pay-de-bill.com/"
               }
             , { name = "elmivity (in progress)"
-              , description = "An experimental game combining Elm frontend and F# backend logic, showcasing MVU architecture and interop between languages. Currently in development."
+              , description = "An experimental game combining Elm frontend logic and F# backend concepts, showcasing MVU architecture and cross-language design. This project is still under development."
               , technologies = [ "Elm 0.19.1", "F#", "MVU Architecture", "Elm-F# Interop", "Game Logic" ]
               , highlights =
-                    [ "Work in progress – core gameplay and features under development"
-                    , "Elm frontend integrated with F# backend logic"
-                    , "Clean separation of state, view, and update following MVU"
+                    [ "Work in progress — core gameplay and features are still being developed"
+                    , "Elm frontend integrated with F#-based backend logic"
+                    , "Clear separation of state, view, and update logic following MVU"
                     , "Demonstrates type-safe cross-language development"
-                    , "Locally runnable with instructions in README"
+                    , "Runs locally with instructions in the README"
                     ]
               , link = Just "https://github.com/jakubea/elmivity"
+              , liveLink = Nothing
               }
             , { name = "Elm Form Examples"
-              , description = "A simple example of Elm forms, selected from several smaller form projects I’ve done. It demonstrates basic Elm concepts, type-safe validation, dynamic fields, and user-friendly interactions."
+              , description = "A small collection of Elm form examples built from several personal experiments. It demonstrates type-safe validation, dynamic fields, reusable components, and user-friendly interactions."
               , technologies = [ "Elm 0.19.1", "elm-css", "Custom Form Components", "Dynamic Fields", "Validation", "Reusable Components" ]
               , highlights =
                     [ "Dynamic form fields with tags and focus management"
                     , "Type-safe validation for reliable user input"
-                    , "Clean, reusable components for multiple form types"
-                    , "Demonstrates Elm Architecture in UI interaction"
+                    , "Clean, reusable components for multiple form patterns"
+                    , "Shows how Elm architecture can support interactive UI flows"
                     ]
               , link = Just "https://github.com/jakubea/elm-tags-form"
+              , liveLink = Nothing
               }
             ]
         }

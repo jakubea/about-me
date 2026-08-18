@@ -36,7 +36,10 @@ view project =
                 , List.map highlightItem project.highlights |> Html.ul []
                 ]
                 |> HtmlExtra.viewIf (List.isEmpty project.highlights |> not)
-            , HtmlExtra.viewMaybe (\url -> Text.view [ Text.grayLight, Text.hoverColor Text.red ] "View Project →" |> Link.externalLink url []) project.link
+            , Layout.flexColumn [ CssUtil.gapPx 5 ]
+                [ HtmlExtra.viewMaybe (\url -> Text.view [ Text.grayLight, Text.hoverColor Text.red ] "View Project →" |> Link.externalLink url []) project.link
+                , HtmlExtra.viewMaybe (\url -> Text.view [ Text.grayLight, Text.hoverColor Text.red ] "Open Live App →" |> Link.externalLink url []) project.liveLink
+                ]
             ]
         ]
 
