@@ -67,7 +67,7 @@ cvData =
                     , "Built to be well-structured, maintainable, and easy to extend"
                     ]
               , link = Just "https://github.com/jakubea/about-me"
-              , liveLink = Nothing
+              , liveLink = Just "https://about-bea.com/"
               }
             , { name = "Pay-De-Bill (in progress)"
               , description = "A shared-expense and bill-splitting app focused on group payments, balances, and settlement flows, with a clean and responsive user experience."
