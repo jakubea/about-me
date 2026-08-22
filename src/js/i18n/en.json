@@ -7,12 +7,12 @@
       "CnGroup": {
         "company": "CN group / Ciklum",
         "description": [
-          "8+ years in FinTech: Developing customer apps, payment gateways, and internal banking tools.",
-          "Technical Focus: Building reliable frontends using Elm.",
-          "Technical Design: Designing solutions and contributing to UI/UX to ensure features make sense for the user.",
-          "Team Support: Experienced in mentoring colleagues and briefly leading a small frontend team.",
-          "Task Management: Breaking down requirements into technical tasks and managing the backlog.",
-          "Release & Deploy: Owning the deployment process and ensuring code reaches production safely."
+          "8+ years in FinTech, working on customer-facing apps, payment gateways, and internal banking tools.",
+          "Building and maintaining Elm frontends and working on the architecture behind them.",
+          "Designing solutions and working with UI/UX to make sure features work well for users.",
+          "Mentoring colleagues and briefly leading a small frontend team.",
+          "Breaking requirements down into technical tasks and managing the backlog.",
+          "Handling releases and deployments and making sure changes get safely to production."
         ],
         "endDate": "Present",
         "position": "Elm developer",
@@ -43,7 +43,7 @@
       "andElm": "and Elm.",
       "copyright": "© 2026. Made with ",
       "email": "jakubea@gmail.com",
-      "location": "Prague, Czech repulic"
+      "location": "Prague, Czech Republic"
     },
     "Navigation": {
       "elmSkills": "Elm skills",
@@ -59,13 +59,12 @@
       "experience": "Experience"
     },
     "Home": {
-      "experience": "Passionate Elm developer with {{years}} years, {{months}} months and {{days}} days of production experience building type-safe, maintainable web applications — mainly in the financial domain. Experienced in functional programming, state management, and creating elegant solutions to complex problems.",
-      "focus": "Strong focus on code quality, testing, and performance, with experience working on large-scale applications and handling real-world production deployments.",
+      "experience": "I’ve been working with Elm in production for {{years}} years, {{months}} months and {{days}} days, mostly building web applications in the financial domain.",
       "freeTime": "Outside of work, I’m a passionate traveller ✈️, nature lover 🌳, gym enthusiast 💪, and beer gourmet 🍺.",
       "name": "Bea Jakubcova",
-      "ownership": "Over 6 years as the sole frontend developer on an application, taking end-to-end ownership of the frontend — from architecture and development to releases, deployments, and technical planning and prioritisation.",
+      "ownership": "For over 6 years, I’ve been the sole frontend developer on an application, taking care of everything from architecture and development to releases, deployments, and technical planning.",
       "profilePhotoAlt": "Profile photo",
-      "thinking": "Elm has shaped how I think about software — favouring simplicity, strong types, and making invalid states impossible. I’m also always curious and open to learning new things.",
+      "thinking": "Elm has shaped how I think about software — favouring simplicity, quality, reliability, strong types, and making invalid states impossible. I’m always curious and enjoy learning new things, including other functional programming languages.",
       "title": "Senior Frontend Engineer (Elm / Functional Programming)"
     }
   }

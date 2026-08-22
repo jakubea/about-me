@@ -117,7 +117,7 @@ view taco =
                 , ( "months", String.fromInt months )
                 , ( "days", String.fromInt days )
                 ]
-                :: List.map (translateFn translators) [ "ownership", "focus", "thinking", "freeTime" ]
+                :: List.map (translateFn translators) [ "ownership", "thinking", "freeTime" ]
     in
     Html.section []
         [ Layout.flexRow [ Layout.flexWrapWrap, CssUtil.widthPct 100, Layout.alignItemsCenter, Layout.justifyContentCenter, CssUtil.gapPx 20 ]

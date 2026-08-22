@@ -7,12 +7,12 @@
       "CnGroup": {
         "company": "CN group / Ciklum",
         "description": [
-          "8+ years in FinTech: Developing customer apps, payment gateways, and internal banking tools.",
-          "Technical Focus: Building reliable frontends using Elm.",
-          "Technical Design: Designing solutions and contributing to UI/UX to ensure features make sense for the user.",
-          "Team Support: Experienced in mentoring colleagues and briefly leading a small frontend team.",
-          "Task Management: Breaking down requirements into technical tasks and managing the backlog.",
-          "Release & Deploy: Owning the deployment process and ensuring code reaches production safely."
+          "8+ years in FinTech, working on customer-facing apps, payment gateways, and internal banking tools.",
+          "Building and maintaining Elm frontends and working on the architecture behind them.",
+          "Designing solutions and working with UI/UX to make sure features work well for users.",
+          "Mentoring colleagues and briefly leading a small frontend team.",
+          "Breaking requirements down into technical tasks and managing the backlog.",
+          "Handling releases and deployments and making sure changes get safely to production."
         ],
         "endDate": "Present",
         "position": "Elm developer",
@@ -60,10 +60,9 @@
     },
     "Home": {
       "experience": "Nadšená vývojářka v jazyce Elm s devítiletou praxí v produkčním prostředí, specializující se na tvorbu typově bezpečných a snadno udržovatelných webových aplikací – především v oblasti financí. Mám zkušenosti s funkcionálním programováním, správou stavu a vytvářením elegantních řešení složitých problémů.",
-      "focus": "Silný důraz na kvalitu kódu, testování a výkon, spolu se zkušenostmi s prací na rozsáhlých aplikacích a se správou reálných produkčních nasazení.",
       "freeTime": "Mimo práci jsem vášnivá cestovatelka ✈️, milovnice přírody 🌳, nadšenkyně do cvičení 💪 a pivní gurmánka 🍺.",
       "name": "Bea Jakubcová",
-      "ownership": "Over 6 years as the sole frontend developer on an application, taking end-to-end ownership of the frontend — from architecture and development to releases, deployments, and technical planning and prioritisation.",
+      "ownership": "For over 6 years, I’ve been the sole frontend developer on an application, taking care of everything from architecture and development to releases, deployments, and technical planning.",
       "profilePhotoAlt": "Profilová fotka",
       "thinking": "Jazyk Elm ovlivnil můj pohled na software – upřednostňuji jednoduchost, silné typy a snahu zabránit vzniku neplatných stavů. Jsem také vždy zvědavá a otevřená učení se novým věcem.",
       "title": "Elm vývojářka"
