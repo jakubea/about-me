@@ -9,6 +9,7 @@ cvData =
     , title = "Senior Frontend Engineer (Elm / Functional Programming)"
     , summary =
         [ "I’ve been working with Elm in production for 9 years, mostly building web applications in the financial domain."
+        , "My background also includes digital production and SEO from my previous role at GroupM, where I worked on SEO analysis, link building, and Google Analytics reporting alongside the wider production work."
         , "For over 6 years, I’ve been the sole frontend developer on an application, taking care of everything from architecture and development to releases, deployments, and technical planning."
         , "I care about writing code that is easy to understand, test, and change. I’ve worked on large applications and handled frontend work all the way into production."
         , "Elm has shaped how I think about software — favouring simplicity, quality, reliability, strong types, and making invalid states impossible. I’m always curious and enjoy learning new things, including other functional programming languages."
