@@ -1,0 +1,18 @@
+# Bea Jakubcova — Senior Frontend Engineer
+
+> Portfolio and CV of Bea Jakubcova, Senior Frontend Engineer specialising in Elm and Functional Programming, with a background in fintech and SEO.
+
+## Portfolio
+
+- [Home](https://about-bea.com/)
+- [Experience](https://about-bea.com/experience)
+- [Projects](https://about-bea.com/projects)
+- [Skills](https://about-bea.com/skills)
+- [Elm](https://about-bea.com/elm)
+- [Languages](https://about-bea.com/languages)
+
+## Professional background
+
+- Senior Frontend Engineer with 10 years of production experience in Elm.
+- 6+ years as the sole frontend developer on a production application.
+- Fintech experience and previous professional experience in SEO and digital production.
