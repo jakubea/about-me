@@ -9,7 +9,7 @@ import Util.Layout as Layout
 
 baseStyle : List Css.Style
 baseStyle =
-    [ CssUtil.backgroundColor Theme.color.gray
+    [ CssUtil.backgroundColor Theme.color.surface
     , CssUtil.padding 16
     , CssUtil.borderRadius 8
     , CssUtil.shadowMd

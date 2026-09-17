@@ -20,7 +20,6 @@ type alias Color =
     , surface : Css.Color
     , border : Css.Color
     , white : Css.Color
-    , gray : Css.Color
     , success : Css.Color
     , error : Css.Color
     }
@@ -36,7 +35,6 @@ color =
     , surface = CssUtil.toHex stringColor.surface
     , border = CssUtil.toHex stringColor.border
     , white = CssUtil.toHex stringColor.white
-    , gray = CssUtil.toHex stringColor.gray
     , success = CssUtil.toHex stringColor.success
     , error = CssUtil.toHex stringColor.error
     }
@@ -51,7 +49,6 @@ type alias StringColor =
     , surface : String
     , border : String
     , white : String
-    , gray : String
     , success : String
     , error : String
     }
@@ -64,10 +61,9 @@ stringColor =
     , text = "#ffffff"
     , textLight = "#cccccc"
     , background = "#18181a"
-    , surface = "#232326"
+    , surface = "#151518"
     , border = "#ff2d2d"
     , white = "#ffffff"
-    , gray = "#232326"
     , success = "#22c55e"
     , error = "#ff2d2d"
     }
