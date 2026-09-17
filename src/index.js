@@ -3,7 +3,7 @@ import { Elm } from './Main.elm';
 import { getFlags } from './js/flags';
 
 import { subscribeGetTranslationsForLanguage } from './js/i18n/';
-import { subscribeSetCanonical } from '.js/canonical';
+import { subscribeSetCanonical } from './js/canonical';
 import {
   setLangAttribute,
   subscribeSetLanguageStorage,
