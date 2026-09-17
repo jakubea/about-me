@@ -39,6 +39,7 @@ view project =
             , Layout.flexColumn [ CssUtil.gapPx 5 ]
                 [ HtmlExtra.viewMaybe (\url -> Text.view [ Text.grayLight, Text.hoverColor Text.red ] "View Project →" |> Link.externalLink url []) project.link
                 , HtmlExtra.viewMaybe (\url -> Text.view [ Text.grayLight, Text.hoverColor Text.red ] "Open Live App →" |> Link.externalLink url []) project.liveLink
+                , HtmlExtra.viewMaybe (\url -> Text.view [ Text.grayLight, Text.hoverColor Text.red ] "Open PageSpeed Insights →" |> Link.externalLink url []) project.auditLink
                 ]
             ]
         ]

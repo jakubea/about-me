@@ -74,22 +74,36 @@ cvData =
           , description =
                 [ "Managing digital campaigns, microsites, banners, website updates, and email marketing."
                 , "Creating graphics, editing videos, and producing content for digital campaigns."
-                , "Working on SEO, link building, and improving organic search visibility."
-                , "Working directly with clients and preparing campaign analytics and reports."
-                , "Taking care of day-to-day maintenance and updates of digital assets."
+                , "Working on SEO audits, keyword research, on-page optimisation, link building, and improving organic search visibility."
+                , "Optimising website content, metadata, headings, internal linking, and other on-page SEO elements."
+                , "Analysing competitors and identifying opportunities to improve search visibility and digital performance."
+                , "Monitoring website and campaign performance using web analytics and preparing regular reports for clients."
+                , "Working with Google Analytics data to evaluate traffic, user behaviour, and campaign performance."
+                , "Supporting website and email A/B testing and evaluating the results."
+                , "Working directly with clients and coordinating digital production across marketing, design, and development."
+                , "Taking care of day-to-day maintenance, content updates, and optimisation of digital assets."
                 ]
           , technologies =
                 [ "Digital Production"
+                , "SEO"
+                , "SEO Audits"
+                , "Technical SEO"
+                , "Keyword Research"
+                , "Competitor Analysis"
+                , "On-page SEO"
+                , "Metadata"
+                , "Internal Linking"
+                , "Link Building"
+                , "Web Optimisation"
+                , "Web Analytics"
+                , "Google Analytics"
+                , "A/B Testing"
+                , "Performance Reporting"
                 , "HTML"
                 , "CSS"
                 , "Email Marketing"
-                , "Web Optimization"
-                , "SEO"
-                , "Linkbuilding"
                 , "Graphic Design"
                 , "Video Editing"
-                , "Web Analytics"
-                , "Performance Reporting"
                 , "Client Communication"
                 ]
           }
@@ -116,6 +130,7 @@ cvData =
                     ]
               , link = Just "https://github.com/jakubea/about-me"
               , liveLink = Just "https://about-bea.com/"
+              , auditLink = Just "https://pagespeed.web.dev/analysis/https-about-bea-com/6l6a8phd4m?form_factor=mobile"
               }
             , { name = "Pay-De-Bill (in progress)"
               , description =
@@ -139,6 +154,7 @@ cvData =
                     ]
               , link = Just "https://github.com/pay-de-bill/frontend"
               , liveLink = Just "https://pay-de-bill.com/"
+              , auditLink = Nothing
               }
             , { name = "elmivity (in progress)"
               , description =
@@ -158,6 +174,7 @@ cvData =
                     ]
               , link = Just "https://github.com/jakubea/elmivity"
               , liveLink = Nothing
+              , auditLink = Nothing
               }
             , { name = "Elm Form Examples"
               , description =
@@ -178,6 +195,7 @@ cvData =
                     ]
               , link = Just "https://github.com/jakubea/elm-tags-form"
               , liveLink = Nothing
+              , auditLink = Nothing
               }
             ]
         }

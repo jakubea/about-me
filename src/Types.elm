@@ -56,6 +56,7 @@ type alias Project =
     , highlights : List String
     , link : Maybe String
     , liveLink : Maybe String
+    , auditLink : Maybe String
     }
 
 
