@@ -15,7 +15,7 @@ cvData =
         , "Elm has shaped how I think about software — favouring simplicity, quality, reliability, strong types, and making invalid states impossible. I’m always curious and enjoy learning new things, including other functional programming languages."
         , "Outside of work, I’m a passionate traveller ✈️, nature lover 🌳, gym enthusiast 💪, and beer gourmet 🍺."
         ]
-    , profileImage = "/me.jpg"
+    , profileImage = "/me.webp"
     , experiences =
         [ { company = "CN group / Ciklum"
           , position = "Elm developer"

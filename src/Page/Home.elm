@@ -147,7 +147,7 @@ view taco =
                        ]
                 )
                 [ Html.img
-                    [ Attributes.src "/me.jpg"
+                    [ Attributes.src "/me.webp"
                     , translateFn translators "profilePhotoAlt" |> Attributes.alt
                     , Attributes.css
                         (photoDriftMotion
