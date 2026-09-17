@@ -98,6 +98,9 @@ port getTranslationsForLanguage : String -> Cmd msg
 port gotTranslationsForLanguage : (Decode.Value -> msg) -> Sub msg
 
 
+port setCanonical : String -> Cmd msg
+
+
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case model of
@@ -114,7 +117,12 @@ update msg model =
                         getTimeCmd =
                             Task.perform GotTime Time.now
                     in
-                    ( Ready key taco route, getTimeCmd )
+                    ( Ready key taco route
+                    , Cmd.batch
+                        [ getTimeCmd
+                        , setCanonical (Route.toPath route)
+                        ]
+                    )
 
                 _ ->
                     ( model, Cmd.none )
@@ -130,7 +138,7 @@ update msg model =
 
                 UrlChanged url ->
                     ( Ready key (Taco.closeLanguageMenu taco) (Route.fromUrl url)
-                    , Cmd.none
+                    , setCanonical (Route.toPath route)
                     )
 
                 LinkClicked urlRequest ->
