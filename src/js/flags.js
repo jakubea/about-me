@@ -3,10 +3,10 @@ import { getSelectedLanguage } from './selectedLanguage';
 
 export const getFlags = async () => {
   const selectedLanguage = getSelectedLanguage();
-  const translations = await translationsForSelectedLanguage(selectedLanguage);
+  const translations = await translationsForSelectedLanguage('En');
 
   return {
     translations: translations,
-    selectedLanguage: 'Cs',
+    selectedLanguage: 'En',
   };
 };

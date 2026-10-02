@@ -102,7 +102,8 @@ view taco currentRoute _ _ _ _ =
                         []
                     )
                     Route.Elm
-                , navItem (currentRoute == Route.Languages) (translateFn translators "languages") Icon.globe Route.Languages
+
+                -- , navItem (currentRoute == Route.Languages) (translateFn translators "languages") Icon.globe Route.Languages
                 ]
 
             -- TODO: Add translations

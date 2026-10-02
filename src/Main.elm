@@ -75,7 +75,11 @@ flagsDecoder : Decode.Decoder Flags
 flagsDecoder =
     Decode.succeed Flags
         |> Pipeline.optional "translations" I18n.decodeTranslations I18n.initialTranslations
-        |> Pipeline.optional "selectedLanguage" (Decode.map Parser.languageCodeFromString Decode.string) En
+        |> Pipeline.hardcoded En
+
+
+
+-- |> Pipeline.optional "selectedLanguage" (Decode.map Parser.languageCodeFromString Decode.string) En
 
 
 type Msg
